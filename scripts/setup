@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+#
+# setup the Vim Configuration of Champions
+
+info () {
+  printf "  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
+echo ''
+info 'Installing NeoVim'
+info '================='
+echo ''
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install neovim
+sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo pip install neovim
+sudo pip3 install neovim
+info 'Update Alternatives, chose nvim all over'
+info '----------------------------------------'
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+sudo update-alternatives --config vi
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --config vim
+sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+sudo update-alternatives --config editor
+
+echo ''
+info 'Setting up the Vim Configuration'
+info '================================'
+echo ''
+
+info 'Installing Vundle'
+info '-----------------'
+git clone git://github.com/gmarik/vundle.git bundle/vundle
+
+info 'Setting up Symlinks'
+info '-------------------'
+if test $(which rake)
+then
+  rake vim:link
+else
+  fail 'Install Ruby and Rake to continue'
+fi
+
+info 'Installing plugins'
+info '------------------'
+if test $(which vim)
+then
+  vim +PluginInstall +qall
+else
+  fail 'vim not found in path.'
+fi
+
+success 'Setup complete. Run vim and enjoy'
