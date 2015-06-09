@@ -2,8 +2,8 @@
 
 ## Installation
   
-  + `git clone git@bitbucket.org:Tabjones/dotvim.git ~/.vim`.
-  + `cd ~/.vim`.
+  + `git clone --recursive git@bitbucket.org:Tabjones/dotvim.git ~/.vim`
+  + `cd ~/.vim`
 
 Now you have a choice. The automated script or the manual process.
 
