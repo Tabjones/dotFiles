@@ -35,6 +35,8 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+"Enable cmatcher plugin (must be installed externally)
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 "
 "Fugitive """""""""""""""""""""""""""""""""""""
 nnoremap <Leader>gc :Gcommit -v<CR>
