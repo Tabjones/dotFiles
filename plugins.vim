@@ -81,5 +81,3 @@ let g:airline#extensions#tabline#show_close_button = 1
 let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#tab_min_count = 2
-
-
