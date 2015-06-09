@@ -32,8 +32,7 @@ dependencies.
 * [Ag.vim](https://github.com/rking/ag.vim) Requires
   [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) to be
   installed.
-* [Source Code for Powerline](http://git.io/H3fYBg) The custom font I'm using
-  for vim-airline.
+* [The custom font for vim-airline](https://github.com/powerline/fonts) requires manual installation. They are located into fonts directory
 * [CtrlP C Matching Extension](https://github.com/JazzCore/ctrlp-cmatcher)
   requires compilation. See the steps [in its
   readme](https://github.com/JazzCore/ctrlp-cmatcher).
