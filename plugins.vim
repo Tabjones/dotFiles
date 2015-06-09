@@ -53,5 +53,33 @@ nnoremap <Leader>gx :wincmd h<CR>:q<CR>
 nnoremap <leader>gi :Git<space>
 " Undo the last commit
 command! Gcundo :Git reset HEAD~1
-" status line
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" AirLine """""""""""""""""""""""""""""""""""""
+let g:airline_theme = 'jellybeans'
+let g:airline_powerline_fonts = 1
+let g:airline_detect_modified = 1
+let g:airline_inactive_collapse = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#hunks#enabled = 0
+"let g:airline_left_sep = '◣'
+"let g:airline_right_sep = '◥'
+"let g:airline_symbols.branch = '⎇ '
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#close_symbol = '❎ '
+let g:airline#extensions#tabline#show_close_button = 1
+let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#tab_min_count = 2
+
+
