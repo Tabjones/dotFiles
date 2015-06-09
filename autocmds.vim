@@ -37,6 +37,6 @@ if has("autocmd")
     au VimResized * :wincmd =
 
     " Force xml syntax for ROS launch files
-    au BufRead,BufNewFile *.launch set filetype xml
+    au BufRead,BufNewFile *.launch set syntax=xml
   augroup END
 endif
