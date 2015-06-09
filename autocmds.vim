@@ -35,5 +35,8 @@ if has("autocmd")
     " Resize splits when the window is resized
     " from https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
     au VimResized * :wincmd =
+
+    " Force xml syntax for ROS launch files
+    au BufRead,BufNewFile *.launch set filetype xml
   augroup END
 endif
