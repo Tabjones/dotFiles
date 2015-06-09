@@ -51,3 +51,5 @@ nnoremap <Leader>gx :wincmd h<CR>:q<CR>
 nnoremap <leader>gi :Git<space>
 " Undo the last commit
 command! Gcundo :Git reset HEAD~1
+" status line
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
