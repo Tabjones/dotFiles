@@ -100,3 +100,13 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_c_include_dirs = ['include', '../include']
 let g:syntastic_cpp_compiler_options = '-std=c++11'
 let g:syntastic_cpp_include_dirs = ['include', '../include']
+
+" NerdTree """"""""""""""""
+nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
+nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>
+let g:NERDTreeShowBookmarks = 1
+let g:NERDTreeChDirMode = 1
+let g:NERDTreeMinimalUI = 1
+" Close Vim if NERDTree is the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+  \&& b:NERDTreeType == "primary") | q | endif
