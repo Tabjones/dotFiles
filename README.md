@@ -1,8 +1,7 @@
 # Vim Configuration
 
 ## Installation
-
-  + Install [NeoVim](https://github.com/neovim/neovim)
+  
   + `git clone git@bitbucket.org:Tabjones/dotvim.git ~/.vim`.
   + `cd ~/.vim`.
 
@@ -12,10 +11,11 @@ Now you have a choice. The automated script or the manual process.
 
 **or**
 
-1. `rake vim:link` to make the `.vimrc` and `.nvimrc` symbolic links.
-2. Install [Vundle](https://github.com/gmarik/vundle) with `git clone
+1. Install [NeoVim](https://github.com/neovim/neovim)
+2. `rake vim:link` to make the `.vimrc` and `.nvimrc` symbolic links.
+3. Install [Vundle](https://github.com/gmarik/vundle) with `git clone
    http://github.com/gmarik/vundle.git bundle/vundle`
-3. `vim +PluginInstall +qall`
+4. `vim +PluginInstall +qall`
 
 Enjoy startling sex appeal.
 
