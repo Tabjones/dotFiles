@@ -1,17 +1,37 @@
-# Vim Configuration
+# The dotVim GodMode Configuration
+Based on the [Mutewinter's Vim Configuration of Champions](https://github.com/mutewinter/dot_vim) with modified plugins to enhance C/C++ programming and modified bindings to suit my liking.
 
-## Installation
+## Enabling GodMode in Vim (a.k.a. Installation)
+Assuming no Vim is installed, perform the following steps:
   
-  + `git clone --recursive git@bitbucket.org:Tabjones/dotvim.git ~/.vim`
-  + `cd ~/.vim`
+>  git clone --recursive git@bitbucket.org:Tabjones/dotvim.git ~/.vim  
+>  cd ~/.vim  
 
-Now you have a choice. The automated script or the manual process.
+**NOTE** Make sure you backup your old dotVim directory if it already exists.
 
-1. Run `scripts/setup`.
+---
 
-**or**
+Now you can be lazy or meticulous.
+ 
+**To be lazy** just run the automated script (tested with Ubuntu 14.04).
 
-1. Install [NeoVim](https://github.com/neovim/neovim)
+1. Run `scripts/setup`
+
+**Or to be meticulous** perform the following steps.
+
+1. Install [NeoVim](https://github.com/neovim/neovim). For Ubuntu this resolves to:  
+    + > sudo add-apt-repository ppa:neovim-ppa/unstable  
+      > sudo apt-get update  
+      > sudo apt-get install neovim  
+    + > sudo apt-get install python-dev python-pip python3-dev python3-pip  
+      > sudo pip install neovim  
+      > sudo pip3 install neovim  
+    + > sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60  
+      > sudo update-alternatives --config vi  
+      > sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60  
+      > sudo update-alternatives --config vim  
+      > sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60  
+      > sudo update-alternatives --config editor  
 2. `rake vim:link` to make the `.vimrc` and `.nvimrc` symbolic links.
 3. Install [Vundle](https://github.com/gmarik/vundle) with `git clone
    http://github.com/gmarik/vundle.git bundle/vundle`
