@@ -3,10 +3,10 @@ Based on the [Mutewinter's Vim Configuration of Champions](https://github.com/mu
 
 ## Enabling GodMode in Vim (a.k.a. Installation)
 Assuming no Vim is installed, perform the following steps:
-  
->  git clone --recursive git@bitbucket.org:Tabjones/dotvim.git ~/.vim  
->  cd ~/.vim  
-
+```  
+git clone --recursive git@bitbucket.org:Tabjones/dotvim.git ~/.vim  
+cd ~/.vim  
+```
 **NOTE** Make sure you backup your old dotVim directory if it already exists.
 
 ---
@@ -15,34 +15,60 @@ Now you can be lazy or meticulous.
  
 **To be lazy** just run the automated script (tested with Ubuntu 14.04).
 
-1. Run `scripts/setup`
++ Run `scripts/setup`
 
 **Or to be meticulous** perform the following steps.
 
-1. Install [NeoVim](https://github.com/neovim/neovim). For Ubuntu this resolves to:  
-    + > sudo add-apt-repository ppa:neovim-ppa/unstable  
-      > sudo apt-get update  
-      > sudo apt-get install neovim  
-    + > sudo apt-get install python-dev python-pip python3-dev python3-pip  
-      > sudo pip install neovim  
-      > sudo pip3 install neovim  
-    + > sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60  
-      > sudo update-alternatives --config vi  
-      > sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60  
-      > sudo update-alternatives --config vim  
-      > sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60  
-      > sudo update-alternatives --config editor  
-2. `rake vim:link` to make the `.vimrc` and `.nvimrc` symbolic links.
-3. Install [Vundle](https://github.com/gmarik/vundle) with `git clone
-   http://github.com/gmarik/vundle.git bundle/vundle`
-4. `vim +PluginInstall +qall`
++ Install [NeoVim](https://github.com/neovim/neovim). For Ubuntu this resolves to:  
+```  
+    sudo add-apt-repository ppa:neovim-ppa/unstable  
+    sudo apt-get update  
+    sudo apt-get install neovim  
+```
+```
+    sudo apt-get install python-dev python-pip python3-dev python3-pip  
+    sudo pip install neovim  
+    sudo pip3 install neovim  
+```
+```
+    sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60  
+    sudo update-alternatives --config vi  
+    sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60  
+    sudo update-alternatives --config vim  
+    sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60  
+    sudo update-alternatives --config editor  
+```
++ Make the `.vimrc` and `.nvimrc` symbolic links.  
+```
+    rake vim:link
+```
++ Install [Vundle](https://github.com/gmarik/vundle) and all Vim plugins  
+```
+    git clone http://github.com/gmarik/vundle.git bundle/vundle  
+    vim +PluginInstall +qall  
+```
++ Install the [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) for Ag plugin
+```
+    sudo apt-get install silversearcher-ag
+```
++ Install custom fonts for Airline, provided into fonts submodule
+```
+    cd fonts  
+    ./install.sh  
+    cd ~/.vim  
+```
++ Compile CtrlP C Matching extension
+```
+    cd ~/.vim/bundle/ctrlp-cmatcher  
+    ./install.sh  
+    cd ~/.vim  
+```
 
-Enjoy startling sex appeal.
++ *(Optional)* _Melt your brain with your new GodMode Vim!_
 
 ## Plugin Requirements
 
-Here's a list of plugins that require further installation or have
-dependencies.
+A list of plugins that requires additional configuration, all of them should already be fulfilled if you followed the installation steps (or the script).
 
 * [Fugitive](https://github.com/tpope/vim-fugitive) Requires Git to be
   installed.
@@ -52,7 +78,7 @@ dependencies.
 * [Ag.vim](https://github.com/rking/ag.vim) Requires
   [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) to be
   installed.
-* [The custom font for vim-airline](https://github.com/powerline/fonts) requires manual installation. They are located into fonts directory
+* [The custom font for vim-airline](https://github.com/powerline/fonts) requires manual installation. They are located into fonts directory.
 * [CtrlP C Matching Extension](https://github.com/JazzCore/ctrlp-cmatcher)
   requires compilation. See the steps [in its
   readme](https://github.com/JazzCore/ctrlp-cmatcher).
@@ -78,11 +104,8 @@ if exists('g:vundle_installing_plugins')
   Plugin 'matze/vim-move.vim'
   finish
 endif
-
-let g:move_key_modifier = 'C'
 ```
-
-This example installs [`vim-move`](https://github.com/matze/vim-move).
+Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.com/matze/vim-move).
 
 ## Plugin List
 
