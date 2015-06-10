@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# setup the Vim Configuration of Champions
+# setup the Vim GodMode Configuration
 
 info () {
   printf "  [ \033[00;34m..\033[0m ] $1\n"
@@ -26,7 +26,7 @@ sudo apt-get install neovim
 sudo apt-get install python-dev python-pip python3-dev python3-pip
 sudo pip install neovim
 sudo pip3 install neovim
-info 'Update Alternatives, chose nvim all over'
+info 'Updating Alternatives, chose nvim all over'
 info '----------------------------------------'
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
 sudo update-alternatives --config vi
@@ -62,4 +62,13 @@ else
   fail 'vim not found in path.'
 fi
 
+echo ''
+info 'Configuring Plugins'
+info '==================='
+echo ''
+sudo apt-get install silversearcher-ag
+cd ~/.vim/fonts
+./install.sh
+cd ~/.vim/bundle/ctrlp-cmatcher
+./install.sh
 success 'Setup complete. Run vim and enjoy'
