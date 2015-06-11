@@ -5,49 +5,49 @@ Based on the [Mutewinter's Vim Configuration of Champions](https://github.com/mu
 
 ## Enabling GodMode in Vim (a.k.a. Installation)
 Assuming no Vim is installed, perform the following steps:
-```  
-git clone --recursive git@bitbucket.org:Tabjones/dotvim.git ~/.vim  
-cd ~/.vim  
+```
+git clone --recursive git@bitbucket.org:Tabjones/dotvim.git ~/.vim
+cd ~/.vim
 ```
 **Note:** Make sure you backup your old dotVim directory if it already exists.
 
 ---
 
 Now you can be lazy or meticulous.
- 
+
 **To be lazy** just run the automated script (tested with Ubuntu 14.04).
 
 + Run `scripts/setup`
 
 **Or to be meticulous** perform the following steps.
 
-+ Install [NeoVim](https://github.com/neovim/neovim). For Ubuntu this resolves to    
-```  
-    sudo add-apt-repository ppa:neovim-ppa/unstable  
-    sudo apt-get update  
-    sudo apt-get install neovim  
++ Install [NeoVim](https://github.com/neovim/neovim). For Ubuntu this resolves to
+```
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt-get update
+    sudo apt-get install neovim
 ```
 ```
-    sudo apt-get install python-dev python-pip python3-dev python3-pip  
-    sudo pip install neovim  
-    sudo pip3 install neovim  
+    sudo apt-get install python-dev python-pip python3-dev python3-pip
+    sudo pip install neovim
+    sudo pip3 install neovim
 ```
 ```
-    sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60  
-    sudo update-alternatives --config vi  
-    sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60  
-    sudo update-alternatives --config vim  
-    sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60  
-    sudo update-alternatives --config editor  
+    sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+    sudo update-alternatives --config vi
+    sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+    sudo update-alternatives --config vim
+    sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+    sudo update-alternatives --config editor
 ```
-+ Make the `.vimrc` and `.nvimrc` symbolic links.  
++ Make the `.vimrc` and `.nvimrc` symbolic links.
 ```
     rake vim:link
 ```
-+ Install [Vundle](https://github.com/gmarik/vundle) and all Vim plugins  
++ Install [Vundle](https://github.com/gmarik/vundle) and all Vim plugins
 ```
-    git clone http://github.com/gmarik/vundle.git bundle/vundle  
-    vim +PluginInstall +qall  
+    git clone http://github.com/gmarik/vundle.git bundle/vundle
+    vim +PluginInstall +qall
 ```
 + Install the [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) for Ag plugin
 ```
@@ -55,15 +55,15 @@ Now you can be lazy or meticulous.
 ```
 + Install custom fonts for Airline, provided into fonts submodule
 ```
-    cd fonts  
-    ./install.sh  
-    cd ~/.vim  
+    cd fonts
+    ./install.sh
+    cd ~/.vim
 ```
 + Compile CtrlP C Matching extension
 ```
-    cd ~/.vim/bundle/ctrlp-cmatcher  
-    ./install.sh  
-    cd ~/.vim  
+    cd ~/.vim/bundle/ctrlp-cmatcher
+    ./install.sh
+    cd ~/.vim
 ```
 
 + *(Optional)* _Melt your brain with your new GodMode Vim!_
@@ -111,18 +111,18 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 
 ## Plugin List
 
-| Stars___ | **Plugin** | **Description** |
+| ___Stars___ | **Plugin** | **Description** |
 | -------: | :--------- | :-------------- |
 |  ★ |[vim-voogle](https://github.com/papanikge/vim-voogle) [:page_facing_up:](vundle_plugins/vim-voogle.vim)|Problem fetching papanikge/vim-voogle. |
-| 2,891 ★ |[vim-rails](https://github.com/tpope/vim-rails) [:page_facing_up:](vundle_plugins/vim-rails.vim)|rails.vim: Ruby on Rails power tools |
-| 2,772 ★ |[vim-surround](https://github.com/tpope/vim-surround) [:page_facing_up:](vundle_plugins/vim-surround.vim)|surround.vim: quoting/parenthesizing made simple |
-| 951 ★ |[vimux](https://github.com/benmills/vimux) [:page_facing_up:](vundle_plugins/vimux.vim)|vim plugin to interact with tmux |
+| 2,893 ★ |[vim-rails](https://github.com/tpope/vim-rails) [:page_facing_up:](vundle_plugins/vim-rails.vim)|rails.vim: Ruby on Rails power tools |
+| 2,775 ★ |[vim-surround](https://github.com/tpope/vim-surround) [:page_facing_up:](vundle_plugins/vim-surround.vim)|surround.vim: quoting/parenthesizing made simple |
+| 952 ★ |[vimux](https://github.com/benmills/vimux) [:page_facing_up:](vundle_plugins/vimux.vim)|vim plugin to interact with tmux |
 | 871 ★ |[vim-unimpaired](https://github.com/tpope/vim-unimpaired)|unimpaired.vim: pairs of handy bracket mappings |
-| 791 ★ |[vim-startify](https://github.com/mhinz/vim-startify) [:page_facing_up:](vundle_plugins/vim-startify.vim)|:rocket: A fancy start screen for Vim. |
-| 705 ★ |[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) [:page_facing_up:](vundle_plugins/vim-tmux-navigator.vim)|Seamless navigation between tmux panes and vim splits |
-| 666 ★ |[vim-signify](https://github.com/mhinz/vim-signify) [:page_facing_up:](vundle_plugins/vim-signify.vim)|:rotating_light: Show a diff via Vim sign column. |
+| 789 ★ |[vim-startify](https://github.com/mhinz/vim-startify) [:page_facing_up:](vundle_plugins/vim-startify.vim)|:rocket: A fancy start screen for Vim. |
+| 706 ★ |[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) [:page_facing_up:](vundle_plugins/vim-tmux-navigator.vim)|Seamless navigation between tmux panes and vim splits |
+| 667 ★ |[vim-signify](https://github.com/mhinz/vim-signify) [:page_facing_up:](vundle_plugins/vim-signify.vim)|:rotating_light: Show a diff via Vim sign column. |
 | 632 ★ |[vim-repeat](https://github.com/tpope/vim-repeat)|repeat.vim: enable repeating supported plugin maps with "." |
-| 348 ★ |[vim-textobj-user](https://github.com/kana/vim-textobj-user)|Vim plugin: Create your own text objects |
+| 349 ★ |[vim-textobj-user](https://github.com/kana/vim-textobj-user)|Vim plugin: Create your own text objects |
 | 275 ★ |[webapi-vim](https://github.com/mattn/webapi-vim)|vim interface to Web API |
 | 217 ★ |[vim-stylus](https://github.com/wavded/vim-stylus)|Syntax Highlighting for Stylus |
 | 165 ★ |[vim-rake](https://github.com/tpope/vim-rake)|rake.vim: it's like rails.vim without the rails |
@@ -155,29 +155,29 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 |  ★ |[vim-jade](https://github.com/digitaltoad/vim-jade)|Problem fetching digitaltoad/vim-jade. |
 |  ★ |[ember.vim](https://github.com/dsawardekar/ember.vim) [:page_facing_up:](vundle_plugins/ember.vim)|Problem fetching dsawardekar/ember.vim. |
 |  ★ |[vim-less](https://github.com/groenewege/vim-less)|Problem fetching groenewege/vim-less. |
-| 5,579 ★ |[vim-fugitive](https://github.com/tpope/vim-fugitive) [:page_facing_up:](vundle_plugins/vim-fugitive.vim)|fugitive.vim: a Git wrapper so awesome, it should be illegal |
-| 5,242 ★ |[vim-airline](https://github.com/bling/vim-airline)|lean & mean status/tabline for vim that's light as air |
+| 5,584 ★ |[vim-fugitive](https://github.com/tpope/vim-fugitive) [:page_facing_up:](vundle_plugins/vim-fugitive.vim)|fugitive.vim: a Git wrapper so awesome, it should be illegal |
+| 5,257 ★ |[vim-airline](https://github.com/bling/vim-airline)|lean & mean status/tabline for vim that's light as air |
 | 1,580 ★ |[vim-coffee-script](https://github.com/kchmck/vim-coffee-script)|CoffeeScript support for vim |
-| 1,443 ★ |[supertab](https://github.com/ervandew/supertab)|Perform all your vim insert mode completions with Tab |
+| 1,445 ★ |[supertab](https://github.com/ervandew/supertab)|Perform all your vim insert mode completions with Tab |
 | 1,182 ★ |[vim-javascript](https://github.com/pangloss/vim-javascript)|Vastly improved Javascript indentation and syntax support in Vim. |
-| 1,166 ★ |[vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) [:page_facing_up:](vundle_plugins/vim-indent-guides.vim)|A Vim plugin for visually displaying indent levels in code |
-| 1,065 ★ |[tabular](https://github.com/godlygeek/tabular) [:page_facing_up:](vundle_plugins/tabular.vim)|Vim script for text filtering and alignment |
+| 1,169 ★ |[vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) [:page_facing_up:](vundle_plugins/vim-indent-guides.vim)|A Vim plugin for visually displaying indent levels in code |
+| 1,066 ★ |[tabular](https://github.com/godlygeek/tabular) [:page_facing_up:](vundle_plugins/tabular.vim)|Vim script for text filtering and alignment |
 | 572 ★ |[vim-abolish](https://github.com/tpope/vim-abolish)|abolish.vim: easily search for, substitute, and abbreviate multiple variants of a word |
 | 555 ★ |[html5.vim](https://github.com/othree/html5.vim)|HTML5 omnicomplete and syntax |
-| 519 ★ |[vim-haml](https://github.com/tpope/vim-haml)|Vim runtime files for Haml, Sass, and SCSS |
-| 484 ★ |[tcomment_vim](https://github.com/tomtom/tcomment_vim) [:page_facing_up:](vundle_plugins/tcomment_vim.vim)|An extensible & universal comment vim-plugin that also handles embedded filetypes |
-| 428 ★ |[vim-json](https://github.com/elzr/vim-json)|A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly. |
+| 521 ★ |[vim-haml](https://github.com/tpope/vim-haml)|Vim runtime files for Haml, Sass, and SCSS |
+| 485 ★ |[tcomment_vim](https://github.com/tomtom/tcomment_vim) [:page_facing_up:](vundle_plugins/tcomment_vim.vim)|An extensible & universal comment vim-plugin that also handles embedded filetypes |
+| 429 ★ |[vim-json](https://github.com/elzr/vim-json)|A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly. |
 | 400 ★ |[vim-endwise](https://github.com/tpope/vim-endwise)|endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc |
 | 360 ★ |[vim-eunuch](https://github.com/tpope/vim-eunuch)|eunuch.vim: helpers for UNIX |
-| 308 ★ |[undotree](https://github.com/mbbill/undotree)|The ultimate undo history visualizer for VIM |
+| 307 ★ |[undotree](https://github.com/mbbill/undotree)|The ultimate undo history visualizer for VIM |
 | 277 ★ |[vim-cucumber](https://github.com/tpope/vim-cucumber)|Vim Cucumber runtime files |
 | 235 ★ |[vim-bundler](https://github.com/tpope/vim-bundler)|bundler.vim: Lightweight support for Ruby's Bundler |
-| 90 ★ |[matchit.zip](https://github.com/vim-scripts/matchit.zip)|extended % matching for HTML, LaTeX, and many other languages |
-| 75 ★ |[nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)|A plugin of NERDTree showing git status |
-| 55 ★ |[vim-anzu](https://github.com/osyo-manga/vim-anzu) [:page_facing_up:](vundle_plugins/vim-anzu.vim)|Vim search status. |
+| 91 ★ |[matchit.zip](https://github.com/vim-scripts/matchit.zip)|extended % matching for HTML, LaTeX, and many other languages |
+| 79 ★ |[nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)|A plugin of NERDTree showing git status |
+| 56 ★ |[vim-anzu](https://github.com/osyo-manga/vim-anzu) [:page_facing_up:](vundle_plugins/vim-anzu.vim)|Vim search status. |
 | 51 ★ |[L9](https://github.com/vim-scripts/L9)|Vim-script library |
 | 44 ★ |[textile.vim](https://github.com/timcharper/textile.vim)|Textile for VIM |
-| 35 ★ |[Join](https://github.com/sk1418/Join)|a better (hopefully) :Join command in vim |
+| 36 ★ |[Join](https://github.com/sk1418/Join)|a better (hopefully) :Join command in vim |
 | 26 ★ |[QFEnter](https://github.com/yssl/QFEnter) [:page_facing_up:](vundle_plugins/QFEnter.vim)|Open a Quickfix item in a window you choose. (Vim plugin) |
 | 7 ★ |[indenthtml.vim](https://github.com/vim-scripts/indenthtml.vim) [:page_facing_up:](vundle_plugins/indenthtml.vim)|alternative html indent script |
 | 7 ★ |[nginx.vim](https://github.com/mutewinter/nginx.vim)|Syntax highlighting for nginx.conf and related config files. |
@@ -186,8 +186,8 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 | 1 ★ |[tomdoc.vim](https://github.com/mutewinter/tomdoc.vim)|A simple syntax add-on for vim that highlights your TomDoc comments. |
 | 0 ★ |[vim-autoreadwatch](https://github.com/mutewinter/vim-autoreadwatch)|A forked script for vim auto reloading of buffers when changed on disk. |
 |  ★ |[HelpClose](https://github.com/vim-scripts/HelpClose)|Problem fetching vim-scripts/HelpClose. |
-| 4,422 ★ |[ctrlp.vim](https://github.com/kien/ctrlp.vim)|Fuzzy file, buffer, mru, tag, etc finder. |
-| 2,547 ★ |[emmet-vim](https://github.com/mattn/emmet-vim)|emmet for vim: http://emmet.io/ |
+| 4,427 ★ |[ctrlp.vim](https://github.com/kien/ctrlp.vim)|Fuzzy file, buffer, mru, tag, etc finder. |
+| 2,549 ★ |[emmet-vim](https://github.com/mattn/emmet-vim)|emmet for vim: http://emmet.io/ |
 | 1,052 ★ |[gist-vim](https://github.com/mattn/gist-vim) [:page_facing_up:](vundle_plugins/gist-vim.vim)|vimscript for gist |
 | 760 ★ |[ag.vim](https://github.com/rking/ag.vim)|Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack' |
 | 200 ★ |[csv.vim](https://github.com/chrisbra/csv.vim)|A Filetype plugin for csv files |
@@ -197,4 +197,5 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 
 _That's 81 plugins, holy crap._
 
-_Generated by `rake update_readme` on 2015/06/10._
+_Generated by `rake update_readme` on 2015/06/12._
+
