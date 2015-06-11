@@ -111,8 +111,8 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 
 ## Plugin List
 
-| Stars___ | **Plugin** | **Description** |
-| -------: | :--------- | :-------------- |
+| **Stars** | **Plugin** | **Description** |
+| --------: | :--------- | :-------------- |
 | 5,584 ★ |[vim-fugitive](https://github.com/tpope/vim-fugitive) [:page_facing_up:](vundle_plugins/vim-fugitive.vim)|fugitive.vim: a Git wrapper so awesome, it should be illegal |
 | 5,257 ★ |[vim-airline](https://github.com/bling/vim-airline)|lean & mean status/tabline for vim that's light as air |
 | 5,030 ★ |[syntastic](https://github.com/scrooloose/syntastic)|Syntax checking hacks for vim |
@@ -127,7 +127,7 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 | 1,266 ★ |[vim-ruby](https://github.com/vim-ruby/vim-ruby)|Vim/Ruby Configuration Files |
 | 1,182 ★ |[vim-javascript](https://github.com/pangloss/vim-javascript)|Vastly improved Javascript indentation and syntax support in Vim. |
 | 1,169 ★ |[vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) [:page_facing_up:](vundle_plugins/vim-indent-guides.vim)|A Vim plugin for visually displaying indent levels in code |
-| 1,066 ★ |[tabular](https://github.com/godlygeek/tabular) [:page_facing_up:](vundle_plugins/tabular.vim)|Vim script for text filtering and alignment |
+| 1,067 ★ |[tabular](https://github.com/godlygeek/tabular) [:page_facing_up:](vundle_plugins/tabular.vim)|Vim script for text filtering and alignment |
 | 1,052 ★ |[gist-vim](https://github.com/mattn/gist-vim) [:page_facing_up:](vundle_plugins/gist-vim.vim)|vimscript for gist |
 | 952 ★ |[vimux](https://github.com/benmills/vimux) [:page_facing_up:](vundle_plugins/vimux.vim)|vim plugin to interact with tmux |
 | 871 ★ |[vim-unimpaired](https://github.com/tpope/vim-unimpaired)|unimpaired.vim: pairs of handy bracket mappings |
