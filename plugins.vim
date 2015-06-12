@@ -140,17 +140,26 @@ xmap > ]
 
 "Startify """"""""""""""""""""
 let g:startify_list_order = [
-        \ ['   Last modified'],
+        \ ['   Last Modified whitin this directory'],
         \ 'dir',
-        \ ['   Recent'],
+        \ ['   Recent Files'],
         \ 'files',
+        \ ['   Sessions'],
+        \ 'sessions'
+        \ ['   Bookmarks'],
+        \ 'bookmarks'
         \ ]
+let g:startify_bookmarks = [
+            \ '~/.vim/vimrc',
+            \ '~/.vim/plugins.vim',
+            \ '~/.vim/mappings.vim'
+            \ ]
 let g:startify_skiplist = [
             \ 'COMMIT_EDITMSG',
             \ $VIMRUNTIME .'/doc',
             \ 'bundle/.*/doc',
             \ ]
-let g:startify_files_number = 10
+let g:startify_files_number = 6
 let g:startify_custom_indices = ['a', 'd', 'f', 'g', 'h']
 let g:startify_change_to_dir = 0
 
@@ -159,7 +168,6 @@ hi StartifyFooter  ctermfg=111
 hi StartifyHeader  ctermfg=203
 hi StartifyPath    ctermfg=245
 hi StartifySlash   ctermfg=240
-
 " Show Startify and NERDTree on start
 autocmd VimEnter *
             \ if !argc() |
@@ -171,3 +179,6 @@ autocmd VimEnter *
 autocmd FileType startify setlocal buftype=
 
 let g:startify_recursive_dir = 1
+let g:startify_custom_header =
+      \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
+
