@@ -1,4 +1,4 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'kchmck/vim-coffee-script'
+  Plugin 'honza/vim-snippets'
   finish
 endif

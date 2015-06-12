@@ -62,8 +62,8 @@ let g:airline_inactive_collapse = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
-"let g:airline_left_sep = '◣'
-"let g:airline_right_sep = '◥'
+let g:airline_left_sep = '◣'
+let g:airline_right_sep = '◥'
 "let g:airline_symbols.branch = '⎇ '
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -97,9 +97,9 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_full_redraws = 1
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_c_include_dirs = ['include', '../include']
+"let g:syntastic_c_include_dirs = ['include', '../include']
 let g:syntastic_cpp_compiler_options = '-std=c++11'
-let g:syntastic_cpp_include_dirs = ['include', '../include']
+"let g:syntastic_cpp_include_dirs = ['include', '../include']
 
 " NerdTree """"""""""""""""
 nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
@@ -110,3 +110,17 @@ let g:NERDTreeMinimalUI = 1
 " Close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
   \&& b:NERDTreeType == "primary") | q | endif
+
+" UltiSnips """""""""""""""""""""""""
+let g:UltiSnipsSnippetDirectories=["UltiSnips","CustomUltiSnips"]
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+"Tabularize """""""""""""""""""""""""
+nnoremap <Leader>t= :Tabularize assignment<CR>
+vnoremap <Leader>t= :Tabularize assignment<CR>
+nnoremap <Leader>t: :Tabularize symbol<CR>
+vnoremap <Leader>t: :Tabularize symbol<CR>
+nnoremap <Leader>t, :Tabularize comma<CR>
+vnoremap <Leader>t, :Tabularize comma<CR>
