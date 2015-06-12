@@ -145,7 +145,7 @@ let g:startify_list_order = [
         \ ['   Recent Files'],
         \ 'files',
         \ ['   Sessions'],
-        \ 'sessions'
+        \ 'sessions',
         \ ['   Bookmarks'],
         \ 'bookmarks'
         \ ]
