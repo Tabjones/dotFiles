@@ -71,4 +71,6 @@ cd ~/.vim/fonts
 ./install.sh
 cd ~/.vim/bundle/ctrlp-cmatcher
 ./install.sh
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer
 success 'Setup complete. Run vim and enjoy'
