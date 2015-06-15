@@ -210,3 +210,6 @@ let g:ycm_filetype_specific_completion_to_disable = {
     \ 'ruby' : 1,
     \ 'javascript' : 1,
     \}
+""" Help all Close """"""""""""
+nnoremap <leader>ch :HelpAllClose<CR>
+
