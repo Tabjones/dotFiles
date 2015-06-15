@@ -100,7 +100,7 @@ A list of plugins that requires additional configuration, all of them should alr
 * Pressing `enter` in normal mode saves the current buffer.
 
 And many more. See [`mappings.vim`](mappings.vim) and
-[`vundle_plugins`](vundle_plugins) for more.
+[`plugins.vim`](plugins.vim) for more.
 
 ## Installing Custom Plugins
 
