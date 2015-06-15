@@ -133,6 +133,10 @@ nnoremap Q @@
 nnoremap K k
 vnoremap K k
 
+" Remap encryption typos
+nnoremap X x
+vnoremap X x
+
 " Toggle paste mode with F5
 nnoremap <silent> <F5> :set paste!<CR>
 
