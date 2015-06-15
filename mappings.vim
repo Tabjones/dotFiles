@@ -11,10 +11,6 @@ let maplocalleader = "\\"
 " Regular Mappings
 " ---------------
 
-" Use ; for : in normal and visual mode, less keystrokes
-nnoremap ; :
-vnoremap ; :
-
 " Yank entire buffer with gy
 nnoremap gy :0,$ y<cr>
 
@@ -49,22 +45,21 @@ nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(st
 " ---------------
 " Window Movement
 " ---------------
-nnoremap <silent> gh :WriteBufferIfNecessary<CR>:wincmd h<CR>
-nnoremap <silent> gj :WriteBufferIfNecessary<CR>:wincmd j<CR>
-nnoremap <silent> gk :WriteBufferIfNecessary<CR>:wincmd k<CR>
+nnoremap <silent> gh :wincmd h<CR>
+nnoremap <silent> gj :wincmd j<CR>
+nnoremap <silent> gk :wincmd k<CR>
 nnoremap <silent> <M-k> :wincmd k<CR>
-nnoremap <silent> gl :WriteBufferIfNecessary<CR>:wincmd l<CR>
+nnoremap <silent> gl :wincmd l<CR>
 
 "   4 Window Splits
 "
 "   -----------------
 "   g1 | g2 | g3 | g4
 "   -----------------
-nnoremap <silent> g1 :WriteBufferIfNecessary<CR>:wincmd t<CR>
-nnoremap <silent> g2 :WriteBufferIfNecessary<CR>:wincmd t<bar>:wincmd l<CR>
-nnoremap <silent> g3 :WriteBufferIfNecessary<CR>:wincmd t<bar>:wincmd l<bar>
-      \:wincmd l<CR>
-nnoremap <silent> g4 :WriteBufferIfNecessary<CR>:wincmd b<CR>
+nnoremap <silent> g1 :wincmd t<CR>
+nnoremap <silent> g2 :wincmd t<bar>:wincmd l<CR>
+nnoremap <silent> g3 :wincmd t<bar>:wincmd l<bar>:wincmd l<CR>
+nnoremap <silent> g4 :wincmd b<CR>
 
 " Previous Window
 nnoremap <silent> gp :wincmd p<CR>
@@ -111,22 +106,6 @@ nnoremap <silent> <leader>s :set spell!<CR>
 
 " Quickly switch to last buffer
 nnoremap <leader>, :e#<CR>
-
-" Underline the current line with '-'
-nnoremap <silent> <leader>ul :t.\|s/./-/\|:nohls<cr>
-
-" Underline the current line with '='
-nnoremap <silent> <leader>uul :t.\|s/./=/\|:nohls<cr>
-
-" Surround the commented line with lines.
-"
-" Example:
-"          # Test 123
-"          becomes
-"          # --------
-"          # Test 123
-"          # --------
-nnoremap <silent> <leader>cul :normal "lyy"lpwvLr-^"lyyk"lP<cr>
 
 " Format the entire file
 nnoremap <leader>fef mx=ggG='x
