@@ -78,8 +78,6 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#close_symbol = '❎ '
 let g:airline#extensions#tabline#show_close_button = 1
-let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
-let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#tab_min_count = 2
 
 " Syntastic """"""""""""""""""""""""""""""""""""""""
@@ -192,3 +190,23 @@ vnoremap <silent><leader>cb :TCommentBlock<CR>
 let g:session_autosave = 0
 let g:session_autoload = 0
 nnoremap <leader>os :OpenSession<CR>
+"" Anzu """"""""""""""
+nmap n <Plug>(anzu-n)
+nmap N <Plug>(anzu-N)
+nmap # <Plug>(anzu-sharp)
+let g:airline#extensions#anzu#enabled = 1
+"ListToggle """""""""""""""""""""""""""""""""
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+"QFEEnter """"""""""
+let g:qfenter_vopen_map = ['<Space>', '<2-LeftMouse>']
+" Voogle """"
+let g:voogle_map="<leader>gg"
+" YouCompleteMe """""""""""""""
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_filetype_specific_completion_to_disable = {
+    \ 'ruby' : 1,
+    \ 'javascript' : 1,
+    \}
