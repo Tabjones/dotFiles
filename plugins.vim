@@ -62,6 +62,7 @@ let g:airline_inactive_collapse = 1
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
+let g:airline_exclude_preview = 1
 
 " Syntastic """"""""""""""""""""""""""""""""""""""""
 let g:syntastic_enable_signs = 1
@@ -169,10 +170,6 @@ nnoremap <silent><leader>cc :TComment<CR>
 vnoremap <silent><leader>cc :TComment<CR>
 nnoremap <silent><leader>cb :TCommentBlock<CR>
 vnoremap <silent><leader>cb :TCommentBlock<CR>
-" Vim sessions
-let g:session_autosave = 0
-let g:session_autoload = 0
-nnoremap <leader>os :OpenSession<CR>
 "" Anzu """"""""""""""
 nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
@@ -200,4 +197,3 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> gx :call WindowSwap#MarkWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#DoWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#EasyWindowSwap()<CR>
-" Ctrl-Space """"""""""""""
