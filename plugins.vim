@@ -58,15 +58,10 @@ command! Gcundo :Git reset HEAD~1
 let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
-let g:airline_inactive_collapse = 0
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_inactive_collapse = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#quickfix#enabled = 1
-let g:airline_left_sep = '◣'
-let g:airline_right_sep = '◥'
-"let g:airline_symbols.branch = '⎇ '
-let g:airline#extensions#tabline#show_close_button = 0
 
 " Syntastic """"""""""""""""""""""""""""""""""""""""
 let g:syntastic_enable_signs = 1
@@ -205,4 +200,4 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> gx :call WindowSwap#MarkWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#DoWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#EasyWindowSwap()<CR>
-
+" Ctrl-Space """"""""""""""

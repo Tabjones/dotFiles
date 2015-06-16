@@ -12,6 +12,12 @@ if $TERM =~ "-256color"
    set t_Co=256
 endif
 
+" --------------------
+"  Fonts
+" --------------------
+set guifont=Inconsolata-g\ for\ Powerline
+let g:Powerline_symbols = 'fancy'
+
 " -----------------------------
 " File Locations
 " -----------------------------
