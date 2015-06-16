@@ -10,5 +10,6 @@ command! -nargs=1 SilentCmd
 \ | execute ':redraw!'
 
 " Fixes common typos
+command! X x
 command! W w
 command! Q q
