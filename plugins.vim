@@ -64,25 +64,6 @@ let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_exclude_preview = 1
 
-" Syntastic """"""""""""""""""""""""""""""""""""""""
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': [] }
-let g:syntastic_html_checkers = ['handlebars']
-" Hat tip http://git.io/SPIBfg
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_full_redraws = 1
-let g:syntastic_aggregate_errors = 1
-"let g:syntastic_c_include_dirs = ['include', '../include']
-let g:syntastic_cpp_compiler_options = '-std=c++11'
-"let g:syntastic_cpp_include_dirs = ['include', '../include']
-
 " NerdTree """"""""""""""""
 nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
 nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>
@@ -186,10 +167,11 @@ let g:voogle_map="<leader>gg"
 let g:ycm_complete_in_comments = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_filetype_specific_completion_to_disable = {
-    \ 'ruby' : 1,
-    \ 'javascript' : 1,
-    \}
+let g:ycm_error_symbol = '✘'
+let g:ycm_warning_symbol = '❗'
+let g:ycm_global_ycm_extra_conf = '~/.vim/'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_goto_buffer_command = 'vertical-split'
 """ Help all Close """"""""""""
 nnoremap <leader>ch :HelpAllClose<CR>
 "" Window Swap """"""

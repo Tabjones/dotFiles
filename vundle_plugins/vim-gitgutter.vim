@@ -1,4 +1,4 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'scrooloose/syntastic'
+  Plugin 'airblade/vim-gitgutter'
   finish
 endif
