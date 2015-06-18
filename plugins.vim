@@ -54,6 +54,11 @@ nnoremap <leader>gi :Git<space>
 " Undo the last commit
 command! Gcundo :Git reset HEAD~1
 
+" GitGutter """"""""""""""""
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
+" ➕ ➖
+
 " AirLine """""""""""""""""""""""""""""""""""""
 let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
@@ -172,6 +177,7 @@ let g:ycm_warning_symbol = '❗'
 let g:ycm_global_ycm_extra_conf = '~/.vim/'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_goto_buffer_command = 'vertical-split'
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """ Help all Close """"""""""""
 nnoremap <leader>ch :HelpAllClose<CR>
 "" Window Swap """"""
