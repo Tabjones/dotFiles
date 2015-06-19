@@ -37,7 +37,7 @@ if executable('ag')
 endif
 "Enable cmatcher plugin (must be installed externally)
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-"
+
 "Fugitive """""""""""""""""""""""""""""""""""""
 nnoremap <Leader>gc :Gcommit -v<CR>
 nnoremap <Leader>gca :Gcommit -a -v<CR>
@@ -57,7 +57,9 @@ command! Gcundo :Git reset HEAD~1
 " GitGutter """"""""""""""""
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
-" ➕ ➖
+let g:gitgutter_sign_added = '➕'
+let g:gitgutter_sign_removed = '➖'
+let g:gitgutter_sign_modified = '≈'
 
 " AirLine """""""""""""""""""""""""""""""""""""
 let g:airline_theme = 'jellybeans'
