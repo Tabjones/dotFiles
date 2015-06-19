@@ -3,6 +3,10 @@ for file in split(glob('~/.vim/vundle_plugins/*.vim'), '\n')
   exe 'source' file
 endfor
 
+" ----------------------------------------------
+"  Plugins Configuration
+" ----------------------------------------------
+
 "Ag vim """""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <leader>as :AgFromSearch<CR>
 "Search inside files
