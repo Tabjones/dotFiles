@@ -45,6 +45,12 @@ nnoremap <silent> gl :wincmd l<CR>
 nnoremap <silent> gp :wincmd p<CR>
 " Equal Size Windows
 nnoremap <silent> g= :wincmd =<CR>
+" New Tab
+nnoremap <silent> <leader>te :tabnew<CR>
+" Next Tab
+nnoremap <silent> <leader>tn :tabn<CR>
+" Prev Tab
+nnoremap <silent> <leader>tp :tabp<CR>
 
 " ---------------
 " Insert Mode Mappings
@@ -73,6 +79,8 @@ nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>
 nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
 " Close everything and quits (prompts if modified)
 nnoremap <silent> <Leader>q :qall<CR>
+" Save&Close everything
+nnoremap <silent> <Leader>wq :wqall<CR>
 
 " ---------------
 " Typo Fixes

@@ -8,15 +8,13 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +75 plugins.vim
-badd +1 c
+badd +17 plugins.vim
 badd +32 config.vim
-badd +4 mappings.vim
-badd +1 vundle.vim
+badd +24 mappings.vim
 silent! argdel *
 set lines=57 columns=235
 winpos 0 27
-edit mappings.vim
+edit plugins.vim
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -42,12 +40,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 27) / 54)
+let s:l = 48 - ((47 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 017|
+48
+normal! 0
 wincmd w
 argglobal
 edit config.vim
@@ -60,15 +58,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 15 - ((14 * winheight(0) + 27) / 54)
+let s:l = 22 - ((21 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
-normal! 0
+22
+normal! 016|
 wincmd w
 argglobal
-edit plugins.vim
+edit mappings.vim
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -78,14 +76,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 15 - ((14 * winheight(0) + 27) / 54)
+let s:l = 48 - ((47 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
+48
 normal! 0
 wincmd w
-3wincmd w
 exe 'vert 1resize ' . ((&columns * 78 + 117) / 235)
 exe 'vert 2resize ' . ((&columns * 78 + 117) / 235)
 exe 'vert 3resize ' . ((&columns * 77 + 117) / 235)
