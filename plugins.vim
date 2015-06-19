@@ -51,6 +51,8 @@ nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <leader>gi :Git<space>
 " Undo the last commit
 command! Gcundo :Git reset HEAD~1
+" Gitv """"""""""""""""""""""""
+nnoremap <Leader>gv :Gitv<CR>
 
 " GitGutter """"""""""""""""
 let g:gitgutter_realtime = 1
