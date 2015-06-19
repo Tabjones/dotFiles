@@ -207,3 +207,5 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> gx :call WindowSwap#MarkWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#DoWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#EasyWindowSwap()<CR>
+"" Ctrl Space """"""""""""""""
+let g:ctrlspace_use_tabline = 1

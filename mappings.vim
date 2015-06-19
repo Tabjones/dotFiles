@@ -78,7 +78,7 @@ nnoremap <leader>fef mx=ggG='x
 nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>
 nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
 " Close everything and quits (prompts if modified)
-nnoremap <silent> <Leader>q :qall<CR>
+nnoremap <silent> <Leader>qq :qall<CR>
 " Save&Close everything
 nnoremap <silent> <Leader>wq :wqall<CR>
 
