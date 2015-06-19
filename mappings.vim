@@ -64,8 +64,8 @@ noremap <silent><leader>/ :nohls<CR>
 nnoremap <leader>h *<C-O>
 " Toggle spelling mode with ,s
 nnoremap <silent> <leader>s :set spell!<CR>
-" Quickly switch to last buffer
-nnoremap <leader>, :e#<CR>
+" Replace placeholders <++>
+nnoremap <Leader>p /<++><CR>cf>
 " Format the entire file
 nnoremap <leader>fef mx=ggG='x
 " Split window vertically or horizontally *and* switch to the new split!
