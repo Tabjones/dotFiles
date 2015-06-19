@@ -78,9 +78,6 @@ A list of plugins that requires additional configuration, all of them should alr
 
 * [Fugitive](https://github.com/tpope/vim-fugitive) Requires Git to be
   installed.
-* [syntastic](https://github.com/scrooloose/syntastic) Requires many different
-  binaries installed depending on what filetypes you want it to check. See the
-  [FAQ](https://github.com/scrooloose/syntastic#faq) for more information.
 * [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) Requires compilation.
 * [Ag.vim](https://github.com/rking/ag.vim) Requires
   [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) to be
