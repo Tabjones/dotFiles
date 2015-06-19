@@ -71,8 +71,6 @@ nnoremap <leader>fef mx=ggG='x
 " Split window vertically or horizontally *and* switch to the new split!
 nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>
 nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
-" Close the current window
-nnoremap <silent> <m-w> :close<CR>
 
 " ---------------
 " Typo Fixes
@@ -86,22 +84,5 @@ nnoremap Q @@
 " Removes doc lookup mapping because it's easy to fat finger and never useful.
 nnoremap K k
 vnoremap K k
-" Toggle paste mode with F5
-nnoremap <silent> <F5> :set paste!<CR>
 " Insert date
-iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
-" Insert a console statements
-iabbrev clg console.log
-iabbrev cld console.debug
-" copy current file name (relative/absolute) to system clipboard
-" from http://stackoverflow.com/a/17096082/22423
-if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
-  " relative path  (src/foo.txt)
-  nnoremap <silent> <leader>yp :let @+=expand("%")<CR>
-  " absolute path  (/something/src/foo.txt)
-  nnoremap <silent> <leader>yP :let @+=expand("%:p")<CR>
-  " filename       (foo.txt)
-  nnoremap <silent> <leader>yf :let @+=expand("%:t")<CR>
-  " directory name (/something/src)
-  nnoremap <silent> <leader>yd :let @+=expand("%:p:h")<CR>
-endif
+" iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>

@@ -76,6 +76,7 @@ set scrolloff=5        " Keep three lines below the last line when scrolling
 " set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
 set ttyfast
+set ssop=buffers,folds,resize,sesdir,tabpages,winpos,winsize
 
 " ---------------
 " Text Format
