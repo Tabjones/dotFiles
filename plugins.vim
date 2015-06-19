@@ -37,7 +37,7 @@ if executable('ag')
 endif
 "Enable cmatcher plugin (must be installed externally)
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-"
+
 "Fugitive """""""""""""""""""""""""""""""""""""
 nnoremap <Leader>gc :Gcommit -v<CR>
 nnoremap <Leader>gca :Gcommit -a -v<CR>
@@ -47,17 +47,19 @@ nnoremap <Leader>gp :Git push<CR>
  " Mnemonic, gu = Git Update
 nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
-" Exit a diff by closing the diff window
-nnoremap <Leader>gx :wincmd h<CR>:q<CR>
 " Start git command
 nnoremap <leader>gi :Git<space>
 " Undo the last commit
 command! Gcundo :Git reset HEAD~1
+" Gitv """"""""""""""""""""""""
+nnoremap <Leader>gv :Gitv<CR>
 
 " GitGutter """"""""""""""""
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
-" ➕ ➖
+let g:gitgutter_sign_added = '➕'
+let g:gitgutter_sign_removed = '➖'
+let g:gitgutter_sign_modified = '≈'
 
 " AirLine """""""""""""""""""""""""""""""""""""
 let g:airline_theme = 'jellybeans'
