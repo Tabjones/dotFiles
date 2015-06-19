@@ -71,6 +71,8 @@ nnoremap <leader>fef mx=ggG='x
 " Split window vertically or horizontally *and* switch to the new split!
 nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>
 nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
+" Close everything and quits (prompts if modified)
+nnoremap <silent> <Leader>q :qall<CR>
 
 " ---------------
 " Typo Fixes

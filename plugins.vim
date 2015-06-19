@@ -81,6 +81,8 @@ nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeChDirMode = 1
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeHijackNetrw = 0
+
 " Close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
   \&& b:NERDTreeType == "primary") | q | endif
@@ -114,19 +116,13 @@ xmap > ]
 
 "Startify """"""""""""""""""""
 let g:startify_list_order = [
-        \ ['   Last Modified whitin this directory'],
-        \ 'dir',
         \ ['   Recent Files'],
         \ 'files',
-        \ ['   Sessions'],
-        \ 'sessions',
         \ ['   Bookmarks'],
-        \ 'bookmarks'
+        \ 'bookmarks',
         \ ]
 let g:startify_bookmarks = [
-            \ '~/.vim/vimrc',
-            \ '~/.vim/plugins.vim',
-            \ '~/.vim/mappings.vim'
+            \'~/.vim/',
             \ ]
 let g:startify_skiplist = [
             \ 'COMMIT_EDITMSG',
@@ -135,7 +131,8 @@ let g:startify_skiplist = [
             \ ]
 let g:startify_files_number = 6
 let g:startify_custom_indices = ['a', 'd', 'f', 'g', 'h']
-let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 1
+let g:startify_session_autoload = 1
 
 hi StartifyBracket ctermfg=240
 hi StartifyFooter  ctermfg=111
@@ -153,9 +150,26 @@ autocmd VimEnter *
 autocmd FileType startify setlocal buftype=
 
 let g:startify_recursive_dir = 1
-let g:startify_custom_header =
+let g:startify_custom_footer =
       \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
-
+let g:startify_custom_header = [
+      \'        ________ ++     ________      ',
+      \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
+      \'       \VVVVVVVV/++++++\VVVVVVVV/     ',
+      \'        |VVVVVV|++++++++/VVVVV/''     ',
+      \'        |VVVVVV|++++++/VVVVV/''       ',
+      \'       +|VVVVVV|++++/VVVVV/''+        ',
+      \'     +++|VVVVVV|++/VVVVV/''+++++      ',
+      \'   +++++|VVVVVV|/VVV___++++++++++     ',
+      \'     +++|VVVVVVVVVV/##/ +_+_+_+_      ',
+      \'       +|VVVVVVVVV___ +/#_#,#_#,\     ',
+      \'        |VVVVVVV//##/+/#/+/#/''/#/    ',
+      \'        |VVVVV/''+/#/+/#/+/#/ /#/     ',
+      \'        |VVV/''++/#/+/#/ /#/ /#/      ',
+      \'        ''V/''  /##//##//##//###/     ',
+      \'                 ++                   ',
+      \'                 ''                   ',
+      \]
 " Tcomment """"""""
 let g:tcommentMaps = 0
 nnoremap <silent><leader>cc :TComment<CR>
