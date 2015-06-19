@@ -65,7 +65,7 @@ nnoremap <leader>h *<C-O>
 " Toggle spelling mode with ,s
 nnoremap <silent> <leader>s :set spell!<CR>
 " Replace placeholders <++>
-nnoremap <Leader>p /<++><CR>cf>
+nnoremap <silent> <Leader>p /<++><CR>cf>
 " Format the entire file
 nnoremap <leader>fef mx=ggG='x
 " Split window vertically or horizontally *and* switch to the new split!
