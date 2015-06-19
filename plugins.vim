@@ -133,7 +133,7 @@ let g:startify_skiplist = [
             \ ]
 let g:startify_files_number = 6
 let g:startify_custom_indices = ['a', 'd', 'f', 'g', 'h']
-let g:startify_change_to_vcs_root = 1
+let g:startify_change_to_dir = 1
 let g:startify_session_autoload = 1
 
 hi StartifyBracket ctermfg=240
