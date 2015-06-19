@@ -21,25 +21,6 @@ Now you can be lazy or meticulous.
 
 **Or to be meticulous** perform the following steps.
 
-+ Install [NeoVim](https://github.com/neovim/neovim). For Ubuntu this resolves to
-```
-    sudo add-apt-repository ppa:neovim-ppa/unstable
-    sudo apt-get update
-    sudo apt-get install neovim
-```
-```
-    sudo apt-get install python-dev python-pip python3-dev python3-pip
-    sudo pip install neovim
-    sudo pip3 install neovim
-```
-```
-    sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-    sudo update-alternatives --config vi
-    sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-    sudo update-alternatives --config vim
-    sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
-    sudo update-alternatives --config editor
-```
 + Make the `.vimrc` and `.nvimrc` symbolic links.
 ```
     rake vim:link
