@@ -200,6 +200,10 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_goto_buffer_command = 'vertical-split'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_semantic_triggers = {
+\   'roslaunch' : ['="', '$(', '/'],
+\   'rosmsg,rossrv,rosaction' : ['re!^'],
+\ }
 """ Help all Close """"""""""""
 nnoremap <leader>ch :HelpAllClose<CR>
 "" Window Swap """"""
