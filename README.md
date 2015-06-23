@@ -96,33 +96,34 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 
 | **Stars** | **Plugin** | **Description** |
 | --------: | :--------- | :-------------- |
-| 7,771 ★ |[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)|A code-completion engine for Vim |
-| 5,613 ★ |[vim-fugitive](https://github.com/tpope/vim-fugitive) [:page_facing_up:](vundle_plugins/vim-fugitive.vim)|fugitive.vim: a Git wrapper so awesome, it should be illegal |
-| 5,315 ★ |[vim-airline](https://github.com/bling/vim-airline)|lean & mean status/tabline for vim that's light as air |
-| 4,833 ★ |[nerdtree](https://github.com/scrooloose/nerdtree)|A tree explorer plugin for vim. |
-| 4,463 ★ |[ctrlp.vim](https://github.com/kien/ctrlp.vim)|Fuzzy file, buffer, mru, tag, etc finder. |
-| 2,963 ★ |[vim-gitgutter](https://github.com/airblade/vim-gitgutter)|A Vim plugin which shows a git diff in the gutter (sign column) and stages/reverts hunks. |
-| 2,804 ★ |[vim-surround](https://github.com/tpope/vim-surround)|surround.vim: quoting/parenthesizing made simple |
+| 7,777 ★ |[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)|A code-completion engine for Vim |
+| 5,616 ★ |[vim-fugitive](https://github.com/tpope/vim-fugitive) [:page_facing_up:](vundle_plugins/vim-fugitive.vim)|fugitive.vim: a Git wrapper so awesome, it should be illegal |
+| 5,320 ★ |[vim-airline](https://github.com/bling/vim-airline)|lean & mean status/tabline for vim that's light as air |
+| 4,836 ★ |[nerdtree](https://github.com/scrooloose/nerdtree)|A tree explorer plugin for vim. |
+| 4,468 ★ |[ctrlp.vim](https://github.com/kien/ctrlp.vim)|Fuzzy file, buffer, mru, tag, etc finder. |
+| 2,966 ★ |[vim-gitgutter](https://github.com/airblade/vim-gitgutter)|A Vim plugin which shows a git diff in the gutter (sign column) and stages/reverts hunks. |
+| 2,807 ★ |[vim-surround](https://github.com/tpope/vim-surround)|surround.vim: quoting/parenthesizing made simple |
 | 1,638 ★ |[ultisnips](https://github.com/SirVer/ultisnips)|UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips! |
-| 1,372 ★ |[vim-snippets](https://github.com/honza/vim-snippets)|vim-snipmate default snippets (Previously snipmate-snippets) |
+| 1,447 ★ |[supertab](https://github.com/ervandew/supertab)|Perform all your vim insert mode completions with Tab |
+| 1,373 ★ |[vim-snippets](https://github.com/honza/vim-snippets)|vim-snipmate default snippets (Previously snipmate-snippets) |
 | 1,174 ★ |[vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) [:page_facing_up:](vundle_plugins/vim-indent-guides.vim)|A Vim plugin for visually displaying indent levels in code |
-| 1,068 ★ |[tabular](https://github.com/godlygeek/tabular)|Vim script for text filtering and alignment |
-| 1,059 ★ |[gist-vim](https://github.com/mattn/gist-vim)|vimscript for gist |
+| 1,069 ★ |[tabular](https://github.com/godlygeek/tabular)|Vim script for text filtering and alignment |
+| 1,060 ★ |[gist-vim](https://github.com/mattn/gist-vim)|vimscript for gist |
 | 880 ★ |[vim-unimpaired](https://github.com/tpope/vim-unimpaired)|unimpaired.vim: pairs of handy bracket mappings |
 | 819 ★ |[delimitMate](https://github.com/Raimondi/delimitMate)|Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc. |
-| 797 ★ |[vim-startify](https://github.com/mhinz/vim-startify)|:rocket: A fancy start screen for Vim. |
-| 771 ★ |[ag.vim](https://github.com/rking/ag.vim)|Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack' |
+| 799 ★ |[vim-startify](https://github.com/mhinz/vim-startify)|A fancy start screen for Vim. |
+| 772 ★ |[ag.vim](https://github.com/rking/ag.vim)|Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack' |
 | 754 ★ |[jellybeans.vim](https://github.com/nanotech/jellybeans.vim) [:page_facing_up:](vundle_plugins/jellybeans.vim)|A colorful, dark color scheme for Vim. |
 | 635 ★ |[vim-repeat](https://github.com/tpope/vim-repeat)|repeat.vim: enable repeating supported plugin maps with "." |
 | 583 ★ |[vim-abolish](https://github.com/tpope/vim-abolish)|abolish.vim: easily search for, substitute, and abbreviate multiple variants of a word |
 | 533 ★ |[vim-ctrlspace](https://github.com/szw/vim-ctrlspace)|Vim Workspace Controller |
 | 522 ★ |[gitv](https://github.com/gregsexton/gitv)|gitk for Vim. |
 | 487 ★ |[tcomment_vim](https://github.com/tomtom/tcomment_vim)|An extensible & universal comment vim-plugin that also handles embedded filetypes |
-| 406 ★ |[vim-endwise](https://github.com/tpope/vim-endwise)|endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc |
+| 407 ★ |[vim-endwise](https://github.com/tpope/vim-endwise)|endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc |
 | 363 ★ |[vim-eunuch](https://github.com/tpope/vim-eunuch)|eunuch.vim: helpers for UNIX |
 | 310 ★ |[undotree](https://github.com/mbbill/undotree)|The ultimate undo history visualizer for VIM |
-| 275 ★ |[webapi-vim](https://github.com/mattn/webapi-vim)|vim interface to Web API |
-| 205 ★ |[MatchTagAlways](https://github.com/Valloric/MatchTagAlways) [:page_facing_up:](vundle_plugins/MatchTagAlways.vim)|A Vim plugin that always highlights the enclosing html/xml tags |
+| 276 ★ |[webapi-vim](https://github.com/mattn/webapi-vim)|vim interface to Web API |
+| 206 ★ |[MatchTagAlways](https://github.com/Valloric/MatchTagAlways) [:page_facing_up:](vundle_plugins/MatchTagAlways.vim)|A Vim plugin that always highlights the enclosing html/xml tags |
 | 204 ★ |[csv.vim](https://github.com/chrisbra/csv.vim)|A Filetype plugin for csv files |
 | 197 ★ |[switch.vim](https://github.com/AndrewRadev/switch.vim) [:page_facing_up:](vundle_plugins/switch.vim)|A simple Vim plugin to switch segments of text with predefined replacements |
 | 162 ★ |[vim-markdown](https://github.com/gabrielelana/vim-markdown)|Markdown for Vim: a complete environment to create Markdown files with a syntax highlight that don't sucks! |
@@ -130,7 +131,7 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 | 131 ★ |[vim-misc](https://github.com/xolox/vim-misc)|Miscellaneous auto-load Vim scripts |
 | 98 ★ |[vim-windowswap](https://github.com/wesQ3/vim-windowswap)|Swap your windows without ruining your layout |
 | 91 ★ |[matchit.zip](https://github.com/vim-scripts/matchit.zip)|extended % matching for HTML, LaTeX, and many other languages |
-| 89 ★ |[nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)|A plugin of NERDTree showing git status |
+| 90 ★ |[nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)|A plugin of NERDTree showing git status |
 | 89 ★ |[colorv.vim](https://github.com/Rykka/colorv.vim) [:page_facing_up:](vundle_plugins/colorv.vim)|A powerful color tool in vim |
 | 88 ★ |[vim-visual-star-search](https://github.com/nelstrom/vim-visual-star-search)|Start a * or # search from a visual block |
 | 56 ★ |[vim-anzu](https://github.com/osyo-manga/vim-anzu)|Vim search status. |
@@ -144,7 +145,7 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 | 1 ★ |[HelpClose](https://github.com/vim-scripts/HelpClose)|Close all help windows |
 | 0 ★ |[vim-autoreadwatch](https://github.com/mutewinter/vim-autoreadwatch)|A forked script for vim auto reloading of buffers when changed on disk. |
 
-_That's 47 plugins, holy crap._
+_That's 48 plugins, holy crap._
 
-_Generated by `rake update_readme` on 2015/06/22._
+_Generated by `rake update_readme` on 2015/06/23._
 
