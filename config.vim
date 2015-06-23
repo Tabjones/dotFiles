@@ -51,6 +51,12 @@ if exists('+ballooneval')
   " 100 second delay seems to be the only way to disable the tooltips
   set balloondelay=100000
 endif
+"remove gui bars
+set guioptions -=m "menubar"
+set guioptions -=T "Toolbar"
+set guioptions -=r "right scrollbar"
+set guioptions -=L "Left scrollbar"
+set guioptions -=b "bottom scrollbar"
 
 " ---------------
 " Behaviors

@@ -65,17 +65,24 @@ let g:gitgutter_sign_added = '➕'
 let g:gitgutter_sign_removed = '➖'
 let g:gitgutter_sign_modified = '≈'
 
+"" Ctrl Space """"""""""""""""
+let g:ctrlspace_use_tabline = 1
+
+"" Supertab """""""""""""""""""
+let g:SuperTabClosePreviewOnPopupClose = 1
+
 " AirLine """""""""""""""""""""""""""""""""""""
 let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
 let g:airline_inactive_collapse = 1
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_exclude_preview = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 0
 let g:airline#extensions#default#section_truncate_width = {}
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " NerdTree """"""""""""""""
 nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
@@ -211,5 +218,3 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> gx :call WindowSwap#MarkWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#DoWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#EasyWindowSwap()<CR>
-"" Ctrl Space """"""""""""""""
-let g:ctrlspace_use_tabline = 1
