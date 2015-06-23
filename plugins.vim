@@ -211,6 +211,7 @@ let g:ycm_semantic_triggers = {
 \   'roslaunch' : ['="', '$(', '/'],
 \   'rosmsg,rossrv,rosaction' : ['re!^'],
 \ }
+let g:ycm_autoclose_preview_window_after_insertion = 1
 """ Help all Close """"""""""""
 nnoremap <leader>ch :HelpAllClose<CR>
 "" Window Swap """"""
