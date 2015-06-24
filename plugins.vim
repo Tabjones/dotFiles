@@ -146,11 +146,10 @@ let g:startify_custom_indices = ['a', 'd', 'f', 'g', 'h']
 let g:startify_change_to_dir = 1
 let g:startify_session_autoload = 1
 
-hi StartifyBracket ctermfg=240
-hi StartifyFooter  ctermfg=111
-hi StartifyHeader  ctermfg=203
-hi StartifyPath    ctermfg=245
-hi StartifySlash   ctermfg=240
+hi StartifyFooter  ctermfg=171
+hi StartifyHeader  ctermfg=152
+hi StartifySlash   ctermfg=224
+hi StartifyNumber  ctermfg=26
 " Show Startify and NERDTree on start
 autocmd VimEnter *
             \ if !argc() |
