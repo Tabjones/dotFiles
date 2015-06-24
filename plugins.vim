@@ -82,7 +82,9 @@ let g:airline#extensions#hunks#enabled = 0
 let g:airline_exclude_preview = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 0
 let g:airline#extensions#default#section_truncate_width = {}
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensiona#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_close_button = 0
 
 " NerdTree """"""""""""""""
 nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
