@@ -67,6 +67,7 @@ let g:gitgutter_sign_modified = '≈'
 
 "" Ctrl Space """"""""""""""""
 let g:ctrlspace_use_tabline = 1
+let g:ctrlspace_project_root_markers = []
 
 "" Supertab """""""""""""""""""
 let g:SuperTabClosePreviewOnPopupClose = 1
