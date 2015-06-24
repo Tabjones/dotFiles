@@ -221,3 +221,11 @@ let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> gx :call WindowSwap#MarkWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#DoWindowSwap()<CR>
 nnoremap <silent> gx :call WindowSwap#EasyWindowSwap()<CR>
+" Switch """""""""""
+let g:switch_mapping = '<leader>-'
+let g:switch_custom_definitions =
+      \[
+      \ ['read', 'write'],
+      \ ['left', 'right'],
+      \ ['on', 'off']
+      \]
