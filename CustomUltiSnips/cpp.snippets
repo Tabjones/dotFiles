@@ -103,3 +103,19 @@ boost::shared_ptr<$1> ${1/(\w+).*/\L$1\E/}_module;
 boost::thread ${1/(\w+).*/\L$1\E/}_driver;
 void ${1/(\w+).*/\L$1\E/}_thread ();
 endsnippet
+
+snippet rosmain "ROS Main"
+int main(int argc, char *argv[])
+{
+	ros::init(argc, argv, "${1:nodename}");
+	${2:NodeClass} ${3:instance};
+	//Try to go at $4hz
+	ros::Rate rate(${4:50});
+	while ($3.${5:nh}.ok())
+	{
+		ros::spinOnce();
+		rate.sleep();
+	}
+	return 0;
+}
+endsnippet
