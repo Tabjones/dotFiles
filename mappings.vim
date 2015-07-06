@@ -68,7 +68,7 @@ inoremap jK <Esc>
 noremap <silent><leader>/ :nohls<CR>
 " Highlight search word under cursor without jumping to next
 nnoremap <leader>h *<C-O>
-" Toggle spelling mode with ,s
+" Toggle spelling mode with <leader>spe
 nnoremap <silent> <leader>s :set spell!<CR>
 " Replace placeholders <++>
 nnoremap <silent> <Leader>p /<++><CR>cf>
@@ -81,6 +81,8 @@ nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
 nnoremap <silent> <Leader>qq :qall<CR>
 " Save&Close everything
 nnoremap <silent> <Leader>wq :wqall<CR>
+" Save everything
+nnoremap <silent> <Leader>ww :wall<CR>
 
 " ---------------
 " Typo Fixes
