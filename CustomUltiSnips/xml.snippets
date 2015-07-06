@@ -1,5 +1,72 @@
-priority -50
+priority 10
 
 snippet todo "TODO Reminder" b
 <!-- TODO: ${1:desc} (`!v strftime("%c")` -- `echo $USER`) -->
+endsnippet
+
+#ROS Arg
+snippet arg "ROS arg definition" b
+<!-- $1: $3 (Default=$2)-->
+<arg name="${1:name}" default="${2:default}" doc="${3:description} (Default=$2)" />
+endsnippet
+
+snippet arg "Add arg inside include tag" "re.match('^\s+</include>', buffer[line])" e
+<!-- Pass $1 = $2 to included launch -->
+<arg name="${1:arg_name}		value="${2:value}" />
+endsnippet
+
+#ROS include another launch file
+snippet include "ROS include another launch file" b
+<!-- Launch $2 from $1 package -->
+<include file="$(find ${1:pkg_name})/launch/${2:launch_file}">
+	$0
+</include>
+endsnippet
+
+#ROS node launch
+snippet node "ROS node launch" b
+<!-- Launch node $3 from package $2 and name it $1. Send its output to $4 -->
+<node name="${1:name}" pkg="${2:pkg_name}" type="${3:executable}" output="${4:screen}" $0 />
+endsnippet
+
+#ROS node attribute extensions
+snippet prefix "Add launch-prefix to node tag" "re.match('^\s+<node ', buffer[line-1])" e
+launch_prefix="${1:prefixes}"
+endsnippet
+
+snippet arg "Add args to node tag" "re.match('^\s+<node ', buffer[line-1])" e
+args="${1:arg1} ${2:arg2}"
+endsnippet
+
+snippet if "Add if to node tag" "re.match('^\s+<node ', buffer[line-1])" e
+if="$(arg ${1:arg})"
+endsnippet
+
+snippet unl "Add unless to node tag" "re.match('^\s+<node ', buffer[line-1])" e
+unless="$(arg ${1:arg})"
+endsnippet
+
+#ROS Group
+snippet grif "ROS group if" b
+<!-- Execute this block of code only if $1 evaluates to true -->
+<group if="$(arg ${1:arg})">
+	$0
+</group>
+endsnippet
+
+snippet grunl "ROS group unless" b
+<!-- Execute this block of code unless $1 evaluates to true -->
+<group unless="$(arg ${1:arg})">
+	$0
+</group>
+endsnippet
+
+snippet parload "ROS param load" b
+<!-- Load a set of Parameters from $3 yaml file, inside package $1 -->
+<rosparam command="load" file="$(find ${1:pkg_name})/${2:dir/}${3:file}.yaml"/>
+endsnippet
+
+snippet par "ROS param definition" b
+<!-- Define $1$2 Parameter of type $3 and value $4 -->
+<param name="${1:namespace/}${2:name}" type="${3:bool}" value="${4:true}" />
 endsnippet
