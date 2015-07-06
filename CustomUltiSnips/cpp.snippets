@@ -1,0 +1,105 @@
+priority 10
+
+extends c
+
+snippet baseclass "ROS BaseNode Class"
+class ${1:`!p snip.rv = snip.basename or "name"`}
+{
+public:
+	${1/(\w+).*/$1/} (${2:arguments});
+	virtual ~${1/(\w+).*/$1/} ();
+	//Public Node Handle to be called from main()
+	${3:ros::NodeHandle nh;}
+	$4
+
+private:
+	//Shared pointer to $5 Class
+	boost::shared_ptr<${5:Storage}> ${5/(\w+).*/\L$1\E/};
+
+	//bool to control $6 module enable/disable
+	bool en_${6/(\w+).*/\L$1\E/};
+	//shared pointers of $6 module
+	boost::shared_ptr<${6:Module}> ${6/(\w+).*/\L$1\E/}_module;
+	//thread to control $6 module
+	boost::thread ${6/(\w+).*/\L$1\E/}_driver;
+	void ${6/(\w+).*/\L$1\E/}_thread ();
+
+	$7
+
+	//Dynamic Reconfigure
+	//Server
+	dynamic_reconfigure::Server<${8:node::nodeConfig}> dyn_srv;
+	//Callback
+	void cb_${9:reconfigure} ($8 &config, uint32_t level);
+
+	//Check Modules Method
+	void check_modules();
+
+	${0:/* other data */}
+};
+endsnippet
+
+snippet moduleclass "ROS Module Class"
+class ${1:`!p snip.rv = snip.basename or "name"`}
+{
+public:
+	${1/(\w+).*/$1/}(ros::NodeHandle &${2:n}, boost::shared_ptr<${3:Storage}> &${3/(\w+{,3}).*/\L$1\E/});
+	virtual ~${1/(\w+).*/$1/}(){ this->$5.shutdown(); }
+	$4
+
+private:
+	//Shared pointer to $3 Class
+	boost::shared_ptr<$3> ${3/(\w+).*/\L$1\E/};
+
+	//ROS NodeHandle and callback queue
+	ros::NodeHandle ${5:nh};
+	boost::shared_ptr<ros::CallbackQueue> ${6:queue_ptr};
+
+	//Custom Spin Method
+	void spin_once(){ this->$6->callAvailable(ros::WallDuration(0)); }
+
+	${0: /* other data */}
+};
+endsnippet
+
+snippet storageclass "ROS Storage Class"
+class ${1:`!p snip.rv = snip.basename or "name"`}
+{
+public:
+	${1/(\w+).*/$1/}();
+	virtual ~${1/(\w+).*/$1/}(){}
+
+	//Read/Write $3
+	bool read_$3 (boost::shared_ptr<$2> &${3/(\w+{,3}).*/$1/});
+	bool write_$3 (boost::shared_ptr<$2> &${3/(\w+{,3}).*/$1/});
+
+private:
+	//Storaged $3
+	${2:type} ${3:name};
+	boost::mutex mtx_$3;
+
+	${0: /* other data */}
+};
+endsnippet
+
+snippet storageaddrw "ROS add Read/Write methods to Storage type class"
+//Read/Write $1
+bool read_${1:name} (boost::shared_ptr<${2:type}> &${1/(\w+{,3}).*/$1/});
+bool write_$1 (boost::shared_ptr<$2> &${1/(\w+{,3}).*/$1/});
+endsnippet
+
+snippet storageadd "ROS add a new element in Storage type class"
+//Storaged $2
+${1:type} ${2:name};
+boost::mutex mtx_$2;
+endsnippet
+
+snippet moduleadd2base "ROS add a module to BaseNode type class"
+//bool to control ${1:Mod} module enable/disable
+bool en_${1/(\w+).*/\L$1\E/};
+//shared pointers of $1 module
+boost::shared_ptr<$1> ${1/(\w+).*/\L$1\E/}_module;
+//thread to control $1 module
+boost::thread ${1/(\w+).*/\L$1\E/}_driver;
+void ${1/(\w+).*/\L$1\E/}_thread ();
+endsnippet
