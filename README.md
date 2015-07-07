@@ -59,7 +59,9 @@ A list of plugins that requires additional configuration, all of them should alr
 
 * [Fugitive](https://github.com/tpope/vim-fugitive) Requires Git to be
   installed.
-* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) Requires compilation.
+* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) Requires compilation. Also for C++ completion to work you need an extra configuration file, the one I'm using
+  is included into ycm directory. To use it you also need cmake or catkin (if using ROS) to export compile commands (`cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1`). Additional information
+  can be found on [YouCompleteMe Help Page](https://github.com/Valloric/YouCompleteMe#c-family-semantic-completion-engine-usage).
 * [Ag.vim](https://github.com/rking/ag.vim) Requires
   [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) to be
   installed.

@@ -244,3 +244,18 @@ map <leader>k <Plug>(easymotion-k)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 nmap <leader>wo <Plug>(easymotion-bd-wl)
+" Tagbar """"""""""""""""
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
