@@ -119,3 +119,9 @@ int main(int argc, char *argv[])
 	return 0;
 }
 endsnippet
+
+snippet sleep "Boost sleep" b
+//Sleep for $1 milliseconds
+boost::this_thread::sleep(boost::posix_time::milliseconds(${1:100})); 
+endsnippet
+

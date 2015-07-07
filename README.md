@@ -96,24 +96,24 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 
 | **Stars** | **Plugin** | **Description** |
 | --------: | :--------- | :-------------- |
-| 7,879 ★ |[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)|A code-completion engine for Vim |
-| 5,669 ★ |[vim-fugitive](https://github.com/tpope/vim-fugitive) [:page_facing_up:](vundle_plugins/vim-fugitive.vim)|fugitive.vim: a Git wrapper so awesome, it should be illegal |
+| 7,881 ★ |[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)|A code-completion engine for Vim |
+| 5,670 ★ |[vim-fugitive](https://github.com/tpope/vim-fugitive)|fugitive.vim: a Git wrapper so awesome, it should be illegal |
 | 5,395 ★ |[vim-airline](https://github.com/bling/vim-airline)|lean & mean status/tabline for vim that's light as air |
-| 4,885 ★ |[nerdtree](https://github.com/scrooloose/nerdtree)|A tree explorer plugin for vim. |
-| 4,524 ★ |[ctrlp.vim](https://github.com/kien/ctrlp.vim)|Fuzzy file, buffer, mru, tag, etc finder. |
-| 2,981 ★ |[vim-gitgutter](https://github.com/airblade/vim-gitgutter)|A Vim plugin which shows a git diff in the gutter (sign column) and stages/reverts hunks. |
+| 4,889 ★ |[nerdtree](https://github.com/scrooloose/nerdtree)|A tree explorer plugin for vim. |
+| 4,525 ★ |[ctrlp.vim](https://github.com/kien/ctrlp.vim)|Fuzzy file, buffer, mru, tag, etc finder. |
+| 2,982 ★ |[vim-gitgutter](https://github.com/airblade/vim-gitgutter)|A Vim plugin which shows a git diff in the gutter (sign column) and stages/reverts hunks. |
 | 2,828 ★ |[vim-surround](https://github.com/tpope/vim-surround)|surround.vim: quoting/parenthesizing made simple |
 | 1,665 ★ |[ultisnips](https://github.com/SirVer/ultisnips)|UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips! |
-| 1,461 ★ |[supertab](https://github.com/ervandew/supertab)|Perform all your vim insert mode completions with Tab |
-| 1,394 ★ |[vim-snippets](https://github.com/honza/vim-snippets)|vim-snipmate default snippets (Previously snipmate-snippets) |
-| 1,184 ★ |[vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) [:page_facing_up:](vundle_plugins/vim-indent-guides.vim)|A Vim plugin for visually displaying indent levels in code |
-| 1,083 ★ |[tabular](https://github.com/godlygeek/tabular)|Vim script for text filtering and alignment |
+| 1,460 ★ |[supertab](https://github.com/ervandew/supertab)|Perform all your vim insert mode completions with Tab |
+| 1,395 ★ |[vim-snippets](https://github.com/honza/vim-snippets)|vim-snipmate default snippets (Previously snipmate-snippets) |
+| 1,185 ★ |[vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides)|A Vim plugin for visually displaying indent levels in code |
+| 1,084 ★ |[tabular](https://github.com/godlygeek/tabular)|Vim script for text filtering and alignment |
 | 1,069 ★ |[gist-vim](https://github.com/mattn/gist-vim)|vimscript for gist |
-| 884 ★ |[vim-unimpaired](https://github.com/tpope/vim-unimpaired)|unimpaired.vim: pairs of handy bracket mappings |
+| 885 ★ |[vim-unimpaired](https://github.com/tpope/vim-unimpaired)|unimpaired.vim: pairs of handy bracket mappings |
 | 825 ★ |[delimitMate](https://github.com/Raimondi/delimitMate)|Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc. |
 | 808 ★ |[vim-startify](https://github.com/mhinz/vim-startify)|A fancy start screen for Vim. |
-| 787 ★ |[ag.vim](https://github.com/rking/ag.vim)|Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack' |
-| 762 ★ |[jellybeans.vim](https://github.com/nanotech/jellybeans.vim) [:page_facing_up:](vundle_plugins/jellybeans.vim)|A colorful, dark color scheme for Vim. |
+| 789 ★ |[ag.vim](https://github.com/rking/ag.vim)|Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack' |
+| 761 ★ |[jellybeans.vim](https://github.com/nanotech/jellybeans.vim)|A colorful, dark color scheme for Vim. |
 | 640 ★ |[vim-repeat](https://github.com/tpope/vim-repeat)|repeat.vim: enable repeating supported plugin maps with "." |
 | 590 ★ |[vim-abolish](https://github.com/tpope/vim-abolish)|abolish.vim: easily search for, substitute, and abbreviate multiple variants of a word |
 | 542 ★ |[vim-ctrlspace](https://github.com/szw/vim-ctrlspace)|Vim Workspace Controller |
@@ -123,7 +123,7 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 | 367 ★ |[vim-eunuch](https://github.com/tpope/vim-eunuch)|eunuch.vim: helpers for UNIX |
 | 315 ★ |[undotree](https://github.com/mbbill/undotree)|The ultimate undo history visualizer for VIM |
 | 278 ★ |[webapi-vim](https://github.com/mattn/webapi-vim)|vim interface to Web API |
-| 212 ★ |[MatchTagAlways](https://github.com/Valloric/MatchTagAlways) [:page_facing_up:](vundle_plugins/MatchTagAlways.vim)|A Vim plugin that always highlights the enclosing html/xml tags |
+| 212 ★ |[MatchTagAlways](https://github.com/Valloric/MatchTagAlways)|A Vim plugin that always highlights the enclosing html/xml tags |
 | 208 ★ |[csv.vim](https://github.com/chrisbra/csv.vim)|A Filetype plugin for csv files |
 | 198 ★ |[switch.vim](https://github.com/AndrewRadev/switch.vim)|A simple Vim plugin to switch segments of text with predefined replacements |
 | 164 ★ |[vim-markdown](https://github.com/gabrielelana/vim-markdown)|Markdown for Vim: a complete environment to create Markdown files with a syntax highlight that don't sucks! |
@@ -132,14 +132,14 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 | 132 ★ |[vim-misc](https://github.com/xolox/vim-misc)|Miscellaneous auto-load Vim scripts |
 | 116 ★ |[vim-move](https://github.com/matze/vim-move)|Plugin to move lines and selections up and down |
 | 102 ★ |[vim-windowswap](https://github.com/wesQ3/vim-windowswap)|Swap your windows without ruining your layout |
-| 96 ★ |[nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)|A plugin of NERDTree showing git status |
-| 90 ★ |[matchit.zip](https://github.com/vim-scripts/matchit.zip)|extended % matching for HTML, LaTeX, and many other languages |
-| 89 ★ |[colorv.vim](https://github.com/Rykka/colorv.vim) [:page_facing_up:](vundle_plugins/colorv.vim)|A powerful color tool in vim |
+| 97 ★ |[nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)|A plugin of NERDTree showing git status |
+| 91 ★ |[matchit.zip](https://github.com/vim-scripts/matchit.zip)|extended % matching for HTML, LaTeX, and many other languages |
+| 89 ★ |[colorv.vim](https://github.com/Rykka/colorv.vim)|A powerful color tool in vim |
 | 88 ★ |[vim-visual-star-search](https://github.com/nelstrom/vim-visual-star-search)|Start a * or # search from a visual block |
 | 56 ★ |[vim-anzu](https://github.com/osyo-manga/vim-anzu)|Vim search status. |
 | 51 ★ |[L9](https://github.com/vim-scripts/L9)|Vim-script library |
 | 36 ★ |[Join](https://github.com/sk1418/Join)|a better (hopefully) :Join command in vim |
-| 31 ★ |[vim-togglecursor](https://github.com/jszakmeister/vim-togglecursor) [:page_facing_up:](vundle_plugins/vim-togglecursor.vim)|Toggle the cursor shape in the terminal for Vim. |
+| 31 ★ |[vim-togglecursor](https://github.com/jszakmeister/vim-togglecursor)|Toggle the cursor shape in the terminal for Vim. |
 | 30 ★ |[ListToggle](https://github.com/Valloric/ListToggle)|A vim plugin for toggling the display of the quickfix list and the location-list. |
 | 27 ★ |[QFEnter](https://github.com/yssl/QFEnter)|Open a Quickfix item in a window you choose. (Vim plugin) |
 | 13 ★ |[vim-ros](https://github.com/taketwo/vim-ros)|Vim plugin for ROS development |
@@ -147,7 +147,7 @@ Then run `vim +PluginUpdate`. This example installs [`vim-move`](https://github.
 | 1 ★ |[HelpClose](https://github.com/vim-scripts/HelpClose)|Close all help windows |
 | 0 ★ |[vim-autoreadwatch](https://github.com/mutewinter/vim-autoreadwatch)|A forked script for vim auto reloading of buffers when changed on disk. |
 
-_That's 50 plugins, holy crap._
+_That's 50 plugins, OMG!_
 
-_Generated by `rake update_readme` on 2015/07/06._
+_Generated by `rake update_readme` on 2015/07/07._
 

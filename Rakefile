@@ -73,7 +73,7 @@ def add_plugins_to_readme(plugins = [])
       .reverse
       .map{|p| table_row(p) }
     lines.insert(index+2, plugin_rows)
-    lines << "\n_That's #{plugins.length} plugins, holy crap._"
+    lines << "\n_That's #{plugins.length} plugins, OMG!_"
     lines << "\n_#{PLUGIN_LIST_NOTE} on #{Time.now.strftime('%Y/%m/%d')}._\n\n"
     write_lines_to_readme(lines)
   else
@@ -86,7 +86,6 @@ def table_row(plugin)
   [
     "| #{p[:stars_text]} |",
     "[#{p[:name]}](#{p[:uri]})",
-    p[:config?] ? " [:page_facing_up:](#{p[:config_file]})" : nil,
     '|',
     "#{p[:description]} |"
   ].compact.join
