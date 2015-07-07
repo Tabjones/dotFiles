@@ -65,7 +65,7 @@ inoremap jK <Esc>
 " Leader Mappings
 " ---------------
 " Clear search
-noremap <silent><leader>/ :nohls<CR>
+noremap <silent><leader>nh :nohls<CR>
 " Highlight search word under cursor without jumping to next
 nnoremap <leader>h *<C-O>
 " Toggle spelling mode with <leader>spe

@@ -125,3 +125,26 @@ snippet sleep "Boost sleep" b
 boost::this_thread::sleep(boost::posix_time::milliseconds(${1:100})); 
 endsnippet
 
+snippet ptr "Boost Shared pointer" b
+boost::shared_ptr<${1:type}> ${2:name} ${3:(new $1)};
+endsnippet
+
+snippet pc "PCL Point Cloud" b
+pcl::PointCloud<${1:pcl::PointXYZ}> ${2:name};
+endsnippet
+
+snippet pcptr "PCL Point Cloud Pointer" b
+pcl::PointCloud<${1:pcl::PointXYZ}>::Ptr ${2:name} ${3:(new pcl::PointCloud<$1>)};
+endsnippet
+
+snippet pt "PCL Point Type"
+pcl::PointXYZ
+endsnippet
+
+snippet ptn "PCL Point Normal Type"
+pcl::PointNormal
+endsnippet
+
+snippet ptco "PCL Point Color Type"
+pcl::PointXYZRGB
+endsnippet

@@ -193,9 +193,6 @@ nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
 nmap # <Plug>(anzu-sharp)
 let g:airline#extensions#anzu#enabled = 1
-"ListToggle """""""""""""""""""""""""""""""""
-let g:lt_location_list_toggle_map = '<leader>l'
-let g:lt_quickfix_list_toggle_map = '<leader>q'
 "QFEEnter """"""""""
 let g:qfenter_vopen_map = ['<Space>', '<2-LeftMouse>']
 " Voogle """"
@@ -228,8 +225,22 @@ let g:switch_custom_definitions =
       \[
       \ ['read', 'write'],
       \ ['left', 'right'],
-      \ ['on', 'off']
+      \ ['on', 'off'],
+      \ ['up', 'down']
       \]
 " Vim C++ Highlight  """""""""""""""""""""
 let g:cpp_class_scope_highlight = 0
 let g:cpp_experimental_template_highlight = 0
+
+" TagBar """"""""""""""""""""""""""""""
+nnoremap <leader>tb :TagbarToggle<CR>
+
+" Easy Motion """""""""""""""""""""""""
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+nmap s <Plug>(easymotion-s2)
+let g:EasyMotion_smartcase = 1
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+nmap <leader>wo <Plug>(easymotion-bd-wl)

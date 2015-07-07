@@ -1,4 +1,4 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'Valloric/ListToggle'
+  Plugin 'majutsushi/tagbar'
   finish
 endif
