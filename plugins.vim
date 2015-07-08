@@ -226,7 +226,8 @@ let g:switch_custom_definitions =
       \ ['read', 'write'],
       \ ['left', 'right'],
       \ ['on', 'off'],
-      \ ['up', 'down']
+      \ ['up', 'down'],
+      \ ['in', 'out']
       \]
 " Vim C++ Highlight  """""""""""""""""""""
 let g:cpp_class_scope_highlight = 0

@@ -2,105 +2,142 @@ priority 10
 
 extends c
 
-snippet baseclass "ROS BaseNode Class"
+snippet baseclass "(Class) ROS BaseNode Template"
+/**\brief Class $1
+ * {$0:Brief Description goes here!}
+*/
 class ${1:`!p snip.rv = snip.basename or "name"`}
 {
 public:
+	/**\brief Constructor */
 	${1/(\w+).*/$1/} (${2:arguments});
+
+	/**\brief Destructor */
 	virtual ~${1/(\w+).*/$1/} ();
-	//Public Node Handle to be called from main()
+	/**\brief Public Node Handle to be called from main() */
 	${3:ros::NodeHandle nh;}
 	$4
 
 private:
-	//Shared pointer to $5 Class
+	/**\brief Shared pointer to $5 Class */
 	boost::shared_ptr<${5:Storage}> ${5/(\w+).*/\L$1\E/};
 
-	//bool to control $6 module enable/disable
+	/**\brief bool to control $6 module enable/disable */
 	bool en_${6/(\w+).*/\L$1\E/};
-	//shared pointers of $6 module
+	/**\brief Shared pointer of $6 module */
 	boost::shared_ptr<${6:Module}> ${6/(\w+).*/\L$1\E/}_module;
-	//thread to control $6 module
+	/**\brief Thread to control $6 module */
 	boost::thread ${6/(\w+).*/\L$1\E/}_driver;
+	/**\brief Worker thread for $6 module */
 	void ${6/(\w+).*/\L$1\E/}_thread ();
 
 	$7
 
-	//Dynamic Reconfigure
-	//Server
+	/**\brief Dynamic Reconfigure Server */
 	dynamic_reconfigure::Server<${8:node::nodeConfig}> dyn_srv;
-	//Callback
+	/**\brief Callback for Dynamic Reconfigure
+	 * Gets executed everytime the user changes a dynamic parameter
+	 */
 	void cb_${9:reconfigure} ($8 &config, uint32_t level);
 
-	//Check Modules Method
+	/**\brief Check Modules Method
+	 * Evaluates booleans to enable or disable modules and spawns/kills relative threads
+	 */
 	void check_modules();
-
-	${0:/* other data */}
 };
 endsnippet
 
-snippet moduleclass "ROS Module Class"
+snippet moduleclass "(Class) ROS Module Template"
+/**\brief Class $1
+ * {$0:Brief Description goes here!}
+*/
 class ${1:`!p snip.rv = snip.basename or "name"`}
 {
 public:
+	/**\brief Default constructor
+	 * \param[in] $2 NodeHandle from base class
+	 * \param[in] ${3/(\w+{,3}).*/\L$1\E/} Pointer to the $3 from base class 
+	 */
 	${1/(\w+).*/$1/}(ros::NodeHandle &${2:n}, boost::shared_ptr<${3:Storage}> &${3/(\w+{,3}).*/\L$1\E/});
+
+	/**\brief Destructor */
 	virtual ~${1/(\w+).*/$1/}(){ this->$5.shutdown(); }
 	$4
 
 private:
-	//Shared pointer to $3 Class
+	/**\brief Shared pointer to $3 Class */
 	boost::shared_ptr<$3> ${3/(\w+).*/\L$1\E/};
 
-	//ROS NodeHandle and callback queue
+	/**\brief ROS NodeHandle to create a child namespace from Base Class nodehandle */
 	ros::NodeHandle ${5:nh};
+	/**\brief ROS CallbackQueue to handle custom callbacks */
 	boost::shared_ptr<ros::CallbackQueue> ${6:queue_ptr};
 
-	//Custom Spin Method
+	/**\brief Custom spin method	 */
 	void spin_once(){ this->$6->callAvailable(ros::WallDuration(0)); }
-
-	${0: /* other data */}
 };
 endsnippet
 
-snippet storageclass "ROS Storage Class"
+snippet storageclass "(Class) ROS Storage Template"
+/**\brief Class $1
+ * {$0:Brief Description goes here!}
+ */
 class ${1:`!p snip.rv = snip.basename or "name"`}
 {
 public:
+	/**\brief Empty constructor */
 	${1/(\w+).*/$1/}();
+
+/**\brief Destructor */
 	virtual ~${1/(\w+).*/$1/}(){}
 
-	//Read/Write $3
+	/**\Brief Read $3 from class
+	 * \param[in] ${3/(\w+{,3}).*/$1/} Pointer to $2 to fill with read data
+	 * \return _True_ if operation was succesful, _False_ otherwise
+	 */
 	bool read_$3 (boost::shared_ptr<$2> &${3/(\w+{,3}).*/$1/});
+	/**\brief Write $3 into class
+	 * \param[in] ${3/(\w+{,3}).*/$1/} Pointer to $2 with data to store inside class
+	 * \return _True_ if operation was succesful, _False_ otherwise
+	 */
 	bool write_$3 (boost::shared_ptr<$2> &${3/(\w+{,3}).*/$1/});
 
 private:
-	//Storaged $3
+	/**\brief Storaged $3 */
 	${2:type} ${3:name};
+	/**\brief Mutex to protect $3 */
 	boost::mutex mtx_$3;
-
-	${0: /* other data */}
 };
 endsnippet
 
-snippet storageaddrw "ROS add Read/Write methods to Storage type class"
-//Read/Write $1
+snippet storageaddrw "(Func) ROS add Read/Write methods to Storage class Template"
+/**\brief Read $1 from class
+ * \param[in] ${1/(\w+{,3}).*/$1/} Pointer to $2 to fill with read data
+ * \return _True_ if operation was succesful, _False_ otherwise
+ */
 bool read_${1:name} (boost::shared_ptr<${2:type}> &${1/(\w+{,3}).*/$1/});
+/**\brief Write $1 from class
+ * \param[in] ${1/(\w+{,3}).*/$1/} Pointer to $2 with data to store inside class
+ * \return _True_ if operation was succesful, _False_ otherwise
+ */
 bool write_$1 (boost::shared_ptr<$2> &${1/(\w+{,3}).*/$1/});
 endsnippet
 
-snippet storageadd "ROS add a new element in Storage type class"
-//Storaged $2
+snippet storageadd "(Member) ROS add a new element to Storage class Template"
+/**\brief Storaged $2 */
 ${1:type} ${2:name};
+/**\brief Mutex to protect $2 */
 boost::mutex mtx_$2;
 endsnippet
 
-snippet moduleadd2base "ROS add a module to BaseNode type class"
-//bool to control ${1:Mod} module enable/disable
+snippet moduleadd2base "(Member) ROS add a Module to BaseNode class Template"
+/**\brief bool to control ${1:mod} module enable/disable */
 bool en_${1/(\w+).*/\L$1\E/};
-//shared pointers of $1 module
+/**\brief Shared pointer of $1 module */
 boost::shared_ptr<$1> ${1/(\w+).*/\L$1\E/}_module;
-//thread to control $1 module
+/**\brief Thread to control $1 module */
 boost::thread ${1/(\w+).*/\L$1\E/}_driver;
+/**\brief Worker thread for $1 module */
 void ${1/(\w+).*/\L$1\E/}_thread ();
 endsnippet
 
@@ -148,3 +185,30 @@ endsnippet
 snippet ptco "PCL Point Color Type"
 pcl::PointXYZRGB
 endsnippet
+
+snippet cl "(Class) Generic"
+/**\brief Class $3
+ * {$0:Description goes here!}
+ */
+${1:template <typename $2>}
+class ${3:`!p snip.rv = snip.basename or "name"`}
+{
+	public:
+		/**\brief Empty constructor */
+		${3/(\w+).*/$1/} ();
+		/**\brief Destructor */
+		virtual ~${3/(\w+).*/$1/} ();
+
+	${4:protected:}
+
+	${5:private:}
+
+};//End of Class $3
+endsnippet
+
+#snippet fun "(Func) General function" b
+#/**\brief ${0: Description}
+# ${5:\param[in] ${3/[^ ]*}}
+# */
+#${1:return_value} ${2:func_name} (${3:func_arg1, ${4:func_arg2}});
+#endsnippet
