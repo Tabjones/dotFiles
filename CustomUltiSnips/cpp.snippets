@@ -206,9 +206,9 @@ class ${3:`!p snip.rv = snip.basename or "name"`}
 };//End of Class $3
 endsnippet
 
-#snippet fun "(Func) General function" b
+#snippet fun([0-9])?([0-9])? "(Func) General function" br
 #/**\brief ${0: Description}
-# ${5:\param[in] ${3/[^ ]*}}
 # */
-#${1:return_value} ${2:func_name} (${3:func_arg1, ${4:func_arg2}});
+#${1:return_value} ${2:func_name} (${3:`!p
+#`});
 #endsnippet
