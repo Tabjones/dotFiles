@@ -206,15 +206,49 @@ class ${3:`!p snip.rv = snip.basename or "name"`}
 };//End of Class $3
 endsnippet
 
-snippet fun([0-9])? "(Func) General function" br
-/**\brief ${0: Description}
- */
-${1:return_value} ${2:func_name} (${3:`!p 
-inputs = int(match.group(1)) outputs = int(match.group(2))
-for index in range(inputs):
-		snip.rv += "$" + str(index+4) + ", "
-
-for index in range(outputs):
-		snip.rv += "$" + str(index+4+inputs) + ", "
+snippet "([vbidfc]){1}fun([1-5])?" "(Func) General function" br
+/**\brief ${0: $2 description}
+*/
+${1:`!p 
+if (match.group(1) == "v"):
+	snip.rv = "void"
+elif (match.group(1) == "b"):
+	snip.rv = "bool"
+elif (match.group(1) == "i"):
+	snip.rv = "int"
+elif (match.group(1) == "d"):
+	snip.rv = "double"
+elif (match.group(1) == "f"):
+	snip.rv = "float"
+elif (match.group(1) == "c"):
+	snip.rv = "return value"
+`} ${2:func_name} (${3:`!p
+if (match.group(2) is not None):
+	args = int(match.group(2))
+	snip.rv = "arg1"
+	if (args>1):
+		snip.rv += ", "`}${4:`!p
+if (match.group(2) is not None):
+	args = int(match.group(2))
+	if (args >1):
+		snip.rv = "arg2"
+		if not (args <3):
+			snip.rv += ", "`}${5:`!p
+if (match.group(2) is not None):
+	args = int(match.group(2))
+	if (args >2):
+		snip.rv = "arg3"
+		if not (args <4):
+			snip.rv += ", "`}${6:`!p
+if (match.group(2) is not None):
+	args = int(match.group(2))
+	if (args >3):
+		snip.rv = "arg4"
+		if not (args <5):
+			snip.rv += ", "`}${7:`!p
+if (match.group(2) is not None):
+	args = int(match.group(2))
+	if (args >4):
+		snip.rv = "arg5"
 `});
 endsnippet
