@@ -83,6 +83,9 @@ nnoremap <silent> <Leader>qq :qall<CR>
 nnoremap <silent> <Leader>wq :wqall<CR>
 " Save everything
 nnoremap <silent> <Leader>ww :wall<CR>
+" Par reformatting
+map <leader>par {v}!par -jw100<CR>
+vmap <leader>par !par -jw100<CR>
 
 " ---------------
 " Typo Fixes

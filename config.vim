@@ -95,6 +95,7 @@ set cindent
 set autoindent
 set smarttab
 set expandtab
+set formatprg=par\ -w100
 
 " ---------------
 " Searching
