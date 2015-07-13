@@ -38,5 +38,8 @@ if has("autocmd")
 
     " Force xml syntax for ROS launch files
     au BufRead,BufNewFile *.launch set syntax=xml
+
+    " Force updat time of 100ms for LaTeX files (vim-latex-live-preview plugin)
+    au FileType tex setl updatetime=100
   augroup END
 endif

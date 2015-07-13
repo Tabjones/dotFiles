@@ -245,6 +245,7 @@ map <leader>k <Plug>(easymotion-k)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 nmap <leader>wo <Plug>(easymotion-bd-wl)
+
 " Tagbar """"""""""""""""
 let g:tagbar_type_markdown = {
     \ 'ctagstype': 'markdown',
@@ -260,3 +261,6 @@ let g:tagbar_type_markdown = {
     \ },
     \ 'sort': 0,
 \ }
+
+" Latex-Live-Preview """""""""
+nnoremap <leader>llp ::LLPStartPreview<CR>
