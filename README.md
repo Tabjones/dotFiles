@@ -1,7 +1,10 @@
 ---
 # The _GodMode_ dotVim Configuration
 ---
-Based on the [Mutewinter's Vim Configuration of Champions](https://github.com/mutewinter/dot_vim) with modified plugins to enhance C/C++ programming and modified bindings to suit my liking.
+Based on the [Mutewinter's Vim Configuration of Champions](https://github.com/mutewinter/dot_vim) with modified plugins to enhance C/C++ programming and modified bindings to suit my liking!
+
+Here's an example screen:
+![VimScreen.png](https://bitbucket.org/repo/qeBxj8/images/2538623278-VimScreen.png)
 
 ## Enabling GodMode in Vim (a.k.a. Installation)
 Assuming no Vim is installed, perform the following steps:
