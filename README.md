@@ -92,7 +92,7 @@ if exists('g:vundle_installing_plugins')
   finish
 endif
 ```
-Then run `vim +PluginUpdate`. This example installs [vim-move](https://github.com/matze/vim-move).
+Then run `vim +PluginInstall +qall`. This example installs [vim-move](https://github.com/matze/vim-move).
 
 ## Plugin List
 
