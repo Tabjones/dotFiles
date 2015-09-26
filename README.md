@@ -99,6 +99,12 @@ endif
 ```
 Then run `vim +PluginInstall +qall`. This example installs [vim-move](https://github.com/matze/vim-move).
 
+### Mirrors ###
+Thisproject is mirrored on:
+  * [Github](https://github.com/Tabjones/dotVim)
+  * [Bitbucket](https://bitbucket.org/Tabjones/dotvim)
+  * [Gitlab](https://gitlab.com/fspinelli/dotvim)
+
 ## Plugin List
 
 | **Stars** | **Plugin** | **Description** |
