@@ -36,6 +36,7 @@ endif
 set encoding=utf-8 " Use the right encoding
 set ruler          " Ruler on
 set relativenumber " Line numbers on, but relative to where your cursor is
+set number         " Hybrid mode Line numbers! Relative plus current absolute
 set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
@@ -76,10 +77,10 @@ set ttimeoutlen=100    " Time to wait for a command (after leader for example).
 set nofoldenable       " Disable folding entirely.
 set foldlevelstart=99  " I really don't like folds.
 set formatoptions=crql
-set iskeyword+=\$,-   " Add extra characters that are valid parts of variables
+set iskeyword+=\$,-    " Add extra characters that are valid parts of variables
 set nostartofline      " Don't go to the start of the line after some commands
-set scrolloff=5        " Keep three lines below the last line when scrolling
-" set gdefault           " this makes search/replace global by default
+set scrolloff=5        " Keep 5 lines below the last line when scrolling
+" set gdefault         " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
 set ttyfast
 set ssop=buffers,folds,resize,sesdir,tabpages,winpos,winsize
@@ -95,7 +96,7 @@ set cindent
 set autoindent
 set smarttab
 set expandtab
-set formatprg=par\ -w80
+set formatprg=par\ -w80 "par formatting
 
 " ---------------
 " Searching
