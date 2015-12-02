@@ -203,7 +203,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_error_symbol = '✘'
 let g:ycm_warning_symbol = '❗'
-let g:ycm_global_ycm_extra_conf = '~/.vim/'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_goto_buffer_command = 'vertical-split'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -227,7 +227,8 @@ let g:switch_custom_definitions =
       \ ['left', 'right'],
       \ ['on', 'off'],
       \ ['up', 'down'],
-      \ ['in', 'out']
+      \ ['in', 'out'],
+      \ ['pick', 'fixup', 'squash', 'reword', 'edit', 'exec']
       \]
 " Vim C++ Highlight  """""""""""""""""""""
 let g:cpp_class_scope_highlight = 0
