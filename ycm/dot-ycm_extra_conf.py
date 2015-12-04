@@ -51,7 +51,9 @@ flags = [
 # For a C project, you would set this to 'c' instead of 'c++'.
 '-x',
 'c++',
+'-I/home/tabjones/catkin/build/pel/include',
 '-I/home/tabjones/catkin/devel/include',
+'-I/home/tabjones/catkin/devel/include/pel-0.6',
 '-I/home/tabjones/catkin/src/calibration/include',
 '-I/home/tabjones/catkin/src/gaussian-object-modelling/include',
 '-I/home/tabjones/catkin/src/gaussian-object-modelling/src/include',
