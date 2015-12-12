@@ -41,6 +41,7 @@ flags = [
 '-Wno-variadic-macros',
 '-Wno-deprecated',
 '-fexceptions',
+'-Dqh_QHpointer',
 '-DNDEBUG',
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
@@ -65,6 +66,13 @@ flags = [
 '-I/usr/include/openni2',
 '-I/usr/include/vtk-5.8',
 '-I/usr/local/include/pcl-1.7',
+'-I/home/tabjones/catkin/build/pacman_vision',
+'-I/home/tabjones/catkin/src/pacman_vision/node',
+'-I/home/tabjones/catkin/src/pacman_vision/node/../UI/gui',
+'-I/usr/include/qt4/QtGui',
+'-I/usr/include/qt4/QtCore',
+'-I/usr/share/qt4/mkspecs/default',
+'-I/usr/include/qt4 -I/usr/include/qt4/QtXml',
 '-I/usr/include/pcl-1.7'
 ]
 
