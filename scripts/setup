@@ -73,4 +73,10 @@ cd ~/.vim/bundle/ctrlp-cmatcher
 ./install.sh
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
+info'Installing Vim-Latex'
+info'===================='
+cd ~/.vim
+wget 'http://downloads.sourceforge.net/project/vim-latex/snapshots/vim-latex-1.8.23-20141116.812-gitd0f31c9.tar.gz?r=&ts=1461161694&use_mirror=netcologne' -O vim_latex.tar.gz
+tar -zxf vim_latex.tar.gz
+rm vim_latex.tar.gz
 success 'Setup complete. Run vim and enjoy'
