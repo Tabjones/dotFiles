@@ -11,7 +11,7 @@ Plug 'bling/vim-airline'
 
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'ctrlpvim/ctrlp.vim' | Plug 'JazzCore/ctrlp-cmatcher' {'do': './install.sh'}
+Plug 'ctrlpvim/ctrlp.vim' | Plug 'JazzCore/ctrlp-cmatcher', {'do': './install.sh'}
 
 Plug 'airblade/vim-gitgutter'
 
