@@ -1,3 +1,6 @@
 [submodule "fonts"]
 	path = fonts
 	url = git@github.com:powerline/fonts.git
+[submodule "markdown2ctags"]
+	path = markdown2ctags
+	url = https://github.com/jszakmeister/markdown2ctags
