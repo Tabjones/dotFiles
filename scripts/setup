@@ -16,48 +16,29 @@ fail () {
   exit
 }
 
-#echo ''
-#info 'Installing NeoVim'
-#info '================='
-#echo ''
-#sudo add-apt-repository ppa:neovim-ppa/unstable
-#sudo apt-get update
-#sudo apt-get install neovim
-#sudo apt-get install python-dev python-pip python3-dev python3-pip
-#sudo pip install neovim
-#sudo pip3 install neovim
-#info 'Updating Alternatives, chose nvim all over'
-#info '----------------------------------------'
-#sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-#sudo update-alternatives --config vi
-#sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-#sudo update-alternatives --config vim
-#sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
-#sudo update-alternatives --config editor
-
 echo ''
 info 'Setting up the Vim Configuration'
 info '================================'
 echo ''
 
-info 'Installing Vundle'
-info '-----------------'
-git clone git://github.com/gmarik/vundle.git bundle/vundle
-
-info 'Setting up Symlinks'
+info 'Installing Vim-Plug'
 info '-------------------'
-if test $(which rake)
-then
-  rake vim:link
-else
-  fail 'Install Ruby and Rake to continue'
-fi
+curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-info 'Installing plugins'
+info 'Installing SilverSearcher and Exuberant CTags'
+info '---------------------------------------------'
+sudo apt-get install -y silversearcher-ag exuberant-ctags
+
+info 'Setting up Symlinks in HOME'
+info '---------------------------'
+ln -sf ${HOME}/.vim/vimrc ${HOME}/.vimrc
+ln -sf ${HOME}/.vim/gvimrc ${HOME}/.gvimrc
+
+info 'Installing Plugins'
 info '------------------'
 if test $(which vim)
 then
-  vim +PluginInstall +qall
+  vim +PlugInstall +qall
 else
   fail 'vim not found in path.'
 fi
@@ -66,17 +47,11 @@ echo ''
 info 'Configuring Plugins'
 info '==================='
 echo ''
-sudo apt-get install silversearcher-ag exuberant-ctags
 cd ~/.vim/fonts
 ./install.sh
 cd ~/.vim/bundle/ctrlp-cmatcher
 ./install.sh
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
-info'Installing Vim-Latex'
-info'===================='
-cd ~/.vim
-wget 'http://downloads.sourceforge.net/project/vim-latex/snapshots/vim-latex-1.8.23-20141116.812-gitd0f31c9.tar.gz?r=&ts=1461161694&use_mirror=netcologne' -O vim_latex.tar.gz
-tar -zxf vim_latex.tar.gz
-rm vim_latex.tar.gz
+
 success 'Setup complete. Run vim and enjoy'

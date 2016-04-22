@@ -1,271 +1,50 @@
-" Source all the plugin files again, this time loading their configuration.
-for file in split(glob('~/.vim/vundle_plugins/*.vim'), '\n')
-  exe 'source' file
-endfor
+" Set all plugins.
+call plug#begin('~/.vim/plugged')
 
-" ----------------------------------------------
-"  Plugins Configuration
-" ----------------------------------------------
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer', 'for': 'cpp'}
+autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 
-"Ag vim """""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <leader>as :AgFromSearch<CR>
-"Search inside files
-nnoremap <leader>ag :Ag<space>
-"Search inside files currently open
-nnoremap <leader>ab :AgBuffer<space>
-"Search for file names
-nnoremap <leader>af :AgFile<space>
+Plug 'nanotech/jellybeans.vim'
 
-"Ctrl-P """"""""""""""""""""""""""""""""""""""
-" Ensure Ctrl-P isn't bound by default
-let g:ctrlp_map = ''
-" Ensure max height isn't too large. (for performance)
-let g:ctrlp_max_height = 10
-" Fix fix new windows opening in split from startify
-let g:ctrlp_reuse_window = 'startify'
-let g:ctrlp_mruf_max = 350
-let g:ctrlp_mruf_default_order = 0
-" Leader Commands
-" nnoremap <leader>t :CtrlPRoot<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>u :CtrlPCurFile<CR>
-nnoremap <leader>m :CtrlPMRUFiles<CR>
-if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
-  " @ethanmuller
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+Plug 'tpope/vim-fugitive'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-"Enable cmatcher plugin (must be installed externally)
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+Plug 'bling/vim-airline'
 
-"Fugitive """""""""""""""""""""""""""""""""""""
-nnoremap <Leader>gc :Gcommit -v<CR>
-nnoremap <Leader>gca :Gcommit -a -v<CR>
-nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gp :Git push<CR>
- " Mnemonic, gu = Git Update
-nnoremap <Leader>gu :Git pull<CR>
-nnoremap <Leader>gd :Gvdiff<CR>
-" Start git command
-nnoremap <leader>gi :Git<space>
-" Undo the last commit
-command! Gcundo :Git reset HEAD~1
-" Gitv """"""""""""""""""""""""
-nnoremap <Leader>gv :Gitv<CR>
+Plug 'scrooloose/nerdtree'
 
-" GitGutter """"""""""""""""
-let g:gitgutter_realtime = 1
-let g:gitgutter_eager = 1
-let g:gitgutter_sign_added = '➕'
-let g:gitgutter_sign_removed = '➖'
-let g:gitgutter_sign_modified = '≈'
+Plug 'ctrlpvim/ctrlp.vim'
 
-"" Ctrl Space """"""""""""""""
-let g:ctrlspace_use_tabline = 1
-let g:ctrlspace_project_root_markers = []
+Plug 'airblade/vim-gitgutter'
 
-"" Supertab """""""""""""""""""
-let g:SuperTabClosePreviewOnPopupClose = 1
+Plug 'rking/ag.vim'
 
-" AirLine """""""""""""""""""""""""""""""""""""
-let g:airline_theme = 'jellybeans'
-let g:airline_powerline_fonts = 1
-let g:airline_detect_modified = 1
-let g:airline_inactive_collapse = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
-let g:airline_exclude_preview = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 0
-let g:airline#extensions#default#section_truncate_width = {}
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensiona#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_close_button = 0
+Plug 'tpope/vim-surround'
 
-" NerdTree """"""""""""""""
-nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
-nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>
-let g:NERDTreeShowBookmarks = 1
-let g:NERDTreeChDirMode = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeHijackNetrw = 0
+Plug 'majutsushi/tagbar'
 
-" Close Vim if NERDTree is the last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-  \&& b:NERDTreeType == "primary") | q | endif
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" UltiSnips """""""""""""""""""""""""
-let g:UltiSnipsSnippetDirectories=["UltiSnips","CustomUltiSnips"]
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsListSnippets="<c-tab>"
+Plug 'nathanaelkane/vim-indent-guides'
 
-"Tabularize """""""""""""""""""""""""
-nnoremap <Leader>t= :Tabularize assignment<CR>
-vnoremap <Leader>t= :Tabularize assignment<CR>
-nnoremap <Leader>t: :Tabularize symbol<CR>
-vnoremap <Leader>t: :Tabularize symbol<CR>
-nnoremap <Leader>t, :Tabularize comma<CR>
-vnoremap <Leader>t, :Tabularize comma<CR>
+Plug 'Raimondi/delimitMate'
 
-" Gist """""""""""""""""""""
-let g:gist_post_private = 1
-let g:gist_get_multiplefile = 1
+Plug 'mhinz/vim-startify'
 
-" Uninpaired """""""""""""""""
-" Remap ugly ][ to >< for non US keyboard
-nmap < [
-nmap > ]
-omap < [
-omap > ]
-xmap < [
-xmap > ]
+Plug 'tomtom/tcomment_vim'
 
-"Startify """"""""""""""""""""
-let g:startify_list_order = [
-        \ ['   Recent Files'],
-        \ 'files',
-        \ ['   Bookmarks'],
-        \ 'bookmarks',
-        \ ]
-let g:startify_bookmarks = [
-            \'~/.vim/',
-            \ ]
-let g:startify_skiplist = [
-            \ 'COMMIT_EDITMSG',
-            \ $VIMRUNTIME .'/doc',
-            \ 'bundle/.*/doc',
-            \ ]
-let g:startify_files_number = 6
-let g:startify_custom_indices = ['a', 'd', 'f', 'g', 'h']
-let g:startify_change_to_dir = 1
-let g:startify_session_autoload = 1
+Plug 'tpope/vim-endwise'
 
-hi StartifyFooter  ctermfg=171
-hi StartifyHeader  ctermfg=152
-hi StartifySlash   ctermfg=224
-hi StartifyNumber  ctermfg=26
-" Show Startify and NERDTree on start
-autocmd VimEnter *
-            \ if !argc() |
-            \   Startify |
-            \   NERDTree |
-            \   execute "normal \<c-w>w" |
-            \ endif
-" Keep NERDTree from opening a split when startify is open
-autocmd FileType startify setlocal buftype=
+Plug 'osyo-manga/vim-anzu'
 
-let g:startify_recursive_dir = 1
-let g:startify_custom_footer =
-      \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
-let g:startify_custom_header = [
-      \'        ________ ++     ________      ',
-      \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
-      \'       \VVVVVVVV/++++++\VVVVVVVV/     ',
-      \'        |VVVVVV|++++++++/VVVVV/''     ',
-      \'        |VVVVVV|++++++/VVVVV/''       ',
-      \'       +|VVVVVV|++++/VVVVV/''+        ',
-      \'     +++|VVVVVV|++/VVVVV/''+++++      ',
-      \'   +++++|VVVVVV|/VVV___++++++++++     ',
-      \'     +++|VVVVVVVVVV/##/ +_+_+_+_      ',
-      \'       +|VVVVVVVVV___ +/#_#,#_#,\     ',
-      \'        |VVVVVVV//##/+/#/+/#/''/#/    ',
-      \'        |VVVVV/''+/#/+/#/+/#/ /#/     ',
-      \'        |VVV/''++/#/+/#/ /#/ /#/      ',
-      \'        ''V/''  /##//##//##//###/     ',
-      \'                 ++                   ',
-      \'                 ''                   ',
-      \]
-" Tcomment """"""""
-let g:tcommentMaps = 0
-nnoremap <silent><leader>cc :TComment<CR>
-vnoremap <silent><leader>cc :TComment<CR>
-nnoremap <silent><leader>cb :TCommentBlock<CR>
-vnoremap <silent><leader>cb :TCommentBlock<CR>
-"" Anzu """"""""""""""
-nmap n <Plug>(anzu-n)
-nmap N <Plug>(anzu-N)
-nmap # <Plug>(anzu-sharp)
-let g:airline#extensions#anzu#enabled = 1
-"QFEEnter """"""""""
-let g:qfenter_vopen_map = ['<Space>', '<2-LeftMouse>']
-" Voogle """"
-let g:voogle_map="<leader>gg"
-" YouCompleteMe """""""""""""""
-let g:ycm_complete_in_comments = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_error_symbol = '✘'
-let g:ycm_warning_symbol = '❗'
-let g:ycm_key_invoke_completion= '<leader>tc'
-" let g:ycm_global_ycm_extra_conf = '~/.vim/'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_goto_buffer_command = 'vertical-split'
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
-nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_semantic_triggers = {
-\   'roslaunch' : ['="', '$(', '/'],
-\   'rosmsg,rossrv,rosaction' : ['re!^'],
-\ }
-let g:ycm_autoclose_preview_window_after_insertion = 1
-""" Help all Close """"""""""""
-nnoremap <leader>ch :HelpAllClose<CR>
-"" Window Swap """"""
-let g:windowswap_map_keys = 0 "prevent default bindings
-nnoremap <silent> gx :call WindowSwap#MarkWindowSwap()<CR>
-nnoremap <silent> gx :call WindowSwap#DoWindowSwap()<CR>
-nnoremap <silent> gx :call WindowSwap#EasyWindowSwap()<CR>
-" Switch """""""""""
-let g:switch_mapping = '<leader>-'
-let g:switch_custom_definitions =
-      \[
-      \ ['read', 'write'],
-      \ ['left', 'right'],
-      \ ['on', 'off'],
-      \ ['up', 'down'],
-      \ ['in', 'out'],
-      \ ['pick', 'fixup', 'squash', 'reword', 'edit', 'exec']
-      \]
-" Vim C++ Highlight  """""""""""""""""""""
-let g:cpp_class_scope_highlight = 0
-let g:cpp_experimental_template_highlight = 0
+Plug 'mbbill/undotree'
 
-" TagBar """"""""""""""""""""""""""""""
-nnoremap <leader>tb :TagbarToggle<CR>
+Plug 'Valloric/MatchTagAlways'
 
-" Easy Motion """""""""""""""""""""""""
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-nmap s <Plug>(easymotion-s2)
-let g:EasyMotion_smartcase = 1
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-nmap <leader>wo <Plug>(easymotion-bd-wl)
+Plug 'AndrewRadev/switch.vim'
 
-" Tagbar """"""""""""""""
-let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
+Plug 'gabrielelana/vim-markdown'
 
-" Latex-Live-Preview """""""""
-nnoremap <leader>llp ::LLPStartPreview<CR>
+" TODO at ctrlp cmatcher
+
+
+call plug#end()
