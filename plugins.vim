@@ -50,4 +50,7 @@ Plug 'matze/vim-move'
 Plug 'taketwo/vim-ros'
 
 " Todo tmux
+" CTRLP remaps dont work
+" To make more friendly generated ymc conf
+" REMAP capslock to  CTRL on system level
 call plug#end()
