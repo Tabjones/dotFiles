@@ -234,9 +234,6 @@ nnoremap Y y$
 " Just to beginning and end of lines easier. From http://vimbits.com/bits/16
 noremap H ^
 noremap L $
-" Create newlines without entering insert mode
-nnoremap go o<Esc>k
-nnoremap gO O<Esc>j
 " remap U to <C-r> for easier redo
 " from http://vimbits.com/bits/356
 nnoremap U <C-r>
@@ -268,10 +265,15 @@ inoremap jk <Esc>
 inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
+inoremap jj <Esc>
+inoremap JJ <Esc>
 
 " ---------------
 " Leader Mappings
 " ---------------
+" Create newlines without entering insert mode
+nnoremap <silent><leader>o o<Esc>k
+nnoremap <silent><leader>O O<Esc>j
 " Clear search
 noremap <silent><leader>nh :nohls<CR>
 " Highlight search word under cursor without jumping to next
@@ -329,7 +331,7 @@ let g:ctrlp_reuse_window = 'startify'
 let g:ctrlp_mruf_max = 350
 let g:ctrlp_mruf_default_order = 0
 " Leader Commands
-nnoremap <leader>cp :CtrlPMixed<CR>
+nnoremap <leader>cp :CtrlP<CR>
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
@@ -340,6 +342,42 @@ if executable('ag')
 endif
 "Enable cmatcher plugin (must be installed externally)
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtBS()':              ['<bs>', '<c-]>'],
+    \ 'PrtDelete()':          ['<del>'],
+    \ 'PrtDeleteWord()':      ['<c-w>'],
+    \ 'PrtClear()':           ['<c-u>'],
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+    \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+    \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+    \ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
+    \ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
+    \ 'PrtHistory(-1)':       ['<c-n>'],
+    \ 'PrtHistory(1)':        ['<c-p>'],
+    \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+    \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+    \ 'AcceptSelection("t")': ['<c-t>'],
+    \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+    \ 'ToggleFocus()':        ['<s-tab>'],
+    \ 'ToggleRegex()':        ['<c-r>'],
+    \ 'ToggleByFname()':      ['<c-d>'],
+    \ 'ToggleType(1)':        ['<leader>cf', '<c-up>', '<c-f>'],
+    \ 'ToggleType(-1)':       ['<leader>cb', '<c-b>', '<c-down>'],
+    \ 'PrtExpandDir()':       ['<tab>'],
+    \ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
+    \ 'PrtInsert()':          ['<c-\>'],
+    \ 'PrtCurStart()':        ['<c-a>'],
+    \ 'PrtCurEnd()':          ['<c-e>'],
+    \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+    \ 'PrtClearCache()':      ['<F5>'],
+    \ 'PrtDeleteEnt()':       ['<F7>'],
+    \ 'CreateNewFile()':      ['<c-y>'],
+    \ 'MarkToOpen()':         ['<leader>cz', '<c-z>'],
+    \ 'OpenMulti()':          ['<leader>co', '<c-o>'],
+    \ 'PrtExit()':            ['<leader>cp', '<esc>', '<c-c>', '<c-g>'],
+    \ }
 
 "Fugitive """""""""""""""""""""""""""""""""""""
 nnoremap <Leader>gc :Gcommit -v<CR>
@@ -489,11 +527,17 @@ let g:switch_mapping = '<leader>-'
 let g:switch_custom_definitions =
       \[
       \ ['read', 'write'],
+      \ ['Read', 'Write'],
       \ ['left', 'right'],
+      \ ['Left', 'Right'],
       \ ['on', 'off'],
+      \ ['On', 'Off'],
       \ ['up', 'down'],
+      \ ['Up', 'Down'],
       \ ['in', 'out'],
+      \ ['In', 'Out'],
       \ ['x', 'y', 'z'],
+      \ ['X', 'Y', 'Z'],
       \ ['pick', 'fixup', 'squash', 'reword', 'edit', 'exec']
       \]
 
@@ -522,5 +566,13 @@ let g:tagbar_type_markdown = {
     \ 'sort': 0,
 \ }
 
-"" Supertab """""""""""""""""""
-let g:SuperTabClosePreviewOnPopupClose = 1
+" Vim Move """""""""""""""""
+let g:move_map_keys = 0
+vmap <leader>mj <Plug>MoveBlockDown
+nmap <leader>mj <Plug>MoveLineDown
+vmap <leader>mk <Plug>MoveBlockUp
+nmap <leader>mk <Plug>MoveLineUp
+
+" Cpp enanched highlight """""""""""""
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1

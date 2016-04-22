@@ -1,8 +1,7 @@
 " Set all plugins.
 call plug#begin('~/.vim/plugged')
 
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer', 'for': 'cpp'}
-autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 
 Plug 'nanotech/jellybeans.vim'
 
@@ -10,9 +9,9 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'bling/vim-airline'
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim' | Plug 'JazzCore/ctrlp-cmatcher' {'do': './install.sh'}
 
 Plug 'airblade/vim-gitgutter'
 
@@ -44,7 +43,11 @@ Plug 'AndrewRadev/switch.vim'
 
 Plug 'gabrielelana/vim-markdown'
 
-" TODO at ctrlp cmatcher
+Plug 'octol/vim-cpp-enhanced-highlight'
 
+Plug 'matze/vim-move'
 
+Plug 'taketwo/vim-ros'
+
+" Todo tmux
 call plug#end()
