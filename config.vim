@@ -75,10 +75,6 @@ if has("autocmd")
           \*.coffee,*.rb,*.erb,*.md,*.scss,*.vim,Cakefile,*.hbs,*.launch,
           \*.msg,*.srv
           \ silent! :StripTrailingWhiteSpace
-    " Leave the return key alone when in command line windows, since it's used
-    " to run commands there.
-    autocmd! CmdwinEnter * :unmap <cr>
-    autocmd! CmdwinLeave * :call MapCR()
   augroup END
 endif
 " ------------------------------------------------------------------------------
@@ -239,18 +235,22 @@ noremap L $
 nnoremap U <C-r>
 " Don't move on *
 nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
+" Move on visual lines
+nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
 " ---------------
 " Window Movement
 " ---------------
-nnoremap <silent> gh :wincmd h<CR>
-nnoremap <silent> gj :wincmd j<CR>
-nnoremap <silent> gk :wincmd k<CR>
-nnoremap <silent> <M-k> :wincmd k<CR>
-nnoremap <silent> gl :wincmd l<CR>
+nnoremap <silent> <C-h> :wincmd h<CR>
+nnoremap <silent> <C-j> :wincmd j<CR>
+nnoremap <silent> <C-k> :wincmd k<CR>
+nnoremap <silent> <C-l> :wincmd l<CR>
 " Previous Window
-nnoremap <silent> gp :wincmd p<CR>
+nnoremap <silent> <C-p> :wincmd p<CR>
 " Equal Size Windows
-nnoremap <silent> g= :wincmd =<CR>
+nnoremap <silent> <C-=> :wincmd =<CR>
 " New Tab
 nnoremap <silent> <leader>te :tabnew<CR>
 " Next Tab
@@ -311,8 +311,8 @@ nmap <Leader><Leader> V
 noremap <F1> <Esc>
 inoremap <F1> <Esc>
 cnoremap w' w<CR>
-" Disable the ever-annoying Ex mode shortcut key. Type visual my ass. Instead,
-" make Q repeat the last macro instead. *hat tip* http://vimbits.com/bits/263
+" Disable the  ever-annoying Ex mode  shortcut key.  Instead, make Q  repeat the
+" last macro instead. *hat tip* http://vimbits.com/bits/263
 nnoremap Q @@
 " Removes doc lookup mapping because it's easy to fat finger and never useful.
 nnoremap K k
