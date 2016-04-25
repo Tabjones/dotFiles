@@ -49,6 +49,7 @@ cd ~/dotFiles
 ./install.sh
 ```
 **Note:** Make sure you backup your old dotDirectories if they already exist, then delete them.
+
 **Note:** The install script only works if you clone the repository in ${HOME}/dotFiles
 
 ---
