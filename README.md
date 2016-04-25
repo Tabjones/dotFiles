@@ -1,27 +1,11 @@
 ---
-# The _GodMode_ dotVim Configuration
+# _GodMode_ dotFiles
 ---
+
+## Vim
 ![VimScreen.png](https://bitbucket.org/repo/qeBxj8/images/2538623278-VimScreen.png)
-
-## Enabling GodMode in Vim (a.k.a. Installation)
-Assuming no Vim is installed, perform the following steps:
-```
-git clone --recursive git@bitbucket.org:Tabjones/dotvim.git ~/.vim
-cd ~/.vim
-```
-**Note:** Make sure you backup your old dotVim directory if it already exists.
-
 ---
-+ Run `scripts/setup`
-
-### Mirrors ###
-This project is mirrored on:
-
-  * [Github](https://github.com/Tabjones/dotVim).
-  * [Bitbucket](https://bitbucket.org/Tabjones/dotvim).
-  * [Gitlab](https://gitlab.com/fspinelli/dotvim).
-
-## Plugin List
+### Vim Plugin List
 
 | **Stars** | **Plugin** | **Description** |
 | --------: | :--------- | :-------------- |
@@ -51,4 +35,21 @@ This project is mirrored on:
 | 103 ★ |[nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)|A plugin of NERDTree showing git status |
 | 57 ★ |[vim-anzu](https://github.com/osyo-manga/vim-anzu)|Vim search status. |
 | 13 ★ |[vim-ros](https://github.com/taketwo/vim-ros)|Vim plugin for ROS development |
+---
 
+## Zsh
+---
+
+## Tmux
+---
+
+### Enabling GodMode (a.k.a. Installation)
+
+```
+git clone --recursive git@github.com:Tabjones/dotfiles.git ~/dotFiles
+cd ~/dotFiles
+./install
+```
+**Note:** Make sure you backup your old dotDirectories if they already exist, then delete them.
+
+---
