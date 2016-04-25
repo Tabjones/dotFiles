@@ -1,0 +1,6 @@
+[submodule "vim/markdown2ctags"]
+	path = vim/markdown2ctags
+	url = git@github.com:jszakmeister/markdown2ctags.git
+[submodule "vim/fonts"]
+	path = vim/fonts
+	url = git@github.com:powerline/fonts.git
