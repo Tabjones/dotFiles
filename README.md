@@ -1,6 +1,4 @@
----
-<center> <h1>_GodMode_ dotFiles</h1> </center>
----
+# _GodMode_ dotFiles
 
 ## Vim
 ![VimScreen.png](https://bitbucket.org/repo/qeBxj8/images/2538623278-VimScreen.png)
