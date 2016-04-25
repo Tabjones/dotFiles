@@ -29,10 +29,6 @@ info 'Installing SilverSearcher and Exuberant CTags'
 info '---------------------------------------------'
 sudo apt-get install -y silversearcher-ag exuberant-ctags
 
-info 'Setting up Symlinks in HOME'
-info '---------------------------'
-ln -sf ${HOME}/.vim/vimrc ${HOME}/.vimrc
-ln -sf ${HOME}/.vim/gvimrc ${HOME}/.gvimrc
 
 info 'Installing Plugins'
 info '------------------'
