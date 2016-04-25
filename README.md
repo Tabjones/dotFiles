@@ -44,7 +44,7 @@
 ## Enabling GodMode (a.k.a. Installation)
 
 ```
-git clone --recursive git@github.com:Tabjones/dotfiles.git ~/dotFiles
+git clone --recursive git@github.com:Tabjones/dotFiles.git ~/dotFiles
 cd ~/dotFiles
 ./install
 ```
