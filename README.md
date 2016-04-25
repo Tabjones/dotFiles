@@ -46,8 +46,9 @@
 ```
 git clone --recursive git@github.com:Tabjones/dotFiles.git ~/dotFiles
 cd ~/dotFiles
-./install
+./install.sh
 ```
 **Note:** Make sure you backup your old dotDirectories if they already exist, then delete them.
+**Note:** The install script only works if you clone the repository in ${HOME}/dotFiles
 
 ---

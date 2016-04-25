@@ -46,5 +46,5 @@ echo ''
 cd ~/.vim/fonts
 ./install.sh
 
-cd ~/.vim
+cd -
 success 'Setup complete. Run vim and enjoy'

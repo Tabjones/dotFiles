@@ -17,10 +17,11 @@ fail () {
 }
 
 info 'Setting up Symlinks in HOME'
-info '---------------------------'
-ln -sf vim ${HOME}/.vim
-ln -sf vim/vimrc ${HOME}/.vimrc
-ln -sf vim/gvimrc ${HOME}/.gvimrc
+info '==========================='
+ln -sf ${HOME}/dotFiles/vim ${HOME}/.vim
+ln -sf ${HOME}/dotFiles/vim/vimrc ${HOME}/.vimrc
+ln -sf ${HOME}/dotFiles/vim/gvimrc ${HOME}/.gvimrc
 
 #Vim
-./vim/scripts/setup.sh
+cd ${HOME}/.vim
+./scripts/setup.sh
