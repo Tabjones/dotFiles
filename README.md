@@ -1,11 +1,11 @@
 ---
-# _GodMode_ dotFiles
+<center> <h1>_GodMode_ dotFiles</h1> </center>
 ---
 
 ## Vim
 ![VimScreen.png](https://bitbucket.org/repo/qeBxj8/images/2538623278-VimScreen.png)
 ---
-### Vim Plugin List
+#### Vim Plugin List
 
 | **Stars** | **Plugin** | **Description** |
 | --------: | :--------- | :-------------- |
@@ -43,7 +43,7 @@
 ## Tmux
 ---
 
-### Enabling GodMode (a.k.a. Installation)
+## Enabling GodMode (a.k.a. Installation)
 
 ```
 git clone --recursive git@github.com:Tabjones/dotfiles.git ~/dotFiles
