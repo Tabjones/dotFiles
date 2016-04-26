@@ -138,7 +138,7 @@ set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
 set hidden             " Change buffer - without saving
-set history=768        " Number of things to remember in history.
+set history=10000      " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
@@ -176,7 +176,7 @@ set ignorecase " Case insensitive search
 set smartcase  " Non-case sensitive search
 set incsearch  " Incremental search
 set hlsearch   " Highlight search results
-set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
+set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,*.zip,*.aux
   \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc,*/node_modules/*,
   \rake-pipeline-*
 " ------------------------------------------------------------------------------
@@ -305,6 +305,8 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 " Enter Visual Line  with leader leader
 nmap <Leader><Leader> V
+"  source current file
+nnoremap <silent><leader>rr  :source %<cr>
 " ---------------
 " Typo Fixes
 " ---------------
@@ -342,42 +344,6 @@ if executable('ag')
 endif
 "Enable cmatcher plugin (must be installed externally)
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtBS()':              ['<bs>', '<c-]>'],
-    \ 'PrtDelete()':          ['<del>'],
-    \ 'PrtDeleteWord()':      ['<c-w>'],
-    \ 'PrtClear()':           ['<c-u>'],
-    \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
-    \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
-    \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
-    \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
-    \ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
-    \ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
-    \ 'PrtHistory(-1)':       ['<c-n>'],
-    \ 'PrtHistory(1)':        ['<c-p>'],
-    \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-    \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-    \ 'AcceptSelection("t")': ['<c-t>'],
-    \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
-    \ 'ToggleFocus()':        ['<s-tab>'],
-    \ 'ToggleRegex()':        ['<c-r>'],
-    \ 'ToggleByFname()':      ['<c-d>'],
-    \ 'ToggleType(1)':        ['<leader>cf', '<c-up>', '<c-f>'],
-    \ 'ToggleType(-1)':       ['<leader>cb', '<c-b>', '<c-down>'],
-    \ 'PrtExpandDir()':       ['<tab>'],
-    \ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
-    \ 'PrtInsert()':          ['<c-\>'],
-    \ 'PrtCurStart()':        ['<c-a>'],
-    \ 'PrtCurEnd()':          ['<c-e>'],
-    \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
-    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
-    \ 'PrtClearCache()':      ['<F5>'],
-    \ 'PrtDeleteEnt()':       ['<F7>'],
-    \ 'CreateNewFile()':      ['<c-y>'],
-    \ 'MarkToOpen()':         ['<leader>cz', '<c-z>'],
-    \ 'OpenMulti()':          ['<leader>co', '<c-o>'],
-    \ 'PrtExit()':            ['<leader>cp', '<esc>', '<c-c>', '<c-g>'],
-    \ }
 
 "Fugitive """""""""""""""""""""""""""""""""""""
 nnoremap <Leader>gc :Gcommit -v<CR>
@@ -392,6 +358,12 @@ nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <leader>gi :Git<space>
 " Undo the last commit
 command! Gcundo :Git reset HEAD~1
+
+" Vinegar """"""""""""""""""
+"  - open netrw for current file
+"  .  start a command for current file,  ! same with prepended bang
+"  ~  go home
+"  cg cl    :cd :lcd
 
 " GitGutter """"""""""""""""
 let g:gitgutter_realtime = 1
@@ -415,17 +387,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensiona#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
-" NerdTree """"""""""""""""
-nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
-nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>
-let g:NERDTreeShowBookmarks = 1
-let g:NERDTreeChDirMode = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeHijackNetrw = 0
-" Close Vim if NERDTree is the last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-  \&& b:NERDTreeType == "primary") | q | endif
-
 " Indent Guides """"""""""""""""
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
@@ -438,12 +399,6 @@ let g:UltiSnipsJumpBackwardTrigger="<leader>k"
 let g:UltiSnipsListSnippets="<leader><tab>"
 
 "Startify """"""""""""""""""""
-let g:startify_list_order = [
-        \ ['   Recent Files'],
-        \ 'files',
-        \ ['   Bookmarks'],
-        \ 'bookmarks',
-        \ ]
 let g:startify_bookmarks = [
             \'~/.vim/',
             \'~/catkin/',
@@ -453,22 +408,13 @@ let g:startify_skiplist = [
             \ $VIMRUNTIME .'/doc',
             \ ]
 let g:startify_files_number = 8
-let g:startify_custom_indices = ['a', 'd', 'f', 'g', 'h']
 let g:startify_change_to_dir = 1
-let g:startify_session_autoload = 1
+let g:startify_session_autoload = 0
+let g:startify_enable_special  = 1
 hi StartifyFooter  ctermfg=171
 hi StartifyHeader  ctermfg=152
 hi StartifySlash   ctermfg=224
 hi StartifyNumber  ctermfg=26
-" Show Startify and NERDTree on start
-autocmd VimEnter *
-            \ if !argc() |
-            \   Startify |
-            \   NERDTree |
-            \   execute "normal \<c-w>w" |
-            \ endif
-" Keep NERDTree from opening a split when startify is open
-autocmd FileType startify setlocal buftype=
 let g:startify_recursive_dir = 1
 let g:startify_custom_footer =
       \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
@@ -491,10 +437,10 @@ let g:startify_custom_header = [
       \'                 ''                   ',
       \]
 
-" Tcomment """"""""
-let g:tcommentMaps = 0
-nnoremap <silent><leader>cc :TComment<CR>
-vnoremap <silent><leader>cc :TComment<CR>
+nnoremap <leader>ss :SSave
+nnoremap <leader>sl :SLoad
+nnoremap <leader>sd :SDelete
+nnoremap <leader>sc :SClose
 
 "" Anzu """"""""""""""
 nmap n <Plug>(anzu-n-with-echo)
@@ -566,13 +512,17 @@ let g:tagbar_type_markdown = {
     \ 'sort': 0,
 \ }
 
-" Vim Move """""""""""""""""
-let g:move_map_keys = 0
-vmap <leader>mj <Plug>MoveBlockDown
-nmap <leader>mj <Plug>MoveLineDown
-vmap <leader>mk <Plug>MoveBlockUp
-nmap <leader>mk <Plug>MoveLineUp
-
 " Cpp enanched highlight """""""""""""
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
+
+" " FZF """""""""""""""""""""""""""""""""
+" let g:fzf_layout = {}  "Never use tmux panes
+" let g:fzf_buffers_jump = 1  "Jump to existing instead of opening new
+" nnoremap <leader>f :Files<cr>
+" nnoremap <leader>b :Buffers<cr>
+" nnoremap <leader>c :Commits<cr>
+" imap <leader>l  <plug>(fzf-complete-path)
+" nmap <leader><tab> <plug>(fzf-maps-n)
+" xmap <leader><tab> <plug>(fzf-maps-x)
+" omap <leader><tab> <plug>(fzf-maps-o)

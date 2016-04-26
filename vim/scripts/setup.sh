@@ -32,6 +32,7 @@ sudo apt-get install -y silversearcher-ag exuberant-ctags
 
 info 'Installing Plugins'
 info '------------------'
+info '(Ignore Vim errors)'
 if test $(which vim)
 then
   vim +PlugInstall +qall
@@ -41,7 +42,7 @@ fi
 
 echo ''
 info 'Configuring Fonts'
-info '==================='
+info '================='
 echo ''
 cd ~/.vim/fonts
 ./install.sh

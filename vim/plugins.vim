@@ -9,7 +9,11 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'bling/vim-airline'
 
-Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Plug 'junegunn/fzf.vim'
+
+Plug 'tpope/vim-vinegar'
 
 Plug 'ctrlpvim/ctrlp.vim' | Plug 'JazzCore/ctrlp-cmatcher', {'do': './install.sh'}
 
@@ -29,7 +33,7 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'mhinz/vim-startify'
 
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-endwise'
 
@@ -45,12 +49,8 @@ Plug 'gabrielelana/vim-markdown'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'matze/vim-move'
-
 Plug 'taketwo/vim-ros'
 
 " Todo tmux
-" CTRLP remaps dont work
 " To make more friendly generated ymc conf
-" REMAP capslock to  CTRL on system level
 call plug#end()
