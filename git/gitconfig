@@ -1,0 +1,42 @@
+[user]
+    name =  Federico Spinelli
+    email =  fspinelli@gmail.com
+[diff]
+    tool = fugitive
+[alias]
+    st = status
+    ci = commit -v
+    co = checkout
+    di = diff
+    amend = commit --amend
+    aa = add --all
+    fa = fetch --all
+    pom = push origin master
+    b = branch
+    ru = rebase -i @{u}
+    mff = merge --no-ff
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
+[push]
+    default = simple
+[color]
+    ui = always
+[color "diff-highlight"]
+    oldNormal = red
+    oldHighlight = red 52
+    newNormal = green
+    newHighlight = green 22
+[color "diff"]
+    commit = green
+    meta = yellow
+    frag = cyan
+    old = red
+    new = green
+    whitespace = red reverse
+[help]
+    autocorrect = 1
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
+[pull]
+    rebase = true

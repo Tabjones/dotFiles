@@ -17,18 +17,19 @@ fail () {
 }
 
 echo ''
-info 'Setting up the Vim Configuration'
-info '================================'
+info 'Setting up Vim Configuration'
+info '============================'
 echo ''
 
 info 'Installing Vim-Plug'
 info '-------------------'
 curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+success ' '
 
 info 'Installing SilverSearcher and Exuberant CTags'
 info '---------------------------------------------'
 sudo apt-get install -y silversearcher-ag exuberant-ctags
-
+success ' '
 
 info 'Installing Plugins'
 info '------------------'
@@ -39,6 +40,7 @@ then
 else
   fail 'vim not found in path.'
 fi
+success ' '
 
 echo ''
 info 'Configuring Fonts'
@@ -46,6 +48,4 @@ info '================='
 echo ''
 cd ~/.vim/fonts
 ./install.sh
-
-cd -
 success 'Setup complete. Run vim and enjoy'

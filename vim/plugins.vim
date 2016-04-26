@@ -9,11 +9,11 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'bling/vim-airline'
 
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Plug 'junegunn/fzf.vim'
-
 Plug 'tpope/vim-vinegar'
+
+Plug 'christoomey/vim-tmux-runner'
+
+Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'ctrlpvim/ctrlp.vim' | Plug 'JazzCore/ctrlp-cmatcher', {'do': './install.sh'}
 

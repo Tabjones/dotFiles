@@ -18,10 +18,15 @@ fail () {
 
 info 'Setting up Symlinks in HOME'
 info '==========================='
-ln -sf ${HOME}/dotFiles/vim ${HOME}/.vim
+ln -sfn ${HOME}/dotFiles/vim ${HOME}/.vim
 ln -sf ${HOME}/dotFiles/vim/vimrc ${HOME}/.vimrc
 ln -sf ${HOME}/dotFiles/vim/gvimrc ${HOME}/.gvimrc
+ln -sf ${HOME}/dotFiles/tmux/tmux.conf ${HOME}/.tmux.conf
+ln -sf ${HOME}/dotFiles/git/gitconfig ${HOME}/.gitconfig
+success ' '
 
 #Vim
 cd ${HOME}/.vim
 ./scripts/setup.sh
+
+cd ${HOME}/dotFiles
