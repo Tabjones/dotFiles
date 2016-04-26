@@ -16,6 +16,12 @@ fail () {
   exit
 }
 
+
+info 'Install tmux'
+info '============'
+sudo apt-get install -y tmux
+success ' '
+
 info 'Setting up Symlinks in HOME'
 info '==========================='
 ln -sfn ${HOME}/dotFiles/vim ${HOME}/.vim

@@ -3,7 +3,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 
-Plug 'nanotech/jellybeans.vim'
+Plug 'altercation/vim-colors-solarized'
+
+" Not a vim plugin, but usefull to install  here
+Plug 'Anthony25/gnome-terminal-colors-solarized', {'do': './install.sh'}
 
 Plug 'tpope/vim-fugitive'
 
@@ -11,7 +14,7 @@ Plug 'bling/vim-airline'
 
 Plug 'tpope/vim-vinegar'
 
-Plug 'christoomey/vim-tmux-runner'
+Plug 'benmills/vimux'
 
 Plug 'christoomey/vim-tmux-navigator'
 

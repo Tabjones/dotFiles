@@ -80,8 +80,9 @@ endif
 " ------------------------------------------------------------------------------
 "                                                                          Color
 " ------------------------------------------------------------------------------
+syntax enable
 set background=dark
-colorscheme jellybeans
+colorscheme solarized
 " Force 256 color mode if available
 if $TERM =~ "-256color"
    set t_Co=256
@@ -132,7 +133,6 @@ set guioptions -=b "bottom scrollbar"
 " ------------------------------------------------------------------------------
 "                                                                      Behaviors
 " ------------------------------------------------------------------------------
-syntax enable
 filetype plugin indent on
 set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
