@@ -32,15 +32,10 @@
 |[vim-anzu](https://github.com/osyo-manga/vim-anzu)|Vim search status. |
 |[vim-ros](https://github.com/taketwo/vim-ros)|Vim plugin for ROS development |
 |[vim-endwise](https://github.com/tpope/vim-endwise)|endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc|
-|[vim-tmux-runner](https://github.com/christoomey/vim-tmux-runner)|Vim and tmux, sittin' in a tree...|
-|[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)|Seamless navigation between tmux and vim splits|
 
 ---
 
 ## Zsh
----
-
-## Tmux
 ---
 
 ## Enabling GodMode (a.k.a. Installation)

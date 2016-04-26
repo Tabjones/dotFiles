@@ -48,4 +48,4 @@ info '================='
 echo ''
 cd ~/.vim/fonts
 ./install.sh
-success 'Setup complete. Run vim and enjoy'
+success 'Setup complete'

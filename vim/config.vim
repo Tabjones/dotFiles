@@ -82,7 +82,7 @@ endif
 " ------------------------------------------------------------------------------
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme jellybeans
 " Force 256 color mode if available
 if $TERM =~ "-256color"
    set t_Co=256
