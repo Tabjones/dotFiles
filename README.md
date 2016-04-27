@@ -36,6 +36,8 @@
 ---
 
 ## Zsh
+![Zsh_Screen](https://cloud.githubusercontent.com/assets/1950251/14844935/540710cc-0c5b-11e6-8894-b0b17d4997db.png)
+
 ---
 
 ## Enabling GodMode (a.k.a. Installation)
