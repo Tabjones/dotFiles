@@ -280,8 +280,8 @@ noremap <silent><leader>nh :nohls<CR>
 nnoremap <leader>h *<C-O>
 " Toggle spelling mode with <leader>spe
 nnoremap <silent> <leader>s :set spell!<CR>
-" Replace placeholders <++>
-nnoremap <silent> <Leader>p /<++><CR>cf>
+" Replace placeholders <+...+>
+nnoremap <silent> <Leader>ph /<+.\{-1,}+><cr>c/+>/e<cr>
 " Format the entire file
 nnoremap <leader>fef mx=ggG='x
 " Split window vertically or horizontally *and* switch to the new split!

@@ -28,4 +28,7 @@ success ' '
 cd ${HOME}/.vim
 ./scripts/setup.sh
 
-cd ${HOME}/dotFiles
+cd ${HOME}/dotFiles/zsh
+./install.sh
+
+cd  ..
