@@ -30,7 +30,7 @@ ln -sfn ${HOME}/dotFiles/vim ${HOME}/.vim
 ln -sf ${HOME}/dotFiles/vim/vimrc ${HOME}/.vimrc
 ln -sf ${HOME}/dotFiles/vim/gvimrc ${HOME}/.gvimrc
 ln -sf ${HOME}/dotFiles/git/gitconfig ${HOME}/.gitconfig
-ln -sf ${HOME}/dotFiles/zsh/zshrc ${HOME}/.zshrc
+cp -f ${HOME}/dotFiles/zsh/zshrc ${HOME}/.zshrc
 success ' '
 
 #Vim
