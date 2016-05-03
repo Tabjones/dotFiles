@@ -1,5 +1,6 @@
 .DS_Store
 vim/plugged
+vim/autoload/
 /.netrwhist
 /spell
 .netrwhist

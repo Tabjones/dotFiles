@@ -29,6 +29,6 @@ cd ${HOME}/.vim
 ./scripts/setup.sh
 
 cd ${HOME}/dotFiles/zsh
-./install.sh
+./setup.sh
 
 cd  ..
