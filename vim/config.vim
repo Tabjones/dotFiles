@@ -491,10 +491,6 @@ let g:switch_custom_definitions =
 let g:undotree_WindowLayout = 2
 nnoremap <leader>u :UndotreeToggle<cr>
 
-" Vim C++ Highlight  """""""""""""""""""""
-let g:cpp_class_scope_highlight = 0
-let g:cpp_experimental_template_highlight = 0
-
 " TagBar """"""""""""""""""""""""""""""
 nnoremap <leader>tb :TagbarToggle<CR>
 let g:tagbar_type_markdown = {
