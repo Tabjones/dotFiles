@@ -1,4 +1,6 @@
-﻿" Load plugins.
-source ~/.vim/plugins.vim
-" All of the Vim configuration.
+﻿" All of the Vim configuration.
 source ~/.vim/config.vim
+" Load plugins.
+source ~/.vim/plugins.vim
+"Plugins specific config
+source ~/.vim/plugins_config.vim
