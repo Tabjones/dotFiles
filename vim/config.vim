@@ -17,6 +17,8 @@
 "
 "  Be (Im)proved!
 set nocompatible
+filetype plugin indent on
+syntax enable
 " ------------------------------------------------------------------------------
 "                                                                       Commands
 " ------------------------------------------------------------------------------
@@ -30,30 +32,6 @@ command! -nargs=1 SilentCmd
 command! W w
 command! Q q
 " ----------------------------------------
-" Functions
-" ----------------------------------------
-" Strip Trailing White Space
-" ---------------
-" From http://vimbits.com/bits/377
-" Preserves/Saves the state, executes a command, and returns to the saved state
-function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-function! StripTrailingWhiteSpaceAndSave()
-  :call Preserve("%s/\\s\\+$//e")<CR>
-  :write
-endfunction
-command! StripTrailingWhiteSpaceAndSave :call StripTrailingWhiteSpaceAndSave()<CR>
-nnoremap <silent> <leader>stw :silent! StripTrailingWhiteSpaceAndSave<CR>
-" ----------------------------------------
 " Auto Commands
 " ----------------------------------------
 if has("autocmd")
@@ -66,23 +44,13 @@ if has("autocmd")
     " No more complaining about untitled documents
     " Autosaves when you lose focus to the window
     autocmd FocusLost * :wa
-    " When editing a file, always jump to the last cursor position.
-    " This must be after the uncompress commands.
-    autocmd BufReadPost *
-          \ if line("'\"") > 1 && line ("'\"") <= line("$") |
-          \   exe "normal! g`\"" |
-
-    " Fix trailing whitespace in my most used programming langauges
-    autocmd BufWritePre *.cpp,*.h,*.hpp,*.c,Makefile,CMakeLists.txt,*.py,
-          \*.coffee,*.rb,*.erb,*.md,*.scss,*.vim,Cakefile,*.hbs,*.launch,
-          \*.msg,*.srv
-          \ silent! :StripTrailingWhiteSpace
+    au  BufRead,BufNewFile *.hpp set filetype=cpp
+    au  BufRead,BufNewFile *.vim set filetype=vim
   augroup END
 endif
 " ------------------------------------------------------------------------------
 "                                                                          Color
 " ------------------------------------------------------------------------------
-syntax enable
 " Force 256 color mode if available
 if $TERM =~ "-256color"
    set t_Co=256
@@ -133,7 +101,6 @@ set guioptions -=b "bottom scrollbar"
 " ------------------------------------------------------------------------------
 "                                                                      Behaviors
 " ------------------------------------------------------------------------------
-filetype plugin indent on
 set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
