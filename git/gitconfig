@@ -42,3 +42,4 @@
     rebase = true
 [core]
 	editor = which vim
+	autocrlf = true
