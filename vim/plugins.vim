@@ -1,7 +1,7 @@
 " Set all plugins.
 call plug#begin('~/.vim/plugged')
 
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 
 Plug 'nanotech/jellybeans.vim'
 

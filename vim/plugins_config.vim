@@ -101,7 +101,8 @@ let g:UltiSnipsListSnippets="<leader><tab>"
 "Startify """"""""""""""""""""
 let g:startify_bookmarks = [
             \'~/.vim/',
-            \'~/catkin/',
+            \'/mnt/e/Software Development/',
+            \'/mnt/e/Software Development/ROBOmove/',
             \ ]
 let g:startify_skiplist = [
             \ 'COMMIT_EDITMSG',
