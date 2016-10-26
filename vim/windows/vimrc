@@ -27,9 +27,16 @@ set rtp+=$USERPROFILE\vimfiles
 " Set all plugins.
 call plug#begin('~/vimfiles/plugged')
 
-"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+"Plug 'Valloric/YouCompleteMe'
 
-Plug 'nanotech/jellybeans.vim'
+"Plug 'nanotech/jellybeans.vim'
+Plug 'zhaocai/GoldenView.Vim'
+
+Plug 'lifepillar/vim-mucomplete'
+
+Plug 'SirVer/ultisnips'
+
+Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-fugitive'
 
@@ -75,8 +82,10 @@ call plug#end()
 "Be (Im)proved!
 set nocompatible
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 syntax enable
-set lines=9999 columns=9999
+"set lines=9999 columns=9999
+au GUIEnter * simalt ~x
 " ------------------------------------------------------------------------------
 "                                                                       Commands
 " ------------------------------------------------------------------------------
@@ -304,7 +313,7 @@ noremap <silent><leader>nh :nohls<CR>
 " Highlight search word under cursor without jumping to next
 nnoremap <leader>h *<C-O>
 " Toggle spelling mode with <leader>spe
-nnoremap <silent> <leader>s :set spell!<CR>
+nnoremap <silent> <leader>spe :set spell!<CR>
 " Replace placeholders <+...+>
 "nnoremap <silent> <Leader>ph /<+.\{-1,}+><cr>c/+>/e<cr>
 " Format the entire file
@@ -351,7 +360,7 @@ vnoremap K k
 
 " Jellybeans
 set background=dark
-colorscheme jellybeans
+colorscheme pablo
 
 "Ctrl-P """"""""""""""""""""""""""""""""""""""
 " Ensure Ctrl-P isn't bound by default
@@ -471,6 +480,7 @@ nnoremap <leader>ss :SSave
 nnoremap <leader>sl :SLoad
 nnoremap <leader>sd :SDelete
 nnoremap <leader>sc :SClose
+nnoremap <leader>st :only<CR><bar>:tabonly<CR><bar>:Startify<CR>
 
 "" Anzu """"""""""""""
 nmap n <Plug>(anzu-n-with-echo)
@@ -479,24 +489,24 @@ nmap # <Plug>(anzu-sharp-with-echo)
 let g:airline#extensions#anzu#enabled = 1
 
 " YouCompleteMe """""""""""""""
-let g:ycm_complete_in_comments = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_error_symbol = '✘'
-let g:ycm_warning_symbol = '❗'
-let g:ycm_key_invoke_completion= '<leader>tc'
-" let g:ycm_global_ycm_extra_conf = '~/.vim/'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_goto_buffer_command = 'vertical-split'
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
-nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_semantic_triggers = {
-\   'roslaunch' : ['="', '$(', '/'],
-\   'rosmsg,rossrv,rosaction' : ['re!^'],
-\ }
-let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_complete_in_comments = 1
+" let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_error_symbol = '✘'
+" let g:ycm_warning_symbol = '❗'
+" let g:ycm_key_invoke_completion= '<leader>tc'
+" " let g:ycm_global_ycm_extra_conf = '~/.vim/'
+" let g:ycm_confirm_extra_conf = 0
+" let g:ycm_goto_buffer_command = 'vertical-split'
+" nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
+" nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
+" let g:ycm_semantic_triggers = {
+" \   'roslaunch' : ['="', '$(', '/'],
+" \   'rosmsg,rossrv,rosaction' : ['re!^'],
+" \ }
+" let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Switch """""""""""
 let g:switch_mapping = '<leader>-'
@@ -513,8 +523,13 @@ let g:switch_custom_definitions =
       \ ['in', 'out'],
       \ ['In', 'Out'],
       \ ['x', 'y', 'z'],
+      \ ['Q1', 'Q2', 'Q3', 'Q4'],
+      \ ['q1', 'q2', 'q3', 'q4'],
       \ ['X', 'Y', 'Z'],
-      \ ['pick', 'fixup', 'squash', 'reword', 'edit', 'exec']
+      \ ['pick', 'squash', 'fixup', 'reword', 'edit', 'exec'],
+    \['false', 'true'],
+    \['False', 'True'],
+    \['FALSE', 'TRUE'],
       \]
 
 " Undotree """"""""""""""""
@@ -523,6 +538,7 @@ nnoremap <leader>u :UndotreeToggle<cr>
 
 " TagBar """"""""""""""""""""""""""""""
 nnoremap <leader>tb :TagbarToggle<CR>
+let g:tagbar_ctags_bin = 'E:\Software Development\ctags58\ctags.exe'
 let g:tagbar_type_markdown = {
     \ 'ctagstype': 'markdown',
     \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
@@ -548,3 +564,24 @@ nnoremap <silent><leader>cc :TComment<CR>
 vnoremap <silent><leader>cc :TComment<CR>
 nnoremap <silent><leader>cb :TCommentBlock<CR>
 vnoremap <silent><leader>cb :TCommentBlock<CR>
+
+" muComplete """""""""""""""""""""""""""
+set noshowmode shortmess+=c
+setl infercase
+setl completeopt-=preview
+setl completeopt+=menu,menuone
+let g:mucomplete#enable_auto_at_startup = 1
+
+let g:mucomplete#chains = {}
+let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
+let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
+
+let g:mucomplete#trigger_auto_pattern = {}
+let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
+let g:mucomplete#trigger_auto_pattern.cpp     = '\k\k$'
+
+" GoldenView """""""""""""""""""""
+let g:goldenview__enable_default_mapping = 0
+nmap <silent> <leader>m    <Plug>GoldenViewSwitchMain
+nmap <silent> <leader>n    <Plug>GoldenViewNext
+nmap <silent> <leader>s    <Plug>GoldenViewSplit
