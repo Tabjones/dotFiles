@@ -74,6 +74,10 @@ Plug 'gabrielelana/vim-markdown'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
+Plug 'tpope/vim-sensible'
+
+Plug 'tpope/vim-abolish'
+
 call plug#end()
 
 "-------------------------------------------------------------------------------
@@ -98,6 +102,8 @@ command! -nargs=1 SilentCmd
 " Fixes common typos
 command! W w
 command! Q q
+"matchit key
+nmap za %
 " ----------------------------------------
 " Auto Commands
 " ----------------------------------------
@@ -585,3 +591,12 @@ let g:goldenview__enable_default_mapping = 0
 nmap <silent> <leader>m    <Plug>GoldenViewSwitchMain
 nmap <silent> <leader>n    <Plug>GoldenViewNext
 nmap <silent> <leader>s    <Plug>GoldenViewSplit
+
+" Abolish """"""""""""""""""""""""""""
+:Abolish {despa,sepe}rat{e,es,ed,ing,ely,ion,ions,or}  {despe,sepa}rat{}
+" :Subvert/address{,es}/reference{,s}/g """""""" for multiple substitutes
+" Coercion reference
+" MixedCase (crm)
+" camelCase (crc)
+" snake_case (crs)
+" UPPER_CASE (cru)
