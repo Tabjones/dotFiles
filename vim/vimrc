@@ -542,7 +542,6 @@ nnoremap <leader>u :UndotreeToggle<cr>
 
 " TagBar """"""""""""""""""""""""""""""
 nnoremap <leader>tb :TagbarToggle<CR>
-let g:tagbar_ctags_bin = 'E:\Software Development\ctags58\ctags.exe'
 let g:tagbar_type_markdown = {
     \ 'ctagstype': 'markdown',
     \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
@@ -557,6 +556,8 @@ let g:tagbar_type_markdown = {
     \ },
     \ 'sort': 0,
 \ }
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 
 " Cpp enanched highlight """""""""""""
 let g:cpp_class_scope_highlight = 1

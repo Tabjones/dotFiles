@@ -559,6 +559,8 @@ let g:tagbar_type_markdown = {
     \ },
     \ 'sort': 0,
 \ }
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 
 " Cpp enanched highlight """""""""""""
 let g:cpp_class_scope_highlight = 1
@@ -593,9 +595,9 @@ nmap <silent> <leader>n    <Plug>GoldenViewNext
 nmap <silent> <leader>s    <Plug>GoldenViewSplit
 
 " Abolish """"""""""""""""""""""""""""
-:Abolish {despa,sepe}rat{e,es,ed,ing,ely,ion,ions,or}  {despe,sepa}rat{}
+" :Abolish {despa,sepe}rat{e,es,ed,ing,ely,ion,ions,or}  {despe,sepa}rat{}
 " :Subvert/address{,es}/reference{,s}/g """""""" for multiple substitutes
-" Coercion reference
+" Coercion reference:
 " MixedCase (crm)
 " camelCase (crc)
 " snake_case (crs)
