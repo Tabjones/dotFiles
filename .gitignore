@@ -4,3 +4,6 @@ vim/autoload/
 /.netrwhist
 /spell
 .netrwhist
+tmp
+backup
+undo
