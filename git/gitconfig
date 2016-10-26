@@ -1,6 +1,6 @@
 [user]
-    name =  Federico Spinelli
-    email = fspinelli@qdrobotics.com
+	name = Federico Spinelli
+	email = fspinelli@qdrobotics.com
 [diff]
     tool = fugitive
 [alias]
@@ -41,5 +41,5 @@
 [pull]
     rebase = true
 [core]
-	editor = which vim
+	editor = vim
 	autocrlf = true
