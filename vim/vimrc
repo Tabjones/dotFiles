@@ -27,10 +27,15 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'Valloric/YouCompleteMe'
+
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
-"Plug 'nanotech/jellybeans.vim'
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'nanotech/jellybeans.vim'
+
 Plug 'zhaocai/GoldenView.Vim'
+
 "Plug 'lifepillar/vim-mucomplete'
 
 Plug 'SirVer/ultisnips'
@@ -40,6 +45,8 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 
 Plug 'bling/vim-airline'
+
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-vinegar'
 
@@ -73,7 +80,7 @@ Plug 'gabrielelana/vim-markdown'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'tpope/vim-sensible'
+" Plug 'tpope/vim-sensible'
 
 Plug 'tpope/vim-abolish'
 
@@ -83,7 +90,17 @@ Plug 'xolox/vim-misc'
 
 Plug 'xolox/vim-easytags'
 
-" Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
+
+Plug 'pangloss/vim-javascript'
+
+Plug 'godlygeek/tabular'
+
+Plug 'bronson/vim-trailing-whitespace'
+
+Plug 'kshenoy/vim-signature'
+
+Plug 'chiel92/vim-autoformat'
 
 call plug#end()
 
@@ -93,11 +110,10 @@ call plug#end()
 "Be (Im)proved!
 set nocompatible
 filetype plugin indent on
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 syntax enable
 "set lines=9999 columns=9999
 "au GUIEnter * simalt ~x
-set ff=unix
 " ------------------------------------------------------------------------------
 "                                                                       Commands
 " ------------------------------------------------------------------------------
@@ -136,10 +152,21 @@ endif
 "if $TERM =~ "-256color"
 "   set t_Co=256
 "endif
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+" let g:solarized_termtrans = 1
+" let g:solarized_termcolors=16
+colorscheme solarized
+" in solarized.vim line 256  for a darker background
+" let s:base03      = "#001216"
+
+set background=dark
+"colorscheme pablo
+"colorscheme jellybeans
 " ------------------------------------------------------------------------------
 "                                                                          Fonts
 " ------------------------------------------------------------------------------
-set guifont=Inconsolata-dz\ for\ Powerline
+set guifont=Inconsolata-g for Powerline Medium 11
 let g:Powerline_symbols = 'fancy'
 " ------------------------------------------------------------------------------
 "                                                                 File Locations
@@ -331,7 +358,7 @@ nnoremap <silent> <leader>spe :set spell!<CR>
 " Replace placeholders <+...+>
 "nnoremap <silent> <Leader>ph /<+.\{-1,}+><cr>c/+>/e<cr>
 " Format the entire file
-nnoremap <leader>fef mx=ggG='x
+nnoremap <leader>fef mx=ggG='x<Bar>:FixWhitespace<CR>
 " Split window vertically or horizontally *and* switch to the new split!
 nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>
 nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
@@ -372,29 +399,25 @@ vnoremap K k
 "                                                          Plugins Configuration
 " ------------------------------------------------------------------------------
 
-" Jellybeans
-set background=dark
-colorscheme pablo
-
 "Ctrl-P """"""""""""""""""""""""""""""""""""""
 " Ensure Ctrl-P isn't bound by default
-let g:ctrlp_map = ''
-" Ensure max height isn't too large. (for performance)
-let g:ctrlp_max_height = 10
-" Fix new windows opening in split from startify
-let g:ctrlp_reuse_window = 'startify\|netrw\|help\|quickfix'
-let g:ctrlp_mruf_max = 350
-let g:ctrlp_mruf_default_order = 0
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_clear_cache_on_exit = 0
+" let g:ctrlp_map = ''
+" " Ensure max height isn't too large. (for performance)
+" let g:ctrlp_max_height = 10
+" " Fix new windows opening in split from startify
+" let g:ctrlp_reuse_window = 'startify\|netrw\|help\|quickfix'
+" let g:ctrlp_mruf_max = 350
+" let g:ctrlp_mruf_default_order = 0
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_clear_cache_on_exit = 0
 " Leader Commands
-nnoremap <leader>cp :CtrlP<CR>
-if executable('ag')
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
-    " @ethanmuller
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+" nnoremap <leader>cp :CtrlP<CR>
+" if executable('ag')
+"     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"     " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
+"     " @ethanmuller
+"     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" endif
 "Enable cmatcher plugin (must be installed externally)
 "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
@@ -424,9 +447,14 @@ let g:gitgutter_eager = 1
 let g:gitgutter_sign_added = '➕'
 let g:gitgutter_sign_removed = '➖'
 let g:gitgutter_sign_modified = '≈'
+nmap <Leader>hn <Plug>GitGutterNextHunk
+nmap <Leader>hN <Plug>GitGutterPrevHunk
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterUndoHunk
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 " AirLine """""""""""""""""""""""""""""""""""""
-"let g:airline_theme = 'jellybeans'
+let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
 let g:airline_inactive_collapse = 1
@@ -441,8 +469,9 @@ let g:airline#extensiona#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
 " Indent Guides """"""""""""""""
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
+" let g:indent_guides_start_level=2
+" let g:indent_guides_guide_size=1
+let g:indent_guides_enable_on_vim_startup = 1
 
 " UltiSnips """""""""""""""""""""""""
 let g:UltiSnipsSnippetDirectories=["CustomUltiSnips"]
@@ -453,7 +482,7 @@ let g:UltiSnipsListSnippets="<leader><tab>"
 
 "Startify """"""""""""""""""""
 let g:startify_bookmarks = [
-            \'/mnt/e/Software\ Development/',
+            \'$HOME',
             \ ]
 let g:startify_skiplist = [
             \ 'COMMIT_EDITMSG',
@@ -494,7 +523,7 @@ nnoremap <leader>sl :SLoad
 nnoremap <leader>sd :SDelete
 nnoremap <leader>sc :SClose
 nnoremap <leader>st :only<CR><bar>:tabonly<CR><bar>:Startify<CR>
-set sessionoptions="buffers,curdir,globals,tabpages,slash,unix"
+" set sessionoptions="buffers,curdir,globals,tabpages,slash,unix"
 
 "" Anzu """"""""""""""
 nmap n <Plug>(anzu-n-with-echo)
@@ -611,3 +640,28 @@ nmap <silent> <leader>s    <Plug>GoldenViewSplit
 " camelCase (crc)
 " snake_case (crs)
 " UPPER_CASE (cru)
+
+" Easytags
+"let g:easytags_cmd = 'E:\Software Development\ctags58\ctags.exe'
+let g:easytags_file='$HOME/.vim/tagfile'
+set tags+=$HOME/.vim/tagfile
+
+" Tabular
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+" Auto align on = sign when typing
+inoremap <silent> = =<Esc>:call <SID>ealign()<CR>a
+function! s:ealign()
+    let p = '^.*=\s.*$'
+    if exists(':Tabularize') && getline('.') =~# '^.*=' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^=]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*=\s*\zs.*'))
+        Tabularize/=/l1
+        normal! 0
+        call search(repeat('[^=]*=',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
+endfunction
