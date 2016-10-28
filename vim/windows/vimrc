@@ -27,12 +27,17 @@ set rtp+=$USERPROFILE\vimfiles
 " Set all plugins.
 call plug#begin('~/vimfiles/plugged')
 
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
-"Plug 'nanotech/jellybeans.vim'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'nanotech/jellybeans.vim'
+
 Plug 'zhaocai/GoldenView.Vim'
 
-Plug 'lifepillar/vim-mucomplete'
+"Plug 'lifepillar/vim-mucomplete'
 
 Plug 'SirVer/ultisnips'
 
@@ -41,6 +46,8 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 
 Plug 'bling/vim-airline'
+
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-vinegar'
 
@@ -78,6 +85,24 @@ Plug 'tpope/vim-sensible'
 
 Plug 'tpope/vim-abolish'
 
+Plug 'tpope/vim-repeat'
+
+Plug 'xolox/vim-misc'
+
+Plug 'xolox/vim-easytags'
+
+Plug 'scrooloose/syntastic'
+
+Plug 'pangloss/vim-javascript'
+
+Plug 'godlygeek/tabular'
+
+Plug 'bronson/vim-trailing-whitespace'
+
+Plug 'kshenoy/vim-signature'
+
+Plug 'chiel92/vim-autoformat'
+
 call plug#end()
 
 "-------------------------------------------------------------------------------
@@ -90,6 +115,10 @@ set omnifunc=syntaxcomplete#Complete
 syntax enable
 "set lines=9999 columns=9999
 au GUIEnter * simalt ~x
+" set nowfh                                  " no fixed size
+" set noea eadirection=both                  " no equal size
+" set wmw=0 wmh=0                            " squash other windows
+" set wiw=9999 wh=999 hh=999 cwh=999 pvh=999 " enlarge current window
 " ------------------------------------------------------------------------------
 "                                                                       Commands
 " ------------------------------------------------------------------------------
@@ -97,8 +126,8 @@ au GUIEnter * simalt ~x
 " No 'Press Any Key to Contiue BS'
 " from: http://vim.wikia.com/wiki/Avoiding_the_%22Hit_ENTER_to_continue%22_prompts
 command! -nargs=1 SilentCmd
-\ | execute ':silent !'.<q-args>
-\ | execute ':redraw!'
+            \ | execute ':silent !'.<q-args>
+            \ | execute ':redraw!'
 " Fixes common typos
 command! W w
 command! Q q
@@ -108,18 +137,18 @@ nmap za %
 " Auto Commands
 " ----------------------------------------
 if has("autocmd")
-  augroup MyAutoCommands
-    " Clear the auto command group so we don't define it multiple times
-    " Idea from http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
-    autocmd!
-    " No formatting on o key newlines
-    autocmd BufNewFile,BufEnter * set formatoptions-=o
-    " No more complaining about untitled documents
-    " Autosaves when you lose focus to the window
-    autocmd FocusLost * :wa
-    au  BufRead,BufNewFile *.hpp set filetype=cpp
-    au  BufRead,BufNewFile *.vim set filetype=vim
-  augroup END
+    augroup MyAutoCommands
+        " Clear the auto command group so we don't define it multiple times
+        " Idea from http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
+        autocmd!
+        " No formatting on o key newlines
+        autocmd BufNewFile,BufEnter * set formatoptions-=o
+        " No more complaining about untitled documents
+        " Autosaves when you lose focus to the window
+        autocmd FocusLost * :wa
+        au  BufRead,BufNewFile *.hpp set filetype=cpp
+        au  BufRead,BufNewFile *.vim set filetype=vim
+    augroup END
 endif
 " ------------------------------------------------------------------------------
 "                                                                          Color
@@ -128,10 +157,23 @@ endif
 "if $TERM =~ "-256color"
 "   set t_Co=256
 "endif
+
+set background=dark
+" Solarized """""""""""""""""""
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+" let g:solarized_termtrans = 1
+" let g:solarized_termcolors=16
+colorscheme solarized
+" in solarized.vim line 256  for a darker background
+" let s:base03      = "#001216"
+
+"colorscheme pablo
+"colorscheme jellybeans
 " ------------------------------------------------------------------------------
 "                                                                          Fonts
 " ------------------------------------------------------------------------------
-set guifont=Inconsolata-dz\ for\ Powerline
+set guifont=Inconsolata-dz_for_Powerline:h11:cANSI
 let g:Powerline_symbols = 'fancy'
 " ------------------------------------------------------------------------------
 "                                                                 File Locations
@@ -140,8 +182,8 @@ set backupdir=$USERPROFILE\vimfiles\backup " Double // causes backups to use ful
 set directory=$USERPROFILE\vimfiles\tmp
 " Persistent Undo
 if has('persistent_undo')
-  set undofile
-  set undodir=$USERPROFILE\vimfiles\undo
+    set undofile
+    set undodir=$USERPROFILE\vimfiles\undo
 endif
 " ------------------------------------------------------------------------------
 "                                                                             UI
@@ -156,14 +198,14 @@ set cmdheight=2    " Make the command area two lines high
 set noshowmode     " Don't show the mode since Powerline shows it
 set title          " Set the title of the window in the terminal to the file
 if exists('+colorcolumn')
-  set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
+    set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
 endif
 " Disable tooltips for hovering keywords in Vim
 if exists('+ballooneval')
-  " This doesn't seem to stop tooltips for Ruby files
-  set noballooneval
-  " 100 second delay seems to be the only way to disable the tooltips
-  set balloondelay=100000
+    " This doesn't seem to stop tooltips for Ruby files
+    set noballooneval
+    " 100 second delay seems to be the only way to disable the tooltips
+    set balloondelay=100000
 endif
 "remove gui bars
 set guioptions -=m "menubar"
@@ -197,6 +239,9 @@ set ttyfast
 set ssop=buffers,folds,resize,sesdir,tabpages,winpos,winsize
 " Better complete options to speed it up
 set complete=.,w,b,u,U
+" Dont save options in sessions
+" set sessionoptions-=options
+" set sessionoptions-=winsize
 " ------------------------------------------------------------------------------
 "                                                                    Text Format
 " ------------------------------------------------------------------------------
@@ -217,8 +262,8 @@ set smartcase  " Non-case sensitive search
 set incsearch  " Incremental search
 set hlsearch   " Highlight search results
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,*.zip,*.aux
-  \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc,*/node_modules/*,*.swp,
-  \rake-pipeline-*,*.exe,*.zip
+            \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc,*/node_modules/*,*.swp,
+            \rake-pipeline-*,*.exe,*.zip
 " ------------------------------------------------------------------------------
 "                                                                         Visual
 " ------------------------------------------------------------------------------
@@ -231,7 +276,7 @@ set list
 " Reset the listchars
 set listchars=""
 " make tabs visible
-set listchars=tab:▸▸
+set listchars=tab:>-
 " show trailing spaces as dots
 set listchars+=trail:•
 " The character to show in the last column when wrap is off and the line
@@ -323,7 +368,7 @@ nnoremap <silent> <leader>spe :set spell!<CR>
 " Replace placeholders <+...+>
 "nnoremap <silent> <Leader>ph /<+.\{-1,}+><cr>c/+>/e<cr>
 " Format the entire file
-nnoremap <leader>fef mx=ggG='x
+nnoremap <leader>fef mx=ggG='x<Bar>:FixWhitespace<CR>
 " Split window vertically or horizontally *and* switch to the new split!
 nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>
 nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
@@ -364,10 +409,6 @@ vnoremap K k
 "                                                          Plugins Configuration
 " ------------------------------------------------------------------------------
 
-" Jellybeans
-set background=dark
-colorscheme pablo
-
 "Ctrl-P """"""""""""""""""""""""""""""""""""""
 " Ensure Ctrl-P isn't bound by default
 let g:ctrlp_map = ''
@@ -382,10 +423,10 @@ let g:ctrlp_clear_cache_on_exit = 0
 " Leader Commands
 nnoremap <leader>cp :CtrlP<CR>
 if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
-  " @ethanmuller
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
+    " @ethanmuller
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 "Enable cmatcher plugin (must be installed externally)
 "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
@@ -396,7 +437,7 @@ nnoremap <Leader>gca :Gcommit -a -v<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gp :Git push<CR>
- " Mnemonic, gu = Git Update
+" Mnemonic, gu = Git Update
 nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 " Start git command
@@ -413,12 +454,15 @@ command! Gcundo :Git reset HEAD~1
 " GitGutter """"""""""""""""
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
-let g:gitgutter_sign_added = '➕'
-let g:gitgutter_sign_removed = '➖'
-let g:gitgutter_sign_modified = '≈'
+let g:gitgutter_async=0
+nmap <Leader>hn <Plug>GitGutterNextHunk
+nmap <Leader>hN <Plug>GitGutterPrevHunk
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterUndoHunk
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 " AirLine """""""""""""""""""""""""""""""""""""
-"let g:airline_theme = 'jellybeans'
+let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
 let g:airline_inactive_collapse = 1
@@ -433,8 +477,9 @@ let g:airline#extensiona#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
 " Indent Guides """"""""""""""""
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
+" let g:indent_guides_start_level=2
+" let g:indent_guides_guide_size=1
+let g:indent_guides_enable_on_vim_startup = 1
 
 " UltiSnips """""""""""""""""""""""""
 let g:UltiSnipsSnippetDirectories=["CustomUltiSnips"]
@@ -454,6 +499,7 @@ let g:startify_skiplist = [
             \ ]
 let g:startify_files_number = 8
 let g:startify_change_to_dir = 1
+let g:startify_session_persistence = 0
 let g:startify_session_autoload = 0
 let g:startify_enable_special  = 1
 hi StartifyFooter  ctermfg=171
@@ -461,32 +507,33 @@ hi StartifyHeader  ctermfg=152
 hi StartifySlash   ctermfg=224
 hi StartifyNumber  ctermfg=26
 let g:startify_recursive_dir = 1
-let g:startify_custom_footer =
-      \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
+"let g:startify_custom_footer =
+""     \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
 let g:startify_custom_header = [
-      \'        ________ ++     ________      ',
-      \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
-      \'       \VVVVVVVV/++++++\VVVVVVVV/     ',
-      \'        |VVVVVV|++++++++/VVVVV/''     ',
-      \'        |VVVVVV|++++++/VVVVV/''       ',
-      \'       +|VVVVVV|++++/VVVVV/''+        ',
-      \'     +++|VVVVVV|++/VVVVV/''+++++      ',
-      \'   +++++|VVVVVV|/VVV___++++++++++     ',
-      \'     +++|VVVVVVVVVV/##/ +_+_+_+_      ',
-      \'       +|VVVVVVVVV___ +/#_#,#_#,\     ',
-      \'        |VVVVVVV//##/+/#/+/#/''/#/    ',
-      \'        |VVVVV/''+/#/+/#/+/#/ /#/     ',
-      \'        |VVV/''++/#/+/#/ /#/ /#/      ',
-      \'        ''V/''  /##//##//##//###/     ',
-      \'                 ++                   ',
-      \'                 ''                   ',
-      \]
+            \'        ________ ++     ________      ',
+            \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
+            \'       \VVVVVVVV/++++++\VVVVVVVV/     ',
+            \'        |VVVVVV|++++++++/VVVVV/''     ',
+            \'        |VVVVVV|++++++/VVVVV/''       ',
+            \'       +|VVVVVV|++++/VVVVV/''+        ',
+            \'     +++|VVVVVV|++/VVVVV/''+++++      ',
+            \'   +++++|VVVVVV|/VVV___++++++++++     ',
+            \'     +++|VVVVVVVVVV/##/ +_+_+_+_      ',
+            \'       +|VVVVVVVVV___ +/#_#,#_#,\     ',
+            \'        |VVVVVVV//##/+/#/+/#/''/#/    ',
+            \'        |VVVVV/''+/#/+/#/+/#/ /#/     ',
+            \'        |VVV/''++/#/+/#/ /#/ /#/      ',
+            \'        ''V/''  /##//##//##//###/     ',
+            \'                 ++                   ',
+            \'                 ''                   ',
+            \]
 
 nnoremap <leader>ss :SSave
 nnoremap <leader>sl :SLoad
 nnoremap <leader>sd :SDelete
 nnoremap <leader>sc :SClose
 nnoremap <leader>st :only<CR><bar>:tabonly<CR><bar>:Startify<CR>
+" let g:startify_session_remove_lines = ['winwidth', 'winheight']
 
 "" Anzu """"""""""""""
 nmap n <Plug>(anzu-n-with-echo)
@@ -495,48 +542,50 @@ nmap # <Plug>(anzu-sharp-with-echo)
 let g:airline#extensions#anzu#enabled = 1
 
 " YouCompleteMe """""""""""""""
-" let g:ycm_complete_in_comments = 1
-" let g:ycm_seed_identifiers_with_syntax = 1
-" let g:ycm_collect_identifiers_from_comments_and_strings = 1
-" let g:ycm_collect_identifiers_from_tags_files = 1
-" let g:ycm_error_symbol = '✘'
-" let g:ycm_warning_symbol = '❗'
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_error_symbol = '✘'
+let g:ycm_warning_symbol = '❗'
 " let g:ycm_key_invoke_completion= '<leader>tc'
-" " let g:ycm_global_ycm_extra_conf = '~/.vim/'
-" let g:ycm_confirm_extra_conf = 0
-" let g:ycm_goto_buffer_command = 'vertical-split'
-" nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
-" nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
+" let g:ycm_global_ycm_extra_conf = '~/.vim/'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_goto_buffer_command = 'vertical-split'
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
+nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
 " let g:ycm_semantic_triggers = {
 " \   'roslaunch' : ['="', '$(', '/'],
 " \   'rosmsg,rossrv,rosaction' : ['re!^'],
 " \ }
-" let g:ycm_autoclose_preview_window_after_insertion = 1
+set completeopt+=menu,menuone,preview
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_disable_for_files_larger_than_kb=0
 
 " Switch """""""""""
 let g:switch_mapping = '<leader>-'
 let g:switch_custom_definitions =
-      \[
-      \ ['read', 'write'],
-      \ ['Read', 'Write'],
-      \ ['left', 'right'],
-      \ ['Left', 'Right'],
-      \ ['on', 'off'],
-      \ ['On', 'Off'],
-      \ ['up', 'down'],
-      \ ['Up', 'Down'],
-      \ ['in', 'out'],
-      \ ['In', 'Out'],
-      \ ['x', 'y', 'z'],
-      \ ['Q1', 'Q2', 'Q3', 'Q4'],
-      \ ['q1', 'q2', 'q3', 'q4'],
-      \ ['X', 'Y', 'Z'],
-      \ ['pick', 'squash', 'fixup', 'reword', 'edit', 'exec'],
-    \['false', 'true'],
-    \['False', 'True'],
-    \['FALSE', 'TRUE'],
-      \]
+            \[
+            \ ['read', 'write'],
+            \ ['Read', 'Write'],
+            \ ['left', 'right'],
+            \ ['Left', 'Right'],
+            \ ['on', 'off'],
+            \ ['On', 'Off'],
+            \ ['up', 'down'],
+            \ ['Up', 'Down'],
+            \ ['in', 'out'],
+            \ ['In', 'Out'],
+            \ ['x', 'y', 'z'],
+            \ ['Q1', 'Q2', 'Q3', 'Q4'],
+            \ ['q1', 'q2', 'q3', 'q4'],
+            \ ['X', 'Y', 'Z'],
+            \ ['pick', 'squash', 'fixup', 'reword', 'edit', 'exec'],
+            \['false', 'true'],
+            \['False', 'True'],
+            \['FALSE', 'TRUE'],
+            \]
 
 " Undotree """"""""""""""""
 let g:undotree_WindowLayout = 2
@@ -546,21 +595,20 @@ nnoremap <leader>u :UndotreeToggle<cr>
 nnoremap <leader>tb :TagbarToggle<CR>
 let g:tagbar_ctags_bin = 'E:\Software Development\ctags58\ctags.exe'
 let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
+            \ 'ctagstype': 'markdown',
+            \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
+            \ 'ctagsargs' : '-f - --sort=yes',
+            \ 'kinds' : [
+            \ 's:sections',
+            \ 'i:images'
+            \ ],
+            \ 'sro' : '|',
+            \ 'kind2scope' : {
+            \ 's' : 'section',
+            \ },
+            \ 'sort': 0,
+            \ }
 let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
 
 " Cpp enanched highlight """""""""""""
 let g:cpp_class_scope_highlight = 1
@@ -574,19 +622,20 @@ nnoremap <silent><leader>cb :TCommentBlock<CR>
 vnoremap <silent><leader>cb :TCommentBlock<CR>
 
 " muComplete """""""""""""""""""""""""""
-set noshowmode shortmess+=c
-setl infercase
-setl completeopt-=preview
-setl completeopt+=menu,menuone
-let g:mucomplete#enable_auto_at_startup = 1
-
-let g:mucomplete#chains = {}
-let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
-let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
-
-let g:mucomplete#trigger_auto_pattern = {}
-let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
-let g:mucomplete#trigger_auto_pattern.cpp     = '\k\k$'
+" set noshowmode shortmess+=c
+" setl infercase
+" setl completeopt-=preview
+" setl completeopt+=menu,menuone
+" let g:mucomplete#enable_auto_at_startup = 1
+"
+" let g:mucomplete#chains = {}
+" let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
+" let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
+" let g:mucomplete#chains.cpp = ['tags', 'omni', 'keyn', 'file']
+"
+" let g:mucomplete#trigger_auto_pattern = {}
+" let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
+" let g:mucomplete#trigger_auto_pattern.cpp     = '\a$'
 
 " GoldenView """""""""""""""""""""
 let g:goldenview__enable_default_mapping = 0
@@ -602,3 +651,55 @@ nmap <silent> <leader>s    <Plug>GoldenViewSplit
 " camelCase (crc)
 " snake_case (crs)
 " UPPER_CASE (cru)
+
+" Easytags
+let g:easytags_cmd = 'E:\Software Development\ctags58\ctags.exe'
+let g:easytags_file='$HOME\vimfiles\tagfile'
+set tags+=$USERPROFILE\vimfiles\tagfile
+
+" Tabular
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+" Auto align on = sign when typing
+inoremap <silent> = =<Esc>:call <SID>ealign()<CR>a
+function! s:ealign()
+    let p = '^.*=\s.*$'
+    if exists(':Tabularize') && getline('.') =~# '^.*=' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^=]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*=\s*\zs.*'))
+        Tabularize/=/l1
+        normal! 0
+        call search(repeat('[^=]*=',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
+endfunction
+
+" Vim Signature """""""""""""
+"   mx           Toggle mark 'x' and display it in the leftmost column
+"   dmx          Remove mark 'x' where x is a-zA-Z
+"
+"   m,           Place the next available mark
+"   m.           If no mark on line, place the next available mark. Otherwise, remove (first) existing mark.
+"   m-           Delete all marks from the current line
+"   m<Space>     Delete all marks from the current buffer
+"   ]`           Jump to next mark
+"   [`           Jump to prev mark
+"   ]'           Jump to start of next line containing a mark
+"   ['           Jump to start of prev line containing a mark
+"   `]           Jump by alphabetical order to next mark
+"   `[           Jump by alphabetical order to prev mark
+"   ']           Jump by alphabetical order to start of next line having a mark
+"   '[           Jump by alphabetical order to start of prev line having a mark
+"   m/           Open location list and display marks from current buffer
+"
+"   m[0-9]       Toggle the corresponding marker !@#$%^&*()
+"   m<S-[0-9]>   Remove all markers of the same type
+"   ]-           Jump to next line having a marker of the same type
+"   [-           Jump to prev line having a marker of the same type
+"   ]=           Jump to next line having a marker of any type
+"   [=           Jump to prev line having a marker of any type
+"   m?           Open location list and display markers from current buffer
+"   m<BS>        Remove all markers

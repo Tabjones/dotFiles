@@ -27,6 +27,8 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
 "Plug 'nanotech/jellybeans.vim'
 Plug 'zhaocai/GoldenView.Vim'
 "Plug 'lifepillar/vim-mucomplete'
@@ -75,6 +77,14 @@ Plug 'tpope/vim-sensible'
 
 Plug 'tpope/vim-abolish'
 
+Plug 'tpope/vim-repeat'
+
+Plug 'xolox/vim-misc'
+
+Plug 'xolox/vim-easytags'
+
+" Plug 'scrooloose/syntastic'
+
 call plug#end()
 
 "-------------------------------------------------------------------------------
@@ -95,8 +105,8 @@ set ff=unix
 " No 'Press Any Key to Contiue BS'
 " from: http://vim.wikia.com/wiki/Avoiding_the_%22Hit_ENTER_to_continue%22_prompts
 command! -nargs=1 SilentCmd
-\ | execute ':silent !'.<q-args>
-\ | execute ':redraw!'
+            \ | execute ':silent !'.<q-args>
+            \ | execute ':redraw!'
 " Fixes common typos
 command! W w
 command! Q q
@@ -106,18 +116,18 @@ nmap za %
 " Auto Commands
 " ----------------------------------------
 if has("autocmd")
-  augroup MyAutoCommands
-    " Clear the auto command group so we don't define it multiple times
-    " Idea from http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
-    autocmd!
-    " No formatting on o key newlines
-    autocmd BufNewFile,BufEnter * set formatoptions-=o
-    " No more complaining about untitled documents
-    " Autosaves when you lose focus to the window
-    autocmd FocusLost * :wa
-    au  BufRead,BufNewFile *.hpp set filetype=cpp
-    au  BufRead,BufNewFile *.vim set filetype=vim
-  augroup END
+    augroup MyAutoCommands
+        " Clear the auto command group so we don't define it multiple times
+        " Idea from http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
+        autocmd!
+        " No formatting on o key newlines
+        autocmd BufNewFile,BufEnter * set formatoptions-=o
+        " No more complaining about untitled documents
+        " Autosaves when you lose focus to the window
+        autocmd FocusLost * :wa
+        au  BufRead,BufNewFile *.hpp set filetype=cpp
+        au  BufRead,BufNewFile *.vim set filetype=vim
+    augroup END
 endif
 " ------------------------------------------------------------------------------
 "                                                                          Color
@@ -138,8 +148,8 @@ set backupdir=$HOME/.vim/backup// " Double // causes backups to use full file pa
 set directory=$HOME/.vim/tmp//
 " Persistent Undo
 if has('persistent_undo')
-  set undofile
-  set undodir=$HOME/.vim/undo//
+    set undofile
+    set undodir=$HOME/.vim/undo//
 endif
 " ------------------------------------------------------------------------------
 "                                                                             UI
@@ -154,14 +164,14 @@ set cmdheight=2    " Make the command area two lines high
 set noshowmode     " Don't show the mode since Powerline shows it
 set title          " Set the title of the window in the terminal to the file
 if exists('+colorcolumn')
-  set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
+    set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
 endif
 " Disable tooltips for hovering keywords in Vim
 if exists('+ballooneval')
-  " This doesn't seem to stop tooltips for Ruby files
-  set noballooneval
-  " 100 second delay seems to be the only way to disable the tooltips
-  set balloondelay=100000
+    " This doesn't seem to stop tooltips for Ruby files
+    set noballooneval
+    " 100 second delay seems to be the only way to disable the tooltips
+    set balloondelay=100000
 endif
 "remove gui bars
 set guioptions -=m "menubar"
@@ -215,8 +225,8 @@ set smartcase  " Non-case sensitive search
 set incsearch  " Incremental search
 set hlsearch   " Highlight search results
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,*.zip,*.aux
-  \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc,*/node_modules/*,*.swp,
-  \rake-pipeline-*,*.exe,*.zip
+            \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc,*/node_modules/*,*.swp,
+            \rake-pipeline-*,*.exe,*.zip
 " ------------------------------------------------------------------------------
 "                                                                         Visual
 " ------------------------------------------------------------------------------
@@ -380,10 +390,10 @@ let g:ctrlp_clear_cache_on_exit = 0
 " Leader Commands
 nnoremap <leader>cp :CtrlP<CR>
 if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
-  " @ethanmuller
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
+    " @ethanmuller
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 "Enable cmatcher plugin (must be installed externally)
 "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
@@ -394,7 +404,7 @@ nnoremap <Leader>gca :Gcommit -a -v<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gp :Git push<CR>
- " Mnemonic, gu = Git Update
+" Mnemonic, gu = Git Update
 nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 " Start git command
@@ -443,8 +453,7 @@ let g:UltiSnipsListSnippets="<leader><tab>"
 
 "Startify """"""""""""""""""""
 let g:startify_bookmarks = [
-            \'$HOME/.vim/',
-            \'E:\Software Development',
+            \'/mnt/e/Software\ Development/',
             \ ]
 let g:startify_skiplist = [
             \ 'COMMIT_EDITMSG',
@@ -460,31 +469,32 @@ hi StartifySlash   ctermfg=224
 hi StartifyNumber  ctermfg=26
 let g:startify_recursive_dir = 1
 let g:startify_custom_footer =
-      \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
+            \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
 let g:startify_custom_header = [
-      \'        ________ ++     ________      ',
-      \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
-      \'       \VVVVVVVV/++++++\VVVVVVVV/     ',
-      \'        |VVVVVV|++++++++/VVVVV/''     ',
-      \'        |VVVVVV|++++++/VVVVV/''       ',
-      \'       +|VVVVVV|++++/VVVVV/''+        ',
-      \'     +++|VVVVVV|++/VVVVV/''+++++      ',
-      \'   +++++|VVVVVV|/VVV___++++++++++     ',
-      \'     +++|VVVVVVVVVV/##/ +_+_+_+_      ',
-      \'       +|VVVVVVVVV___ +/#_#,#_#,\     ',
-      \'        |VVVVVVV//##/+/#/+/#/''/#/    ',
-      \'        |VVVVV/''+/#/+/#/+/#/ /#/     ',
-      \'        |VVV/''++/#/+/#/ /#/ /#/      ',
-      \'        ''V/''  /##//##//##//###/     ',
-      \'                 ++                   ',
-      \'                 ''                   ',
-      \]
+            \'        ________ ++     ________      ',
+            \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
+            \'       \VVVVVVVV/++++++\VVVVVVVV/     ',
+            \'        |VVVVVV|++++++++/VVVVV/''     ',
+            \'        |VVVVVV|++++++/VVVVV/''       ',
+            \'       +|VVVVVV|++++/VVVVV/''+        ',
+            \'     +++|VVVVVV|++/VVVVV/''+++++      ',
+            \'   +++++|VVVVVV|/VVV___++++++++++     ',
+            \'     +++|VVVVVVVVVV/##/ +_+_+_+_      ',
+            \'       +|VVVVVVVVV___ +/#_#,#_#,\     ',
+            \'        |VVVVVVV//##/+/#/+/#/''/#/    ',
+            \'        |VVVVV/''+/#/+/#/+/#/ /#/     ',
+            \'        |VVV/''++/#/+/#/ /#/ /#/      ',
+            \'        ''V/''  /##//##//##//###/     ',
+            \'                 ++                   ',
+            \'                 ''                   ',
+            \]
 
 nnoremap <leader>ss :SSave
 nnoremap <leader>sl :SLoad
 nnoremap <leader>sd :SDelete
 nnoremap <leader>sc :SClose
 nnoremap <leader>st :only<CR><bar>:tabonly<CR><bar>:Startify<CR>
+set sessionoptions="buffers,curdir,globals,tabpages,slash,unix"
 
 "" Anzu """"""""""""""
 nmap n <Plug>(anzu-n-with-echo)
@@ -495,46 +505,48 @@ let g:airline#extensions#anzu#enabled = 1
 " YouCompleteMe """""""""""""""
 let g:ycm_complete_in_comments = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_error_symbol = '✘'
 let g:ycm_warning_symbol = '❗'
-let g:ycm_key_invoke_completion= '<leader>tc'
+" let g:ycm_key_invoke_completion= '<leader>tc'
 " let g:ycm_global_ycm_extra_conf = '~/.vim/'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_goto_buffer_command = 'vertical-split'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
 nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_semantic_triggers = {
-\   'roslaunch' : ['="', '$(', '/'],
-\   'rosmsg,rossrv,rosaction' : ['re!^'],
-\ }
+" let g:ycm_semantic_triggers = {
+" \   'roslaunch' : ['="', '$(', '/'],
+" \   'rosmsg,rossrv,rosaction' : ['re!^'],
+" \ }
+set completeopt+=menu,menuone,preview
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_disable_for_files_larger_than_kb=0
 
 " Switch """""""""""
 let g:switch_mapping = '<leader>-'
 let g:switch_custom_definitions =
-      \[
-      \ ['read', 'write'],
-      \ ['Read', 'Write'],
-      \ ['left', 'right'],
-      \ ['Left', 'Right'],
-      \ ['on', 'off'],
-      \ ['On', 'Off'],
-      \ ['up', 'down'],
-      \ ['Up', 'Down'],
-      \ ['in', 'out'],
-      \ ['In', 'Out'],
-      \ ['x', 'y', 'z'],
-      \ ['Q1', 'Q2', 'Q3', 'Q4'],
-      \ ['q1', 'q2', 'q3', 'q4'],
-      \ ['X', 'Y', 'Z'],
-      \ ['pick', 'squash', 'fixup', 'reword', 'edit', 'exec'],
-    \['false', 'true'],
-    \['False', 'True'],
-    \['FALSE', 'TRUE'],
-      \]
+            \[
+            \ ['read', 'write'],
+            \ ['Read', 'Write'],
+            \ ['left', 'right'],
+            \ ['Left', 'Right'],
+            \ ['on', 'off'],
+            \ ['On', 'Off'],
+            \ ['up', 'down'],
+            \ ['Up', 'Down'],
+            \ ['in', 'out'],
+            \ ['In', 'Out'],
+            \ ['x', 'y', 'z'],
+            \ ['Q1', 'Q2', 'Q3', 'Q4'],
+            \ ['q1', 'q2', 'q3', 'q4'],
+            \ ['X', 'Y', 'Z'],
+            \ ['pick', 'squash', 'fixup', 'reword', 'edit', 'exec'],
+            \['false', 'true'],
+            \['False', 'True'],
+            \['FALSE', 'TRUE'],
+            \]
 
 " Undotree """"""""""""""""
 let g:undotree_WindowLayout = 2
@@ -543,19 +555,19 @@ nnoremap <leader>u :UndotreeToggle<cr>
 " TagBar """"""""""""""""""""""""""""""
 nnoremap <leader>tb :TagbarToggle<CR>
 let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
+            \ 'ctagstype': 'markdown',
+            \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
+            \ 'ctagsargs' : '-f - --sort=yes',
+            \ 'kinds' : [
+            \ 's:sections',
+            \ 'i:images'
+            \ ],
+            \ 'sro' : '|',
+            \ 'kind2scope' : {
+            \ 's' : 'section',
+            \ },
+            \ 'sort': 0,
+            \ }
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 
