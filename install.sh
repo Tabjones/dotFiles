@@ -16,28 +16,45 @@ fail () {
   exit
 }
 
-info 'Backup old dotfiles'
-info '==================='
-mv ${HOME}/.vim ${HOME}/dotFiles/backup/dotVim -f
-mv ${HOME}/.vimrc ${HOME}/dotFiles/backup/dotVimrc -f
-mv ${HOME}/.gvimrc ${HOME}/dotFiles/backup/dotGVimrc -f
-mv ${HOME}/.gitconfig ${HOME}/dotFiles/backup/dotGitconfig -f
-mv ${HOME}/.zshrc ${HOME}/dotFiles/backup/dotZshrc -f
+#preliminary install
+info 'Installing necessary packages'
+info '============================='
+sudo apt-get install -y build-essential cmake curl dos2unix fortune cowsay git gitg openssh-client opensse-server python python3 vim
 
 info 'Setting up Symlinks in HOME'
 info '==========================='
 ln -sfn ${HOME}/dotFiles/vim ${HOME}/.vim
 ln -sf ${HOME}/dotFiles/vim/vimrc ${HOME}/.vimrc
-ln -sf ${HOME}/dotFiles/vim/gvimrc ${HOME}/.gvimrc
+ln -sf ${HOME}/dotFiles/bash/bashrc ${HOME}/.bashrc
+ln -sf ${HOME}/dotFiles/bash/bash_alias ${HOME}/.bash_alias
+ln -sf ${HOME}/dotFiles/bash/bash_custom ${HOME}/.bash_custom
 ln -sf ${HOME}/dotFiles/git/gitconfig ${HOME}/.gitconfig
-cp -f ${HOME}/dotFiles/zsh/zshrc ${HOME}/.zshrc
 success ' '
 
 #Vim
-cd ${HOME}/.vim
-./scripts/setup.sh
+echo ''
+info 'Setting up Vim Configuration'
+info '============================'
+echo ''
 
-cd ${HOME}/dotFiles/zsh
-./setup.sh
+info 'Installing Vim-Plug'
+info '-------------------'
+curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+success ' '
 
-cd  ..
+info 'Installing SilverSearcher and Exuberant CTags'
+info '---------------------------------------------'
+sudo apt-get install -y silversearcher-ag exuberant-ctags
+success ' '
+
+info 'Installing Plugins'
+info '------------------'
+info '(Ignore Vim errors)'
+if test $(which vim)
+then
+  vim +PlugInstall +qall
+else
+  fail 'vim not found in path.'
+fi
+success ' '
+
