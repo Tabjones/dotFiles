@@ -34,10 +34,6 @@
     whitespace = red reverse
 [help]
     autocorrect = 1
-[url "git@github.com:"]
-    insteadOf = https://github.com/
-[url "git@gitlab.com:"]
-    insteadOf = https://gitlab.com/
 [pull]
     rebase = true
 [core]
