@@ -26,17 +26,7 @@
 " Set all plugins.
 call plug#begin('~/.vim/plugged')
 
-Plug 'Valloric/YouCompleteMe'
-
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-
-Plug 'altercation/vim-colors-solarized'
-
-Plug 'nanotech/jellybeans.vim'
-
-Plug 'zhaocai/GoldenView.Vim'
-
-"Plug 'lifepillar/vim-mucomplete'
+Plug 'lifepillar/vim-mucomplete'
 
 Plug 'SirVer/ultisnips'
 
@@ -50,21 +40,15 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-vinegar'
 
-Plug 'ctrlpvim/ctrlp.vim'
-
 Plug 'airblade/vim-gitgutter'
 
 Plug 'tomtom/tcomment_vim'
 
 Plug 'tpope/vim-surround'
 
-Plug 'majutsushi/tagbar'
-
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'Raimondi/delimitMate'
-
-Plug 'mhinz/vim-startify'
 
 Plug 'tpope/vim-endwise'
 
@@ -78,27 +62,13 @@ Plug 'AndrewRadev/switch.vim'
 
 Plug 'gabrielelana/vim-markdown'
 
-Plug 'octol/vim-cpp-enhanced-highlight'
-
-" Plug 'tpope/vim-sensible'
-
 Plug 'tpope/vim-abolish'
 
 Plug 'tpope/vim-repeat'
 
 Plug 'xolox/vim-misc'
 
-Plug 'xolox/vim-easytags'
-
-Plug 'scrooloose/syntastic'
-
-Plug 'pangloss/vim-javascript'
-
-Plug 'godlygeek/tabular'
-
 Plug 'bronson/vim-trailing-whitespace'
-
-Plug 'kshenoy/vim-signature'
 
 Plug 'chiel92/vim-autoformat'
 
@@ -110,10 +80,8 @@ call plug#end()
 "Be (Im)proved!
 set nocompatible
 filetype plugin indent on
-" set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 syntax enable
-"set lines=9999 columns=9999
-"au GUIEnter * simalt ~x
 " ------------------------------------------------------------------------------
 "                                                                       Commands
 " ------------------------------------------------------------------------------
@@ -152,22 +120,9 @@ endif
 "if $TERM =~ "-256color"
 "   set t_Co=256
 "endif
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-" let g:solarized_termtrans = 1
-" let g:solarized_termcolors=16
-colorscheme solarized
-" in solarized.vim line 256  for a darker background
-" let s:base03      = "#001216"
 
 set background=dark
-"colorscheme pablo
-"colorscheme jellybeans
-" ------------------------------------------------------------------------------
-"                                                                          Fonts
-" ------------------------------------------------------------------------------
-set guifont=Inconsolata-g for Powerline Medium 11
-let g:Powerline_symbols = 'fancy'
+colorscheme pablo
 " ------------------------------------------------------------------------------
 "                                                                 File Locations
 " ------------------------------------------------------------------------------
@@ -200,12 +155,6 @@ if exists('+ballooneval')
     " 100 second delay seems to be the only way to disable the tooltips
     set balloondelay=100000
 endif
-"remove gui bars
-set guioptions -=m "menubar"
-set guioptions -=T "Toolbar"
-set guioptions -=r "right scrollbar"
-set guioptions -=L "Left scrollbar"
-set guioptions -=b "bottom scrollbar"
 " ------------------------------------------------------------------------------
 "                                                                      Behaviors
 " ------------------------------------------------------------------------------
@@ -217,7 +166,6 @@ set history=10000      " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
-" set timeoutlen=450     " Time to wait for a command (after leader for example).
 set ttimeout
 set ttimeoutlen=100    " Time to wait for a command (after leader for example).
 set nofoldenable       " Disable folding entirely.
@@ -243,7 +191,7 @@ set cindent
 set autoindent
 set smarttab
 set expandtab
-"set formatprg=par\ -w80         "par formatting
+set formatprg=par\ -w80         "par formatting
 " ------------------------------------------------------------------------------
 "                                                                      Searching
 " ------------------------------------------------------------------------------
@@ -266,7 +214,7 @@ set list
 " Reset the listchars
 set listchars=""
 " make tabs visible
-set listchars=tab:▸▸
+set listchars=tab:>-
 " show trailing spaces as dots
 set listchars+=trail:•
 " The character to show in the last column when wrap is off and the line
@@ -369,8 +317,8 @@ nnoremap <silent> <Leader>wq :wqall<CR>
 " Save everything
 nnoremap <silent> <Leader>ww :wall<CR>
 " Par reformatting
-"map <leader>par {v}!par -jw80<CR>
-"vmap <leader>par !par -jw80<CR>
+map <leader>par {v}!par -jw80<CR>
+vmap <leader>par !par -jw80<CR>
 " Cut/Copy/Paste to system clipboard
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -398,28 +346,6 @@ vnoremap K k
 " ------------------------------------------------------------------------------
 "                                                          Plugins Configuration
 " ------------------------------------------------------------------------------
-
-"Ctrl-P """"""""""""""""""""""""""""""""""""""
-" Ensure Ctrl-P isn't bound by default
-" let g:ctrlp_map = ''
-" " Ensure max height isn't too large. (for performance)
-" let g:ctrlp_max_height = 10
-" " Fix new windows opening in split from startify
-" let g:ctrlp_reuse_window = 'startify\|netrw\|help\|quickfix'
-" let g:ctrlp_mruf_max = 350
-" let g:ctrlp_mruf_default_order = 0
-" let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_clear_cache_on_exit = 0
-" Leader Commands
-" nnoremap <leader>cp :CtrlP<CR>
-" if executable('ag')
-"     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-"     " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
-"     " @ethanmuller
-"     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" endif
-"Enable cmatcher plugin (must be installed externally)
-"let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 "Fugitive """""""""""""""""""""""""""""""""""""
 nnoremap <Leader>gc :Gcommit -v<CR>
@@ -455,12 +381,12 @@ nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 " AirLine """""""""""""""""""""""""""""""""""""
 let g:airline_theme = 'jellybeans'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_detect_modified = 1
 let g:airline_inactive_collapse = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#hunks#enabled = 1
 let g:airline_exclude_preview = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 0
 let g:airline#extensions#default#section_truncate_width = {}
@@ -469,8 +395,6 @@ let g:airline#extensiona#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
 " Indent Guides """"""""""""""""
-" let g:indent_guides_start_level=2
-" let g:indent_guides_guide_size=1
 let g:indent_guides_enable_on_vim_startup = 1
 
 " UltiSnips """""""""""""""""""""""""
@@ -480,78 +404,11 @@ let g:UltiSnipsJumpForwardTrigger="<leader>j"
 let g:UltiSnipsJumpBackwardTrigger="<leader>k"
 let g:UltiSnipsListSnippets="<leader><tab>"
 
-"Startify """"""""""""""""""""
-let g:startify_bookmarks = [
-            \'$HOME',
-            \ ]
-let g:startify_skiplist = [
-            \ 'COMMIT_EDITMSG',
-            \ $VIMRUNTIME .'/doc',
-            \ ]
-let g:startify_files_number = 8
-let g:startify_change_to_dir = 1
-let g:startify_session_autoload = 0
-let g:startify_enable_special  = 1
-hi StartifyFooter  ctermfg=171
-hi StartifyHeader  ctermfg=152
-hi StartifySlash   ctermfg=224
-hi StartifyNumber  ctermfg=26
-let g:startify_recursive_dir = 1
-let g:startify_custom_footer =
-            \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
-let g:startify_custom_header = [
-            \'        ________ ++     ________      ',
-            \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
-            \'       \VVVVVVVV/++++++\VVVVVVVV/     ',
-            \'        |VVVVVV|++++++++/VVVVV/''     ',
-            \'        |VVVVVV|++++++/VVVVV/''       ',
-            \'       +|VVVVVV|++++/VVVVV/''+        ',
-            \'     +++|VVVVVV|++/VVVVV/''+++++      ',
-            \'   +++++|VVVVVV|/VVV___++++++++++     ',
-            \'     +++|VVVVVVVVVV/##/ +_+_+_+_      ',
-            \'       +|VVVVVVVVV___ +/#_#,#_#,\     ',
-            \'        |VVVVVVV//##/+/#/+/#/''/#/    ',
-            \'        |VVVVV/''+/#/+/#/+/#/ /#/     ',
-            \'        |VVV/''++/#/+/#/ /#/ /#/      ',
-            \'        ''V/''  /##//##//##//###/     ',
-            \'                 ++                   ',
-            \'                 ''                   ',
-            \]
-
-nnoremap <leader>ss :SSave
-nnoremap <leader>sl :SLoad
-nnoremap <leader>sd :SDelete
-nnoremap <leader>sc :SClose
-nnoremap <leader>st :only<CR><bar>:tabonly<CR><bar>:Startify<CR>
-" set sessionoptions="buffers,curdir,globals,tabpages,slash,unix"
-
 "" Anzu """"""""""""""
 nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
 let g:airline#extensions#anzu#enabled = 1
-
-" YouCompleteMe """""""""""""""
-let g:ycm_complete_in_comments = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_error_symbol = '✘'
-let g:ycm_warning_symbol = '❗'
-" let g:ycm_key_invoke_completion= '<leader>tc'
-" let g:ycm_global_ycm_extra_conf = '~/.vim/'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_goto_buffer_command = 'vertical-split'
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
-nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
-" let g:ycm_semantic_triggers = {
-" \   'roslaunch' : ['="', '$(', '/'],
-" \   'rosmsg,rossrv,rosaction' : ['re!^'],
-" \ }
-set completeopt+=menu,menuone,preview
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_disable_for_files_larger_than_kb=0
 
 " Switch """""""""""
 let g:switch_mapping = '<leader>-'
@@ -581,29 +438,6 @@ let g:switch_custom_definitions =
 let g:undotree_WindowLayout = 2
 nnoremap <leader>u :UndotreeToggle<cr>
 
-" TagBar """"""""""""""""""""""""""""""
-nnoremap <leader>tb :TagbarToggle<CR>
-let g:tagbar_type_markdown = {
-            \ 'ctagstype': 'markdown',
-            \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
-            \ 'ctagsargs' : '-f - --sort=yes',
-            \ 'kinds' : [
-            \ 's:sections',
-            \ 'i:images'
-            \ ],
-            \ 'sro' : '|',
-            \ 'kind2scope' : {
-            \ 's' : 'section',
-            \ },
-            \ 'sort': 0,
-            \ }
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-
-" Cpp enanched highlight """""""""""""
-let g:cpp_class_scope_highlight = 1
-let g:cpp_experimental_template_highlight = 1
-
 " Tcomment """"""""
 let g:tcommentMaps = 0
 nnoremap <silent><leader>cc :TComment<CR>
@@ -612,25 +446,19 @@ nnoremap <silent><leader>cb :TCommentBlock<CR>
 vnoremap <silent><leader>cb :TCommentBlock<CR>
 
 " muComplete """""""""""""""""""""""""""
-" set noshowmode shortmess+=c
-" setl infercase
-" setl completeopt-=preview
-" setl completeopt+=menu,menuone
-" let g:mucomplete#enable_auto_at_startup = 1
-"
-" let g:mucomplete#chains = {}
-" let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
-" let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
-"
-" let g:mucomplete#trigger_auto_pattern = {}
-" let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
-" let g:mucomplete#trigger_auto_pattern.cpp     = '\k\k$'
+set noshowmode shortmess+=c
+setl infercase
+setl completeopt-=preview
+setl completeopt+=menu,menuone
+let g:mucomplete#enable_auto_at_startup = 1
 
-" GoldenView """""""""""""""""""""
-let g:goldenview__enable_default_mapping = 0
-nmap <silent> <leader>m    <Plug>GoldenViewSwitchMain
-nmap <silent> <leader>n    <Plug>GoldenViewNext
-nmap <silent> <leader>s    <Plug>GoldenViewSplit
+let g:mucomplete#chains = {}
+let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
+let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
+
+let g:mucomplete#trigger_auto_pattern = {}
+let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
+let g:mucomplete#trigger_auto_pattern.cpp     = '\k\k$'
 
 " Abolish """"""""""""""""""""""""""""
 " :Abolish {despa,sepe}rat{e,es,ed,ing,ely,ion,ions,or}  {despe,sepa}rat{}
@@ -640,28 +468,3 @@ nmap <silent> <leader>s    <Plug>GoldenViewSplit
 " camelCase (crc)
 " snake_case (crs)
 " UPPER_CASE (cru)
-
-" Easytags
-"let g:easytags_cmd = 'E:\Software Development\ctags58\ctags.exe'
-let g:easytags_file='$HOME/.vim/tagfile'
-set tags+=$HOME/.vim/tagfile
-
-" Tabular
-if exists(":Tabularize")
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:\zs<CR>
-    vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
-" Auto align on = sign when typing
-inoremap <silent> = =<Esc>:call <SID>ealign()<CR>a
-function! s:ealign()
-    let p = '^.*=\s.*$'
-    if exists(':Tabularize') && getline('.') =~# '^.*=' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-        let column = strlen(substitute(getline('.')[0:col('.')],'[^=]','','g'))
-        let position = strlen(matchstr(getline('.')[0:col('.')],'.*=\s*\zs.*'))
-        Tabularize/=/l1
-        normal! 0
-        call search(repeat('[^=]*=',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-    endif
-endfunction

@@ -19,7 +19,7 @@ fail () {
 #preliminary install
 info 'Installing necessary packages'
 info '============================='
-sudo apt-get install -y build-essential cmake curl dos2unix fortune cowsay git gitg openssh-client opensse-server python python3 vim
+sudo apt-get install -y build-essential par cmake curl dos2unix fortune cowsay git gitg openssh-client opensse-server python python3 vim
 
 info 'Setting up Symlinks in HOME'
 info '==========================='
