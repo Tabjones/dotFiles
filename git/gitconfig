@@ -42,4 +42,3 @@
     rebase = true
 [core]
     editor = vim
-
