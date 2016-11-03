@@ -80,7 +80,7 @@ call plug#end()
 "Be (Im)proved!
 set nocompatible
 filetype plugin indent on
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 syntax enable
 " ------------------------------------------------------------------------------
 "                                                                       Commands
@@ -449,7 +449,7 @@ vnoremap <silent><leader>cb :TCommentBlock<CR>
 set noshowmode shortmess+=c
 setl infercase
 setl completeopt-=preview
-setl completeopt+=menu,menuone
+setl completeopt+=menu,menuone,noinsert
 let g:mucomplete#enable_auto_at_startup = 1
 
 let g:mucomplete#chains = {}
