@@ -1,5 +1,5 @@
-/usr/bin/keychain $HOME/.ssh/orion_github
-/usr/bin/keychain $HOME/.ssh/orion_qdgit
+/usr/bin/keychain $HOME/.ssh/id_github
+/usr/bin/keychain $HOME/.ssh/id_bbwork
 source ${HOME}/.keychain/$HOSTNAME-sh
 
 export EDITOR='vim'
