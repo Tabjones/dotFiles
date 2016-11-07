@@ -21,7 +21,6 @@
 "
 "===============================================================================
 "===============================================================================
-"
 
 " Set all plugins.
 call plug#begin('~/.vim/plugged')
@@ -333,7 +332,7 @@ nnoremap <silent> <leader>spe :set spell!<CR>
 " Format the entire file
 nnoremap <leader>fef mx=ggG='x
 " Split window vertically or horizontally *and* switch to the new split!
-nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>
+nnoremap <silent> <leader>sh :split<Bar>:wincmd j<CR>
 nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
 " Close everything and quits (prompts if modified)
 nnoremap <silent> <Leader>qq :qall<CR>
@@ -570,6 +569,10 @@ let g:tagbar_type_markdown = {
             \ }
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
+let g:tagbar_autopreview = 1
+let g:tagbar_expand = 1
+let g:tagbar_show_visibility = 1
+let g:tagbar_indent = 1
 
 " Cpp enanched highlight """""""""""""
 let g:cpp_class_scope_highlight = 1
