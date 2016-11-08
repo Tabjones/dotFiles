@@ -1,5 +1,5 @@
-"==============================================================================
 "===============================================================================
+"=============================================================================
 "
 "               ________ ++     ________
 "             /VVVVVVVV\++++  /VVVVVVVV\
@@ -21,15 +21,22 @@
 "
 "===============================================================================
 "===============================================================================
+"
+set rtp+=$USERPROFILE\vimfiles
 
 " Set all plugins.
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/vimfiles/plugged')
 
 Plug 'Valloric/YouCompleteMe'
+
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
-"Plug 'nanotech/jellybeans.vim'
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'nanotech/jellybeans.vim'
+
 Plug 'zhaocai/GoldenView.Vim'
+
 "Plug 'lifepillar/vim-mucomplete'
 
 Plug 'SirVer/ultisnips'
@@ -40,9 +47,11 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'bling/vim-airline'
 
+Plug 'vim-airline/vim-airline-themes'
+
 Plug 'tpope/vim-vinegar'
 
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'airblade/vim-gitgutter'
 
@@ -80,9 +89,21 @@ Plug 'tpope/vim-repeat'
 
 Plug 'xolox/vim-misc'
 
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-easytags'
 
 " Plug 'scrooloose/syntastic'
+
+Plug 'pangloss/vim-javascript'
+
+Plug 'godlygeek/tabular'
+
+" Plug 'bronson/vim-trailing-whitespace'
+
+Plug 'kshenoy/vim-signature'
+
+Plug 'chiel92/vim-autoformat'
+
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -95,8 +116,13 @@ filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 syntax enable
 "set lines=9999 columns=9999
-"au GUIEnter * simalt ~x
-set ff=unix
+au GUIEnter * simalt ~x
+" set nowfh                                  " no fixed size
+" set noea eadirection=both                  " no equal size
+" set wmw=0 wmh=0                            " squash other windows
+" set wiw=9999 wh=999 hh=999 cwh=999 pvh=999 " enlarge current window
+" Set git shell
+" set shell=\"C:\Program\ Files\Git\git-cmd.exe\"
 " ------------------------------------------------------------------------------
 "                                                                       Commands
 " ------------------------------------------------------------------------------
@@ -135,20 +161,33 @@ endif
 "if $TERM =~ "-256color"
 "   set t_Co=256
 "endif
+
+set background=dark
+" Solarized """""""""""""""""""
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+" let g:solarized_termtrans = 1
+" let g:solarized_termcolors=16
+colorscheme solarized
+" in solarized.vim line 256  for a darker background
+" let s:base03      = "#001216"
+
+"colorscheme pablo
+"colorscheme jellybeans
 " ------------------------------------------------------------------------------
 "                                                                          Fonts
 " ------------------------------------------------------------------------------
-set guifont=Inconsolata-dz\ for\ Powerline
+set guifont=Inconsolata-dz_for_Powerline:h11
 let g:Powerline_symbols = 'fancy'
 " ------------------------------------------------------------------------------
 "                                                                 File Locations
 " ------------------------------------------------------------------------------
-set backupdir=$HOME/.vim/backup// " Double // causes backups to use full file path
-set directory=$HOME/.vim/tmp//
+set backupdir=$USERPROFILE\vimfiles\backup " Double // causes backups to use full file path
+set directory=$USERPROFILE\vimfiles\tmp
 " Persistent Undo
 if has('persistent_undo')
     set undofile
-    set undodir=$HOME/.vim/undo//
+    set undodir=$USERPROFILE\vimfiles\undo
 endif
 " ------------------------------------------------------------------------------
 "                                                                             UI
@@ -184,26 +223,24 @@ set guioptions -=b "bottom scrollbar"
 set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
-set hidden             " Change buffer - without saving
+" set hidden             " remove hidden
 set history=10000      " Number of things to remember in history.
-set cf                 " Enable error files & error jumping.
+" set cf                 " no errorumping.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
-" set timeoutlen=450     " Time to wait for a command (after leader for example).
 set ttimeout
+set timeoutlen=500     " Time to wait for a mapping.
 set ttimeoutlen=100    " Time to wait for a command (after leader for example).
-set nofoldenable       " Disable folding entirely.
-set foldlevelstart=99  " I really don't like folds.
-set formatoptions=crql
-set iskeyword+=\$,-    " Add extra characters that are valid parts of variables
+" set nofoldenable       " Disable folding entirely.
+" set foldlevelstart=99  " I really don't like folds.
+" set formatoptions=crql
+" set iskeyword+=\$,-    " Add extra characters that are valid parts of variables
 set nostartofline      " Don't go to the start of the line after some commands
 set scrolloff=10       " Keep n lines below the last line when scrolling
 set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
-set ttyfast
-set ssop=buffers,folds,resize,sesdir,tabpages,winpos,winsize
-" Better complete options to speed it up
-set complete=.,w,b,u,U
+" set ttyfast
+set ssop=buffers,folds,resize,sesdir,tabpages,winpos,winsize  "" Session options
 " ------------------------------------------------------------------------------
 "                                                                    Text Format
 " ------------------------------------------------------------------------------
@@ -225,7 +262,7 @@ set incsearch  " Incremental search
 set hlsearch   " Highlight search results
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,*.zip,*.aux
             \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc,*/node_modules/*,*.swp,
-            \rake-pipeline-*,*.exe,*.zip
+            \rake-pipeline-*
 " ------------------------------------------------------------------------------
 "                                                                         Visual
 " ------------------------------------------------------------------------------
@@ -238,7 +275,7 @@ set list
 " Reset the listchars
 set listchars=""
 " make tabs visible
-set listchars=tab:▸▸
+set listchars=tab:>-
 " show trailing spaces as dots
 set listchars+=trail:•
 " The character to show in the last column when wrap is off and the line
@@ -310,10 +347,6 @@ nnoremap <silent> <leader>tp :tabp<CR>
 " Let's make escape better.
 inoremap jk <Esc>
 inoremap JK <Esc>
-inoremap Jk <Esc>
-inoremap jK <Esc>
-inoremap jj <Esc>
-inoremap JJ <Esc>
 
 " ---------------
 " Leader Mappings
@@ -329,8 +362,6 @@ nnoremap <leader>h *<C-O>
 nnoremap <silent> <leader>spe :set spell!<CR>
 " Replace placeholders <+...+>
 "nnoremap <silent> <Leader>ph /<+.\{-1,}+><cr>c/+>/e<cr>
-" Format the entire file
-nnoremap <leader>fef mx=ggG='x
 " Split window vertically or horizontally *and* switch to the new split!
 nnoremap <silent> <leader>sh :split<Bar>:wincmd j<CR>
 nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
@@ -371,35 +402,32 @@ vnoremap K k
 "                                                          Plugins Configuration
 " ------------------------------------------------------------------------------
 
-" Jellybeans
-set background=dark
-colorscheme pablo
-
 "Ctrl-P """"""""""""""""""""""""""""""""""""""
 " Ensure Ctrl-P isn't bound by default
-let g:ctrlp_map = ''
-" Ensure max height isn't too large. (for performance)
-let g:ctrlp_max_height = 10
-" Fix new windows opening in split from startify
-let g:ctrlp_reuse_window = 'startify\|netrw\|help\|quickfix'
-let g:ctrlp_mruf_max = 350
-let g:ctrlp_mruf_default_order = 0
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_clear_cache_on_exit = 0
-" Leader Commands
-nnoremap <leader>cp :CtrlP<CR>
-if executable('ag')
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
-    " @ethanmuller
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+" let g:ctrlp_map = ''
+" " Ensure max height isn't too large. (for performance)
+" let g:ctrlp_max_height = 10
+" " Fix new windows opening in split from startify
+" let g:ctrlp_reuse_window = 'startify\|netrw\|help\|quickfix'
+" let g:ctrlp_mruf_max = 350
+" let g:ctrlp_mruf_default_order = 0
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_clear_cache_on_exit = 0
+" " Leader Commands
+" nnoremap <leader>cp :CtrlP<CR>
+" if executable('ag')
+"     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"     " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
+"     " @ethanmuller
+"     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" endif
 "Enable cmatcher plugin (must be installed externally)
 "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 "Fugitive """""""""""""""""""""""""""""""""""""
 nnoremap <Leader>gc :Gcommit -v<CR>
 nnoremap <Leader>gca :Gcommit -a -v<CR>
+nnoremap <Leader>ga :Gcommit --amend<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gp :Git push<CR>
@@ -419,29 +447,38 @@ command! Gcundo :Git reset HEAD~1
 
 " GitGutter """"""""""""""""
 let g:gitgutter_realtime = 1
-let g:gitgutter_eager = 1
-let g:gitgutter_sign_added = '➕'
-let g:gitgutter_sign_removed = '➖'
-let g:gitgutter_sign_modified = '≈'
+let g:gitgutter_eager    = 0
+"let g:gitgutter_async    = 1
+nmap <Leader>hn <Plug>GitGutterNextHunk
+nmap <Leader>hN <Plug>GitGutterPrevHunk
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterUndoHunk
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
+" highlight clear SignColumn
+" highlight GitGutterAdd ctermfg=green
+" highlight GitGutterChange ctermfg=yellow
+" highlight GitGutterDelete ctermfg=red
+" highlight GitGutterChangeDelete ctermfg=yellow
 
 " AirLine """""""""""""""""""""""""""""""""""""
-"let g:airline_theme = 'jellybeans'
+let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
 let g:airline_inactive_collapse = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#hunks#enabled = 1
 let g:airline_exclude_preview = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 0
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensiona#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
 " Indent Guides """"""""""""""""
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
+" let g:indent_guides_start_level=2
+" let g:indent_guides_guide_size=1
+let g:indent_guides_enable_on_vim_startup = 1
 
 " UltiSnips """""""""""""""""""""""""
 let g:UltiSnipsSnippetDirectories=["CustomUltiSnips"]
@@ -452,7 +489,8 @@ let g:UltiSnipsListSnippets="<leader><tab>"
 
 "Startify """"""""""""""""""""
 let g:startify_bookmarks = [
-            \'/mnt/e/Software\ Development/',
+            \'$HOME\vimfiles\',
+            \'E:\Software Development',
             \ ]
 let g:startify_skiplist = [
             \ 'COMMIT_EDITMSG',
@@ -460,6 +498,7 @@ let g:startify_skiplist = [
             \ ]
 let g:startify_files_number = 8
 let g:startify_change_to_dir = 1
+let g:startify_session_persistence = 0
 let g:startify_session_autoload = 0
 let g:startify_enable_special  = 1
 hi StartifyFooter  ctermfg=171
@@ -467,8 +506,8 @@ hi StartifyHeader  ctermfg=152
 hi StartifySlash   ctermfg=224
 hi StartifyNumber  ctermfg=26
 let g:startify_recursive_dir = 1
-let g:startify_custom_footer =
-            \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
+"let g:startify_custom_footer =
+""     \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
 let g:startify_custom_header = [
             \'        ________ ++     ________      ',
             \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
@@ -493,7 +532,7 @@ nnoremap <leader>sl :SLoad
 nnoremap <leader>sd :SDelete
 nnoremap <leader>sc :SClose
 nnoremap <leader>st :only<CR><bar>:tabonly<CR><bar>:Startify<CR>
-set sessionoptions="buffers,curdir,globals,tabpages,slash,unix"
+" let g:startify_session_remove_lines = ['winwidth', 'winheight']
 
 "" Anzu """"""""""""""
 nmap n <Plug>(anzu-n-with-echo)
@@ -504,7 +543,7 @@ let g:airline#extensions#anzu#enabled = 1
 " YouCompleteMe """""""""""""""
 let g:ycm_complete_in_comments = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_error_symbol = '✘'
 let g:ycm_warning_symbol = '❗'
@@ -553,6 +592,7 @@ nnoremap <leader>u :UndotreeToggle<cr>
 
 " TagBar """"""""""""""""""""""""""""""
 nnoremap <leader>tb :TagbarToggle<CR>
+let g:tagbar_ctags_bin = 'E:\Software Development\ctags58\ctags.exe'
 let g:tagbar_type_markdown = {
             \ 'ctagstype': 'markdown',
             \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
@@ -569,10 +609,6 @@ let g:tagbar_type_markdown = {
             \ }
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
-let g:tagbar_autopreview = 1
-let g:tagbar_expand = 1
-let g:tagbar_show_visibility = 1
-let g:tagbar_indent = 1
 
 " Cpp enanched highlight """""""""""""
 let g:cpp_class_scope_highlight = 1
@@ -595,10 +631,11 @@ vnoremap <silent><leader>cb :TCommentBlock<CR>
 " let g:mucomplete#chains = {}
 " let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
 " let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
+" let g:mucomplete#chains.cpp = ['tags', 'omni', 'keyn', 'file']
 "
 " let g:mucomplete#trigger_auto_pattern = {}
 " let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
-" let g:mucomplete#trigger_auto_pattern.cpp     = '\k\k$'
+" let g:mucomplete#trigger_auto_pattern.cpp     = '\a$'
 
 " GoldenView """""""""""""""""""""
 let g:goldenview__enable_default_mapping = 0
@@ -614,3 +651,58 @@ nmap <silent> <leader>s    <Plug>GoldenViewSplit
 " camelCase (crc)
 " snake_case (crs)
 " UPPER_CASE (cru)
+
+" Easytags
+let g:easytags_cmd = 'E:\Software Development\ctags58\ctags.exe'
+let g:easytags_file='$HOME\vimfiles\tagfile'
+set tags+=$USERPROFILE\vimfiles\tagfile
+
+" Tabular
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+" Auto align on = sign when typing
+inoremap <silent> = =<Esc>:call <SID>ealign()<CR>a
+function! s:ealign()
+    let p = '^.*=\s.*$'
+    if exists(':Tabularize') && getline('.') =~# '^.*=' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^=]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*=\s*\zs.*'))
+        Tabularize/=/l1
+        normal! 0
+        call search(repeat('[^=]*=',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
+endfunction
+
+" Vim Signature """""""""""""
+let g:SignatureMap = {
+            \ 'Leader'             :  "m",
+            \ 'PlaceNextMark'      :  "",
+            \ 'ToggleMarkAtLine'   :  "m,",
+            \ 'PurgeMarksAtLine'   :  "",
+            \ 'DeleteMark'         :  "",
+            \ 'PurgeMarks'         :  "",
+            \ 'PurgeMarkers'       :  "m<BS>",
+            \ 'GotoNextLineAlpha'  :  "",
+            \ 'GotoPrevLineAlpha'  :  "",
+            \ 'GotoNextSpotAlpha'  :  ",m",
+            \ 'GotoPrevSpotAlpha'  :  ";m",
+            \ 'GotoNextLineByPos'  :  "",
+            \ 'GotoPrevLineByPos'  :  "",
+            \ 'GotoNextSpotByPos'  :  "",
+            \ 'GotoPrevSpotByPos'  :  "",
+            \ 'GotoNextMarker'     :  "",
+            \ 'GotoPrevMarker'     :  "",
+            \ 'GotoNextMarkerAny'  :  "",
+            \ 'GotoPrevMarkerAny'  :  "",
+            \ 'ListBufferMarks'    :  "",
+            \ 'ListBufferMarkers'  :  ""
+            \ }
+
+" Autoformat """"""""""""""""""""
+let g:formatterpath = ['C:\Program Files (x86)\LLVM\bin\']
+let g:formatdef_myclangformat = "'clang-format.exe'"
+noremap <Leader>fef :Autoformat<CR>
