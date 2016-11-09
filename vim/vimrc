@@ -51,7 +51,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-vinegar'
 
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'airblade/vim-gitgutter'
 
@@ -81,7 +81,7 @@ Plug 'gabrielelana/vim-markdown'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'tpope/vim-sensible'
+" Plug 'tpope/vim-sensible'
 
 Plug 'tpope/vim-abolish'
 
@@ -240,7 +240,7 @@ set scrolloff=10       " Keep n lines below the last line when scrolling
 set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
 " set ttyfast
-set ssop=buffers,folds,resize,sesdir,tabpages,winpos,winsize  "" Session options
+" set ssop=buffers,folds,resize,sesdir,tabpages,winpos,winsize  "" Session options
 " ------------------------------------------------------------------------------
 "                                                                    Text Format
 " ------------------------------------------------------------------------------
@@ -404,17 +404,17 @@ vnoremap K k
 
 "Ctrl-P """"""""""""""""""""""""""""""""""""""
 " Ensure Ctrl-P isn't bound by default
-" let g:ctrlp_map = ''
-" " Ensure max height isn't too large. (for performance)
-" let g:ctrlp_max_height = 10
-" " Fix new windows opening in split from startify
-" let g:ctrlp_reuse_window = 'startify\|netrw\|help\|quickfix'
-" let g:ctrlp_mruf_max = 350
-" let g:ctrlp_mruf_default_order = 0
-" let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_map = ''
+" Ensure max height isn't too large. (for performance)
+let g:ctrlp_max_height = 10
+" Fix new windows opening in split from startify
+let g:ctrlp_reuse_window = 'startify\|netrw\|help\|quickfix'
+let g:ctrlp_mruf_max = 350
+let g:ctrlp_mruf_default_order = 0
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_clear_cache_on_exit = 0
 " " Leader Commands
-" nnoremap <leader>cp :CtrlP<CR>
+nnoremap <leader>cp :CtrlP<CR>
 " if executable('ag')
 "     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 "     " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
@@ -429,11 +429,14 @@ nnoremap <Leader>gc :Gcommit -v<CR>
 nnoremap <Leader>gca :Gcommit -a -v<CR>
 nnoremap <Leader>ga :Gcommit --amend<CR>
 nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gr :Gread<CR>
+" Use :diffget and :diffput to stage/unstage hunks
+" do for diffget(obtain);  dp for diffput
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gp :Git push<CR>
 " Mnemonic, gu = Git Update
 nnoremap <Leader>gu :Git pull<CR>
-nnoremap <Leader>gd :Gvdiff<CR>
+nnoremap <Leader>gd :Gdiff<CR>
 " Start git command
 nnoremap <leader>gi :Git<space>
 " Undo the last commit
@@ -496,16 +499,28 @@ let g:startify_skiplist = [
             \ 'COMMIT_EDITMSG',
             \ $VIMRUNTIME .'/doc',
             \ ]
-let g:startify_files_number = 8
+let g:startify_files_number = 5
 let g:startify_change_to_dir = 1
 let g:startify_session_persistence = 0
 let g:startify_session_autoload = 0
+let g:startify_session_delete_buffers = 1
+let g:startify_change_to_vcs_root = 1
 let g:startify_enable_special  = 1
+let g:startify_session_sort = 1
 hi StartifyFooter  ctermfg=171
 hi StartifyHeader  ctermfg=152
 hi StartifySlash   ctermfg=224
 hi StartifyNumber  ctermfg=26
-let g:startify_recursive_dir = 1
+let g:startify_list_order = [
+            \ [ 'Most recently used files'],
+            \ 'files',
+            \ [ 'Saved Sessions' ],
+            \ 'sessions',
+            \ [ 'Bookmarks' ],
+            \ 'bookmarks',
+            \ ]
+let g:startify_custom_indices = ['a', 's', 'd', 'f', 'g']
+let g:startify_session_remove_lines = ['winheight', 'winminheight', 'winwidth', 'winminwidth']
 "let g:startify_custom_footer =
 ""     \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
 let g:startify_custom_header = [
