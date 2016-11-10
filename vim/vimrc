@@ -223,7 +223,7 @@ set guioptions -=b "bottom scrollbar"
 set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
-" set hidden             " remove hidden
+set hidden             " remove hidden
 set history=10000      " Number of things to remember in history.
 " set cf                 " no errorumping.
 set clipboard+=unnamed " Yanks go on clipboard instead.
