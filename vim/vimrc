@@ -71,7 +71,7 @@ Plug 'tpope/vim-endwise'
 
 Plug 'osyo-manga/vim-anzu'
 
-Plug 'mbbill/undotree'
+Plug 'simnalamburt/vim-mundo'
 
 Plug 'Valloric/MatchTagAlways'
 
@@ -185,10 +185,8 @@ let g:Powerline_symbols = 'fancy'
 set backupdir=$USERPROFILE\vimfiles\backup " Double // causes backups to use full file path
 set directory=$USERPROFILE\vimfiles\tmp
 " Persistent Undo
-if has('persistent_undo')
-    set undofile
-    set undodir=$USERPROFILE\vimfiles\undo
-endif
+set undofile
+set undodir=$USERPROFILE\vimfiles\undo
 " ------------------------------------------------------------------------------
 "                                                                             UI
 " ------------------------------------------------------------------------------
@@ -602,9 +600,11 @@ let g:switch_custom_definitions =
             \['FALSE', 'TRUE'],
             \]
 
-" Undotree """"""""""""""""
-let g:undotree_WindowLayout = 2
-nnoremap <leader>u :UndotreeToggle<cr>
+" MUndo """"""""""""""""
+let g:mundo_help            = 0
+let g:mundo_close_on_revert = 1
+let g:mundo_mirror_graph    = 0
+nnoremap <leader>u :MundoToggle<cr>
 
 " TagBar """"""""""""""""""""""""""""""
 nnoremap <leader>tb :TagbarToggle<CR>
@@ -624,7 +624,6 @@ let g:tagbar_type_markdown = {
             \ 'sort': 0,
             \ }
 let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
 
 " Cpp enanched highlight """""""""""""
 let g:cpp_class_scope_highlight = 1
