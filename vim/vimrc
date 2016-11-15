@@ -35,7 +35,7 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'nanotech/jellybeans.vim'
 
-Plug 'zhaocai/GoldenView.Vim'
+" Plug 'zhaocai/GoldenView.Vim'
 
 "Plug 'lifepillar/vim-mucomplete'
 
@@ -624,6 +624,7 @@ let g:tagbar_type_markdown = {
             \ 'sort': 0,
             \ }
 let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 
 " Cpp enanched highlight """""""""""""
 let g:cpp_class_scope_highlight = 1
@@ -653,10 +654,10 @@ vnoremap <silent><leader>cb :TCommentBlock<CR>
 " let g:mucomplete#trigger_auto_pattern.cpp     = '\a$'
 
 " GoldenView """""""""""""""""""""
-let g:goldenview__enable_default_mapping = 0
-nmap <silent> <leader>m    <Plug>GoldenViewSwitchMain
-nmap <silent> <leader>n    <Plug>GoldenViewNext
-nmap <silent> <leader>s    <Plug>GoldenViewSplit
+" let g:goldenview__enable_default_mapping = 0
+" nmap <silent> <leader>m    <Plug>GoldenViewSwitchMain
+" nmap <silent> <leader>n    <Plug>GoldenViewNext
+" nmap <silent> <leader>s    <Plug>GoldenViewSplit
 
 " Abolish """"""""""""""""""""""""""""
 " :Abolish {despa,sepe}rat{e,es,ed,ing,ely,ion,ions,or}  {despe,sepa}rat{}
