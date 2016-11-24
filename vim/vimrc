@@ -238,8 +238,8 @@ set scrolloff=10       " Keep n lines below the last line when scrolling
 set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
 " set ttyfast
-set ssop -= resize,buffers,folds,globals,options,localoptions,sesdir,winpos,winsize
-set ssop += curdir,tabpages  "" Session options
+set ssop-=resize,buffers,folds,globals,options,localoptions,sesdir
+set ssop+=curdir,tabpages  "" Session options
 " ------------------------------------------------------------------------------
 "                                                                    Text Format
 " ------------------------------------------------------------------------------
@@ -520,7 +520,7 @@ let g:startify_list_order = [
             \ 'bookmarks',
             \ ]
 let g:startify_custom_indices = ['a', 's', 'd', 'f', 'g']
-let g:startify_session_remove_lines = ['winheight', 'winminheight', 'winwidth', 'winminwidth']
+" let g:startify_session_remove_lines = ['winheight', 'winminheight', 'winwidth', 'winminwidth']
 "let g:startify_custom_footer =
 ""     \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
 let g:startify_custom_header = [
