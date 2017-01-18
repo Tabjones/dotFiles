@@ -29,7 +29,7 @@ info '==========================='
 ln -sfn ${HOME}/dotFiles/vim ${HOME}/.vim
 ln -sf ${HOME}/dotFiles/vim/vimrc ${HOME}/.vimrc
 ln -sf ${HOME}/dotFiles/vim/gvimrc ${HOME}/.gvimrc
-ln -sf ${HOME}/dotFiles/clang_format/.clang-format ${HOME}/.clang_format
+ln -sf ${HOME}/dotFiles/clang-format/.clang-format ${HOME}/.clang-format
 #ln -sf ${HOME}/dotFiles/git/gitconfig ${HOME}/.gitconfig
 #cp -f ${HOME}/dotFiles/zsh/zshrc ${HOME}/.zshrc
 success ' '
