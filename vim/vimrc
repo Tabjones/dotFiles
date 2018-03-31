@@ -69,7 +69,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 "Plug 'mhinz/vim-startify'
 
-Plug 'tpope/vim-endwise'
+"Plug 'tpope/vim-endwise'
 
 Plug 'osyo-manga/vim-anzu'
 
