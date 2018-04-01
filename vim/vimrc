@@ -240,8 +240,8 @@ set history=10000      " Number of things to remember in history.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
 set ttimeout
-set timeoutlen=200     " Time to wait for a mapping.
-set ttimeoutlen=100    " Time to wait for a command (after leader for example).
+set timeoutlen=300     " Time to wait for a mapping.
+set ttimeoutlen=300    " Time to wait for a command (after leader for example).
 " set nofoldenable       " Disable folding entirely.
 " set foldlevelstart=99  " I really don't like folds.
 " set formatoptions=crql
@@ -660,6 +660,8 @@ let g:mucomplete#trigger_auto_pattern = {}
 let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
 let g:mucomplete#trigger_auto_pattern.cpp     = '\a$'
 
+let g:mucomplete#cycle_with_trigger = 1
+imap <expr> <right> pumvisible()? "\plug(MUcompleteExtendFwd)" : "\<right>"
 " GoldenView """""""""""""""""""""
 " let g:goldenview__enable_default_mapping = 0
 " nmap <silent> <leader>m    <Plug>GoldenViewSwitchMain
