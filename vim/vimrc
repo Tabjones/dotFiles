@@ -41,9 +41,9 @@ Plug 'dracula/vim', {'as': 'dracula'}
 
 Plug 'lifepillar/vim-mucomplete'
 
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-fugitive'
 
@@ -53,7 +53,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-vinegar'
 
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'airblade/vim-gitgutter'
 
@@ -61,7 +61,7 @@ Plug 'tomtom/tcomment_vim'
 
 Plug 'tpope/vim-surround'
 
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -73,9 +73,9 @@ Plug 'tpope/vim-endwise'
 
 Plug 'osyo-manga/vim-anzu'
 
-Plug 'simnalamburt/vim-mundo'
+" Plug 'simnalamburt/vim-mundo'
 
-Plug 'Valloric/MatchTagAlways'
+" Plug 'Valloric/MatchTagAlways'
 
 Plug 'AndrewRadev/switch.vim'
 
@@ -103,7 +103,7 @@ Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'kshenoy/vim-signature'
 
-Plug 'chiel92/vim-autoformat'
+" Plug 'chiel92/vim-autoformat'
 
 Plug 'lervag/vimtex'
 
@@ -163,14 +163,12 @@ endif
 "if $TERM =~ "-256color"
 "   set t_Co=256
 "endif
-
 set background=dark
 color dracula
 " ------------------------------------------------------------------------------
 "                                                                          Fonts
 " ------------------------------------------------------------------------------
 set guifont=Consolas:h11
-let g:Powerline_symbols = 'fancy'
 " ------------------------------------------------------------------------------
 "                                                                 File Locations
 " ------------------------------------------------------------------------------
@@ -219,8 +217,8 @@ set history=10000      " Number of things to remember in history.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
 set ttimeout
-set timeoutlen=500     " Time to wait for a mapping.
-set ttimeoutlen=100    " Time to wait for a command (after leader for example).
+set timeoutlen=300     " Time to wait for a mapping.
+set ttimeoutlen=200    " Time to wait for a command (after leader for example).
 " set nofoldenable       " Disable folding entirely.
 " set foldlevelstart=99  " I really don't like folds.
 " set formatoptions=crql
@@ -337,9 +335,8 @@ nnoremap <silent> <leader>tp :tabp<CR>
 " Insert Mode Mappings
 " ---------------
 " Let's make escape better.
-inoremap jk <Esc>
-inoremap JK <Esc>
-
+" inoremap jk <Esc>
+" inoremap JK <Esc>
 " ---------------
 " Leader Mappings
 " ---------------
@@ -395,26 +392,26 @@ vnoremap K k
 " ------------------------------------------------------------------------------
 
 "Ctrl-P """"""""""""""""""""""""""""""""""""""
-" Ensure Ctrl-P isn't bound by default
-let g:ctrlp_map = ''
-" Ensure max height isn't too large. (for performance)
-let g:ctrlp_max_height = 10
-" Fix new windows opening in split from startify
-let g:ctrlp_reuse_window = 'startify\|netrw\|help\|quickfix'
-let g:ctrlp_mruf_max = 350
-let g:ctrlp_mruf_default_order = 0
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_clear_cache_on_exit = 0
-" " Leader Commands
-nnoremap <leader>cp :CtrlP<CR>
-" if executable('ag')
-"     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-"     " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
-"     " @ethanmuller
-"     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" endif
-"Enable cmatcher plugin (must be installed externally)
-"let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+" " Ensure Ctrl-P isn't bound by default
+" let g:ctrlp_map = ''
+" " Ensure max height isn't too large. (for performance)
+" let g:ctrlp_max_height = 10
+" " Fix new windows opening in split from startify
+" let g:ctrlp_reuse_window = 'startify\|netrw\|help\|quickfix'
+" let g:ctrlp_mruf_max = 350
+" let g:ctrlp_mruf_default_order = 0
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_clear_cache_on_exit = 0
+" " " Leader Commands
+" nnoremap <leader>cp :CtrlP<CR>
+" " if executable('ag')
+" "     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+" "     " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
+" "     " @ethanmuller
+" "     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" " endif
+" "Enable cmatcher plugin (must be installed externally)
+" "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 "Fugitive """""""""""""""""""""""""""""""""""""
 nnoremap <Leader>gc :Gcommit -v<CR>
@@ -457,7 +454,7 @@ nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 " AirLine """""""""""""""""""""""""""""""""""""
 let g:airline_theme = 'jellybeans'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_detect_modified = 1
 let g:airline_inactive_collapse = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -476,70 +473,70 @@ let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
 " let g:indent_guides_guide_size=1
 let g:indent_guides_enable_on_vim_startup = 1
 
-" UltiSnips """""""""""""""""""""""""
-let g:UltiSnipsSnippetDirectories=["CustomUltiSnips"]
-let g:UltiSnipsExpandTrigger="<leader>j"
-let g:UltiSnipsJumpForwardTrigger="<leader>j"
-let g:UltiSnipsJumpBackwardTrigger="<leader>k"
-let g:UltiSnipsListSnippets="<leader><tab>"
+" " UltiSnips """""""""""""""""""""""""
+" let g:UltiSnipsSnippetDirectories=["CustomUltiSnips"]
+" let g:UltiSnipsExpandTrigger="<leader>j"
+" let g:UltiSnipsJumpForwardTrigger="<leader>j"
+" let g:UltiSnipsJumpBackwardTrigger="<leader>k"
+" let g:UltiSnipsListSnippets="<leader><tab>"
 
-"Startify """"""""""""""""""""
-let g:startify_bookmarks = [
-            \'$HOME\vimfiles\',
-            \'E:\Software Development',
-            \ ]
-let g:startify_skiplist = [
-            \ 'COMMIT_EDITMSG',
-            \ $VIMRUNTIME .'/doc',
-            \ ]
-let g:startify_files_number = 5
-let g:startify_change_to_dir = 1
-let g:startify_session_persistence = 0
-let g:startify_session_autoload = 0
-let g:startify_session_delete_buffers = 1
-let g:startify_change_to_vcs_root = 1
-let g:startify_enable_special  = 1
-let g:startify_session_sort = 1
-hi StartifyFooter  ctermfg=171
-hi StartifyHeader  ctermfg=152
-hi StartifySlash   ctermfg=224
-hi StartifyNumber  ctermfg=26
-let g:startify_list_order = [
-            \ [ 'Most recently used files'],
-            \ 'files',
-            \ [ 'Saved Sessions' ],
-            \ 'sessions',
-            \ [ 'Bookmarks' ],
-            \ 'bookmarks',
-            \ ]
-let g:startify_custom_indices = ['a', 's', 'd', 'f', 'g']
-" let g:startify_session_remove_lines = ['winheight', 'winminheight', 'winwidth', 'winminwidth']
-"let g:startify_custom_footer =
-""     \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
-let g:startify_custom_header = [
-            \'        ________ ++     ________      ',
-            \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
-            \'       \VVVVVVVV/++++++\VVVVVVVV/     ',
-            \'        |VVVVVV|++++++++/VVVVV/''     ',
-            \'        |VVVVVV|++++++/VVVVV/''       ',
-            \'       +|VVVVVV|++++/VVVVV/''+        ',
-            \'     +++|VVVVVV|++/VVVVV/''+++++      ',
-            \'   +++++|VVVVVV|/VVV___++++++++++     ',
-            \'     +++|VVVVVVVVVV/##/ +_+_+_+_      ',
-            \'       +|VVVVVVVVV___ +/#_#,#_#,\     ',
-            \'        |VVVVVVV//##/+/#/+/#/''/#/    ',
-            \'        |VVVVV/''+/#/+/#/+/#/ /#/     ',
-            \'        |VVV/''++/#/+/#/ /#/ /#/      ',
-            \'        ''V/''  /##//##//##//###/     ',
-            \'                 ++                   ',
-            \'                 ''                   ',
-            \]
-
-nnoremap <leader>ss :SSave
-nnoremap <leader>sl :SLoad
-nnoremap <leader>sd :SDelete
-nnoremap <leader>sc :SClose
-nnoremap <leader>st :only<CR><bar>:tabonly<CR><bar>:Startify<CR>
+" "Startify """"""""""""""""""""
+" let g:startify_bookmarks = [
+"             \'$HOME\vimfiles\',
+"             \'E:\Software Development',
+"             \ ]
+" let g:startify_skiplist = [
+"             \ 'COMMIT_EDITMSG',
+"             \ $VIMRUNTIME .'/doc',
+"             \ ]
+" let g:startify_files_number = 5
+" let g:startify_change_to_dir = 1
+" let g:startify_session_persistence = 0
+" let g:startify_session_autoload = 0
+" let g:startify_session_delete_buffers = 1
+" let g:startify_change_to_vcs_root = 1
+" let g:startify_enable_special  = 1
+" let g:startify_session_sort = 1
+" hi StartifyFooter  ctermfg=171
+" hi StartifyHeader  ctermfg=152
+" hi StartifySlash   ctermfg=224
+" hi StartifyNumber  ctermfg=26
+" let g:startify_list_order = [
+"             \ [ 'Most recently used files'],
+"             \ 'files',
+"             \ [ 'Saved Sessions' ],
+"             \ 'sessions',
+"             \ [ 'Bookmarks' ],
+"             \ 'bookmarks',
+"             \ ]
+" let g:startify_custom_indices = ['a', 's', 'd', 'f', 'g']
+" " let g:startify_session_remove_lines = ['winheight', 'winminheight', 'winwidth', 'winminwidth']
+" "let g:startify_custom_footer =
+" ""     \ map(split(system('fortune | cowsay -f eyes'), '\n'), '"   ". v:val') + ['','']
+" let g:startify_custom_header = [
+"             \'        ________ ++     ________      ',
+"             \'       /VVVVVVVV\++++  /VVVVVVVV\     ',
+"             \'       \VVVVVVVV/++++++\VVVVVVVV/     ',
+"             \'        |VVVVVV|++++++++/VVVVV/''     ',
+"             \'        |VVVVVV|++++++/VVVVV/''       ',
+"             \'       +|VVVVVV|++++/VVVVV/''+        ',
+"             \'     +++|VVVVVV|++/VVVVV/''+++++      ',
+"             \'   +++++|VVVVVV|/VVV___++++++++++     ',
+"             \'     +++|VVVVVVVVVV/##/ +_+_+_+_      ',
+"             \'       +|VVVVVVVVV___ +/#_#,#_#,\     ',
+"             \'        |VVVVVVV//##/+/#/+/#/''/#/    ',
+"             \'        |VVVVV/''+/#/+/#/+/#/ /#/     ',
+"             \'        |VVV/''++/#/+/#/ /#/ /#/      ',
+"             \'        ''V/''  /##//##//##//###/     ',
+"             \'                 ++                   ',
+"             \'                 ''                   ',
+"             \]
+"
+" nnoremap <leader>ss :SSave
+" nnoremap <leader>sl :SLoad
+" nnoremap <leader>sd :SDelete
+" nnoremap <leader>sc :SClose
+" nnoremap <leader>st :only<CR><bar>:tabonly<CR><bar>:Startify<CR>
 " let g:startify_session_remove_lines = ['winwidth', 'winheight']
 
 "" Anzu """"""""""""""
@@ -548,27 +545,27 @@ nmap N <Plug>(anzu-N-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
 let g:airline#extensions#anzu#enabled = 1
 
-" YouCompleteMe """""""""""""""
-let g:ycm_complete_in_comments = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_error_symbol = '✘'
-let g:ycm_warning_symbol = '❗'
-" let g:ycm_key_invoke_completion= '<leader>tc'
-" let g:ycm_global_ycm_extra_conf = '~/.vim/'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_goto_buffer_command = 'vertical-split'
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
-nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
-" let g:ycm_semantic_triggers = {
-" \   'roslaunch' : ['="', '$(', '/'],
-" \   'rosmsg,rossrv,rosaction' : ['re!^'],
-" \ }
-set completeopt+=menu,menuone,preview
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_disable_for_files_larger_than_kb=0
+" " YouCompleteMe """""""""""""""
+" let g:ycm_complete_in_comments = 1
+" let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_error_symbol = '✘'
+" let g:ycm_warning_symbol = '❗'
+" " let g:ycm_key_invoke_completion= '<leader>tc'
+" " let g:ycm_global_ycm_extra_conf = '~/.vim/'
+" let g:ycm_confirm_extra_conf = 0
+" let g:ycm_goto_buffer_command = 'vertical-split'
+" nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
+" nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
+" " let g:ycm_semantic_triggers = {
+" " \   'roslaunch' : ['="', '$(', '/'],
+" " \   'rosmsg,rossrv,rosaction' : ['re!^'],
+" " \ }
+" set completeopt+=menu,menuone,preview
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_disable_for_files_larger_than_kb=0
 
 " Switch """""""""""
 let g:switch_mapping = '<leader>-'
@@ -600,52 +597,52 @@ let g:mundo_close_on_revert = 1
 let g:mundo_mirror_graph    = 0
 nnoremap <leader>u :MundoToggle<cr>
 
-" TagBar """"""""""""""""""""""""""""""
-nnoremap <leader>tb :TagbarToggle<CR>
-let g:tagbar_ctags_bin = 'E:\Software Development\ctags58\ctags.exe'
-let g:tagbar_type_markdown = {
-            \ 'ctagstype': 'markdown',
-            \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
-            \ 'ctagsargs' : '-f - --sort=yes',
-            \ 'kinds' : [
-            \ 's:sections',
-            \ 'i:images'
-            \ ],
-            \ 'sro' : '|',
-            \ 'kind2scope' : {
-            \ 's' : 'section',
-            \ },
-            \ 'sort': 0,
-            \ }
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
+" " TagBar """"""""""""""""""""""""""""""
+" nnoremap <leader>tb :TagbarToggle<CR>
+" let g:tagbar_ctags_bin = 'E:\Software Development\ctags58\ctags.exe'
+" let g:tagbar_type_markdown = {
+"             \ 'ctagstype': 'markdown',
+"             \ 'ctagsbin' : './markdown2ctags/markdown2ctags.py',
+"             \ 'ctagsargs' : '-f - --sort=yes',
+"             \ 'kinds' : [
+"             \ 's:sections',
+"             \ 'i:images'
+"             \ ],
+"             \ 'sro' : '|',
+"             \ 'kind2scope' : {
+"             \ 's' : 'section',
+"             \ },
+"             \ 'sort': 0,
+"             \ }
+" let g:tagbar_autofocus = 1
+" let g:tagbar_autoclose = 1
 
 " Cpp enanched highlight """""""""""""
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
 " Tcomment """"""""
-let g:tcommentMaps = 0
+let g:tcomment_maps = 0
 nnoremap <silent><leader>cc :TComment<CR>
 vnoremap <silent><leader>cc :TComment<CR>
 nnoremap <silent><leader>cb :TCommentBlock<CR>
 vnoremap <silent><leader>cb :TCommentBlock<CR>
 
 " muComplete """""""""""""""""""""""""""
-" set noshowmode shortmess+=c
-" setl infercase
-" setl completeopt-=preview
-" setl completeopt+=menu,menuone
-" let g:mucomplete#enable_auto_at_startup = 1
-"
-" let g:mucomplete#chains = {}
-" let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
-" let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
-" let g:mucomplete#chains.cpp = ['tags', 'omni', 'keyn', 'file']
-"
-" let g:mucomplete#trigger_auto_pattern = {}
-" let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
-" let g:mucomplete#trigger_auto_pattern.cpp     = '\a$'
+set noshowmode shortmess+=c
+setl infercase
+setl completeopt-=preview
+setl completeopt+=menu,menuone
+let g:mucomplete#enable_auto_at_startup = 1
+
+let g:mucomplete#chains = {}
+let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
+let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
+let g:mucomplete#chains.cpp = ['tags', 'omni', 'keyn', 'file']
+
+let g:mucomplete#trigger_auto_pattern = {}
+let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
+let g:mucomplete#trigger_auto_pattern.cpp     = '\a$'
 
 " GoldenView """""""""""""""""""""
 " let g:goldenview__enable_default_mapping = 0
@@ -668,12 +665,12 @@ vnoremap <silent><leader>cb :TCommentBlock<CR>
 " set tags+=$USERPROFILE\vimfiles\tagfile
 
 " Tabular
-if exists(":Tabularize")
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:\zs<CR>
-    vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+" if exists(":Tabularize")
+"     nmap <Leader>a= :Tabularize /=<CR>
+"     vmap <Leader>a= :Tabularize /=<CR>
+"     nmap <Leader>a: :Tabularize /:\zs<CR>
+"     vmap <Leader>a: :Tabularize /:\zs<CR>
+" endif
 " Auto align on = sign when typing
 " inoremap <silent> = =<Esc>:call <SID>ealign()<CR>a
 " function! s:ealign()
@@ -713,6 +710,6 @@ let g:SignatureMap = {
             \ }
 
 " Autoformat """"""""""""""""""""
-let g:formatterpath = ['C:\Program Files (x86)\LLVM\bin\']
-let g:formatdef_myclangformat = "'clang-format.exe'"
-noremap <Leader>fef :Autoformat<CR>
+" let g:formatterpath = ['C:\Program Files (x86)\LLVM\bin\']
+" let g:formatdef_myclangformat = "'clang-format.exe'"
+" noremap <Leader>fef :Autoformat<CR>
