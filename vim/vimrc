@@ -1,4 +1,4 @@
-"===============================================================================
+﻿"===============================================================================
 "=============================================================================
 "
 "               ________ ++     ________
@@ -27,17 +27,19 @@ set rtp+=$USERPROFILE\vimfiles
 " Set all plugins.
 call plug#begin('~/vimfiles/plugged')
 
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 
-Plug 'nanotech/jellybeans.vim'
+"Plug 'nanotech/jellybeans.vim'
 
 " Plug 'zhaocai/GoldenView.Vim'
 
-"Plug 'lifepillar/vim-mucomplete'
+Plug 'dracula/vim', {'as': 'dracula'}
+
+Plug 'lifepillar/vim-mucomplete'
 
 Plug 'SirVer/ultisnips'
 
@@ -65,7 +67,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'Raimondi/delimitMate'
 
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 
 Plug 'tpope/vim-endwise'
 
@@ -95,9 +97,9 @@ Plug 'xolox/vim-misc'
 
 Plug 'pangloss/vim-javascript'
 
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 
-" Plug 'bronson/vim-trailing-whitespace'
+Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'kshenoy/vim-signature'
 
@@ -163,21 +165,11 @@ endif
 "endif
 
 set background=dark
-" Solarized """""""""""""""""""
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-" let g:solarized_termtrans = 1
-" let g:solarized_termcolors=16
-colorscheme solarized
-" in solarized.vim line 256  for a darker background
-" let s:base03      = "#001216"
-
-"colorscheme pablo
-"colorscheme jellybeans
+color dracula
 " ------------------------------------------------------------------------------
 "                                                                          Fonts
 " ------------------------------------------------------------------------------
-set guifont=Inconsolata-dz_for_Powerline:h11
+set guifont=Consolas:h11
 let g:Powerline_symbols = 'fancy'
 " ------------------------------------------------------------------------------
 "                                                                 File Locations
