@@ -630,19 +630,18 @@ vnoremap <silent><leader>cb :TCommentBlock<CR>
 
 " muComplete """""""""""""""""""""""""""
 set noshowmode shortmess+=c
-setl infercase
-setl completeopt-=preview
-setl completeopt+=menu,menuone
+set belloff+=ctrlg
+set infercase
+set completeopt+=menuone,preview,longest,noselect
 let g:mucomplete#enable_auto_at_startup = 1
-
-let g:mucomplete#chains = {}
-let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
-let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
-let g:mucomplete#chains.cpp = ['tags', 'omni', 'keyn', 'file']
-
-let g:mucomplete#trigger_auto_pattern = {}
-let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
-let g:mucomplete#trigger_auto_pattern.cpp     = '\a$'
+" let g:mucomplete#chains = {}
+" let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
+" let g:mucomplete#chains.markdown = ['keyn', 'spel', 'dict']
+" let g:mucomplete#chains.cpp = ['tags', 'omni', 'keyn', 'file']
+"
+" let g:mucomplete#trigger_auto_pattern = {}
+" let g:mucomplete#trigger_auto_pattern.default = '\a\a\a$'
+" let g:mucomplete#trigger_auto_pattern.cpp     = '\a$'
 
 " GoldenView """""""""""""""""""""
 " let g:goldenview__enable_default_mapping = 0
