@@ -69,7 +69,7 @@ Plug 'Raimondi/delimitMate'
 
 "Plug 'mhinz/vim-startify'
 
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise'
 
 Plug 'osyo-manga/vim-anzu'
 
@@ -79,7 +79,7 @@ Plug 'osyo-manga/vim-anzu'
 
 Plug 'AndrewRadev/switch.vim'
 
-Plug 'gabrielelana/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
@@ -632,7 +632,7 @@ vnoremap <silent><leader>cb :TCommentBlock<CR>
 set noshowmode shortmess+=c
 set belloff+=ctrlg
 set infercase
-set completeopt+=menuone,preview,longest,noselect
+set completeopt+=menuone,preview,noselect,longest
 let g:mucomplete#enable_auto_at_startup = 1
 " let g:mucomplete#chains = {}
 " let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
