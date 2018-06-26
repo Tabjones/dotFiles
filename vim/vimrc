@@ -154,6 +154,10 @@ if has("autocmd")
         autocmd FocusLost * :wa
         au  BufRead,BufNewFile *.hpp set filetype=cpp
         au  BufRead,BufNewFile *.vim set filetype=vim
+        " Additional CMake syntax
+        autocmd BufNewFile,BufRead *.cmake.* set filetype=cmake
+        autocmd BufNewFile,BufRead *.in set filetype=cmake
+augroup END
     augroup END
 endif
 " ------------------------------------------------------------------------------
@@ -632,7 +636,7 @@ vnoremap <silent><leader>cb :TCommentBlock<CR>
 set noshowmode shortmess+=c
 set belloff+=ctrlg
 set infercase
-set completeopt+=menuone,preview,noselect,longest
+set completeopt+=menuone,preview,noselect
 let g:mucomplete#enable_auto_at_startup = 1
 " let g:mucomplete#chains = {}
 " let g:mucomplete#chains.default = ['omni', 'c-p', 'file', 'keyn', 'dict']
