@@ -1,4 +1,4 @@
-﻿"===============================================================================
+"===============================================================================
 "=============================================================================
 "
 "               ________ ++     ________
@@ -22,22 +22,25 @@
 "===============================================================================
 "===============================================================================
 
+packadd! dracula
+
 "-------------------------------------------------------------------------------
 "                                                                        General
 "-------------------------------------------------------------------------------
 "Be (Im)proved!
 set nocompatible
 filetype plugin indent on
-set omnifunc=syntaxcomplete#Complete
 syntax enable
-"set lines=9999 columns=9999
-au GUIEnter * simalt ~x
-" set nowfh                                  " no fixed size
-" set noea eadirection=both                  " no equal size
-" set wmw=0 wmh=0                            " squash other windows
-" set wiw=9999 wh=999 hh=999 cwh=999 pvh=999 " enlarge current window
-" Set git shell
-" set shell=\"C:\Program\ Files\Git\git-cmd.exe\"
+set nowfh                                  " no fixed size
+set noea eadirection=both                  " no equal size
+set wmw=0 wmh=0                            " squash other windows
+set wiw=9999 wh=999 hh=999 cwh=999 pvh=999 " enlarge current window
+
+" ------------------------------------------------------------------------------
+"                                                                          Color
+" ------------------------------------------------------------------------------
+colorscheme dracula
+
 " ------------------------------------------------------------------------------
 "                                                                       Commands
 " ------------------------------------------------------------------------------
@@ -47,53 +50,58 @@ au GUIEnter * simalt ~x
 command! -nargs=1 SilentCmd
             \ | execute ':silent !'.<q-args>
             \ | execute ':redraw!'
-" ---------------
-" Typo Fixes
-" ---------------
+" Fixes common typos
 command! W w
-"matchit key
-noremap <F1> <Esc>
-inoremap <F1> <Esc>
-cnoremap w' w<CR>
-" Disable the  ever-annoying Ex mode  shortcut key.  Instead, make Q  repeat the
-" last macro instead. *hat tip* http://vimbits.com/bits/263
-nnoremap Q @@
-" Removes doc lookup mapping because it's easy to fat finger and never useful.
-nnoremap K k
-vnoremap K k
+command! Q q
+" ----------------------------------------
+" Auto Commands
+" ----------------------------------------
+if has("autocmd")
+    augroup MyAutoCommands
+        " Clear the auto command group so we don't define it multiple times
+        " Idea from http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
+        autocmd!
+        " No formatting on o key newlines
+        autocmd BufNewFile,BufEnter * set formatoptions-=o
+        " No more complaining about untitled documents
+        " Autosaves when you lose focus to the window
+        autocmd FocusLost * :wa
+        au  BufRead,BufNewFile *.hpp set filetype=cpp
+        au  BufRead,BufNewFile *.vim set filetype=vim
+        " Additional syntax for filetype
+		autocmd BufRead,BufNewFile *.md set filetype=markdown
+        autocmd BufNewFile,BufRead *.cmake.* set filetype=cmake
+        autocmd BufNewFile,BufRead *.in set filetype=cmake
+    augroup END
+endif
 
-set background=dark
 " ------------------------------------------------------------------------------
 "                                                                 File Locations
 " ------------------------------------------------------------------------------
-set backupdir=$HOME/.vim/.backup
-set directory=$HOME/.vim/.tmp
+set backupdir=~/.vim/backup 
+set directory=~/.vim/tmp
 " Persistent Undo
 set undofile
-set undodir=$HOME/.vim/.undo
+set undodir=~/.vim/undo
 " ------------------------------------------------------------------------------
 "                                                                             UI
 " ------------------------------------------------------------------------------
-set encoding=utf-8 " Use the right encoding
 set ruler          " Ruler on
 set relativenumber " Line numbers on, but relative to where your cursor is
 set number         " Hybrid mode Line numbers! Relative plus current absolute
 set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
-set noshowmode     " Don't show the mode since Powerline shows it
-set title          " Set the title of the window in the terminal to the file
 if exists('+colorcolumn')
     set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
 endif
-" Disable tooltips for hovering keywords in Vim
-if exists('+ballooneval')
-    " This doesn't seem to stop tooltips for Ruby files
-    set noballooneval
-    " 100 second delay seems to be the only way to disable the tooltips
-    set balloondelay=100000
-endif
-
+"remove gui bars
+set guioptions -=m "menubar"
+set guioptions -=T "Toolbar"
+set guioptions -=r "right scrollbar"
+set guioptions -=L "Left scrollbar"
+set guioptions -=b "bottom scrollbar"
+set guifont=Noto\ Mono\ 18
 " ------------------------------------------------------------------------------
 "                                                                      Behaviors
 " ------------------------------------------------------------------------------
@@ -102,21 +110,13 @@ set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
 set hidden             " remove hidden
 set history=10000      " Number of things to remember in history.
-" set cf                 " no errorumping.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
 set ttimeout
-set timeoutlen=200     " Time to wait for a mapping.
-set ttimeoutlen=100    " Time to wait for a command (after leader for example).
-" set nofoldenable       " Disable folding entirely.
-" set foldlevelstart=99  " I really don't like folds.
-" set formatoptions=crql
-" set iskeyword+=\$,-    " Add extra characters that are valid parts of variables
 set nostartofline      " Don't go to the start of the line after some commands
 set scrolloff=10       " Keep n lines below the last line when scrolling
 set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
-" set ttyfast
 set ssop-=resize,buffers,folds,globals,options,localoptions,sesdir
 set ssop+=curdir,tabpages  "" Session options
 set diffopt+=vertical
@@ -131,7 +131,6 @@ set cindent
 set autoindent
 set smarttab
 set expandtab
-"set formatprg=par\ -w80         "par formatting
 " ------------------------------------------------------------------------------
 "                                                                      Searching
 " ------------------------------------------------------------------------------
@@ -154,15 +153,15 @@ set list
 " Reset the listchars
 set listchars=""
 " make tabs visible
-set listchars=tab:▶▷
+set listchars=tab:>-
 " show trailing spaces as dots
 set listchars+=trail:•
 " The character to show in the last column when wrap is off and the line
 " continues beyond the right of the screen
-set listchars+=extends:❱
+set listchars+=extends:>
 " The character to show in the last column when wrap is off and the line
 " continues beyond the right of the screen
-set listchars+=precedes:❰
+set listchars+=precedes:<
 " ------------------------------------------------------------------------------
 "                                                                         Sounds
 " ------------------------------------------------------------------------------
@@ -224,9 +223,8 @@ nnoremap <silent> <leader>tp :tabp<CR>
 " Insert Mode Mappings
 " ---------------
 " Let's make escape better.
-inoremap jk <Esc>
-inoremap JK <Esc>
-
+" inoremap jk <Esc>
+" inoremap JK <Esc>
 " ---------------
 " Leader Mappings
 " ---------------
@@ -237,8 +235,6 @@ nnoremap <silent><leader>O O<Esc>j
 noremap <silent><leader>nh :nohls<CR>
 " Highlight search word under cursor without jumping to next
 nnoremap <leader>h *<C-O>
-" Toggle spelling mode with <leader>spe
-nnoremap <silent> <leader>spe :set spell!<CR>
 " Replace placeholders <+...+>
 "nnoremap <silent> <Leader>ph /<+.\{-1,}+><cr>c/+>/e<cr>
 " Split window vertically or horizontally *and* switch to the new split!
@@ -260,9 +256,55 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-" Reopen previously open file
-nmap <Leader><Leader> :e#<CR>
+" Enter Visual Line  with leader leader
+nmap <Leader><Leader> V
 "  source current file
 nnoremap <silent><leader>rr  :source %<cr>
-" MacroPlayback
-nmap <Leader>Q @
+" ---------------
+" Typo Fixes
+" ---------------
+noremap <F1> <Esc>
+inoremap <F1> <Esc>
+cnoremap w' w<CR>
+" Disable the  ever-annoying Ex mode  shortcut key.  Instead, make Q  repeat the
+" last macro instead. *hat tip* http://vimbits.com/bits/263
+nnoremap Q @@
+" Removes doc lookup mapping because it's easy to fat finger and never useful.
+nnoremap K k
+vnoremap K k
+
+" ------------------------------------------------------------------------------
+"                                                                       Plugins
+" ------------------------------------------------------------------------------
+
+"ALE
+"How can I configure my C or C++ project? The structure of C and C++
+"projects varies wildly from project to project, with many different build
+"tools being used for building them, and many different formats for project
+"configuration files. ALE can run compilers easily, but ALE cannot easily
+"detect which compiler flags to use.
+"
+"Some tools and build configurations can generate compile_commands.json files.
+"The cppcheck, clangcheck, clangtidy and cquery linters can read these files
+"for automatically determining the appropriate compiler flags to use.
+"
+"For linting with compilers like gcc and clang, and with other tools, you will
+"need to tell ALE which compiler flags to use yourself. You can use different
+"options for different projects with the g:ale_pattern_options setting.
+"Consult the documentation for that setting for more information.
+"b:ale_linters can be used to select which tools you want to run, say if you
+"want to use only gcc for one project, and only clang for another.
+"
+"ALE will attempt to parse compile_commands.json files to discover compiler
+"flags to use when linting code. See :help g:ale_c_parse_compile_commands for
+"more information. See Clang's documentation for compile_commands.json files.
+"You should strongly consider generating them in your builds, which is easy to
+"do with CMake.
+"
+"You can also configure ALE to automatically run make -n to run dry runs on
+"Makefiles to discover compiler flags. This can execute arbitrary code, so the
+"option is disabled by default. See :help g:ale_c_parse_makefile.
+"
+"You may also configure buffer-local settings for linters with
+"project-specific vimrc files. local_vimrc can be used for executing local
+"vimrc files which can be shared in your project.

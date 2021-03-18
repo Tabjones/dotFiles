@@ -1,0 +1,13 @@
+Host github github.com
+	HostName github.com
+	IdentityFile ~/.ssh/github
+	User Tabjones
+Host gitlab gitlab.com
+	HostName gitlab.com
+	IdentityFile ~/.ssh/gitlab
+	User tabjones
+Host Tesla
+	HostName Tesla
+	IdentityFile ~/.ssh/tesla
+	User tabjones
+

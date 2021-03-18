@@ -1,0 +1,18 @@
+{
+    "editor.fontSize": 18,
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Dracula",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "window.zoomLevel": 4,
+    "editor.cursorStyle": "block-outline",
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [
+    ],
+    "files.autoSave": "onFocusChange",
+    "editor.renderWhitespace": "trailing",
+    "files.associations": {
+        "\".cmake.in\"": "cmake"
+    },
+   
+    
+    //"editor.codeActionsOnSave": null
+}
