@@ -12,6 +12,27 @@
     "files.associations": {
         "\".cmake.in\"": "cmake"
     },
+    "vim.camelCaseMotion.enable": true,
+    "vim.cursorStylePerMode.insert": "block-outline",
+    "vim.cursorStylePerMode.normal": "underline",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.cursorStylePerMode.visualblock": "block",
+    "vim.cursorStylePerMode.visualline": "line",
+    "vim.gdefault": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<Space>",
+    "vim.replaceWithRegister": true,
+    "vim.showMarksInGutter": true,
+    "vim.smartRelativeLine": true,
+    "vim.sneak": true,
+    "vim.statusBarColorControl": true,
+    "vim.useSystemClipboard": true,
+    "vim.vimrc.enable": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
    
     
     //"editor.codeActionsOnSave": null
