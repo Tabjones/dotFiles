@@ -29,9 +29,14 @@
     "vim.useSystemClipboard": true,
     "vim.vimrc.enable": true,
     "workbench.colorCustomizations": {
-        "statusBar.background": "#007acc",
-        "statusBar.noFolderBackground": "#007acc",
-        "statusBar.debuggingBackground": "#007acc"
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    "cmake.configureOnOpen": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
     },
    
     
